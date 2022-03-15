@@ -273,6 +273,13 @@ footer .social-media-links li {
   list-style: none;
   padding: 1rem;
 }
+footer .social-media-links li a {
+  text-decoration: none;
+  color: var(--color-gray);
+}
+footer .social-media-links li a:hover {
+  color: var(--color-primary);
+}
 
 .terminal {
   min-height: 20rem;
