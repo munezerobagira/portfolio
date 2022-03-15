@@ -1,0 +1,12 @@
+{
+  "name": "my-brand-sostene",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "npm run sass-watch",
+    "sass-watch": "sass --watch UI/assets/styles:UI/assets/styles "
+  },
+  "devDependencies": {
+    "sass": "^1.49.9"
+  }
+}

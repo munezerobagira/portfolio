@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+}
+@media (min-width: 480px) {
+  .wrapper {
+    padding: 0px 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 0px 1rem;
+  }
+}
+@media (min-width: 992px) {
+  .wrapper {
+    padding: 0px 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    padding: 0px;
+  }
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+:root {
+  --color-green: #07cd26;
+  --color-yellow: #d9c407;
+  --color-red: #ff5252;
+  --color-gray: #f8f8f8;
+  --color-black: #333333;
+  --color-dark: #222;
+  --color-white: #ffffff;
+  --color-transparent: rgba(0, 0, 0, 0);
+  font-size: 14px;
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  max-width: 100%;
+  color: var(--color-dark);
+}
+
+header {
+  display: relative;
+  width: 100%;
+}
+
+#navbar {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+#navbar .wrapper {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#navbar .wrapper ul {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  top: 2rem;
+  flex: 1;
+  padding: 0px 0.9rem 2rem 0.9rem;
+  width: 100%;
+}
+#navbar .wrapper ul li {
+  padding: 0px 10px 10px 10px;
+  list-style: none;
+}
+#navbar .wrapper ul li a {
+  text-decoration: none;
+  color: var(--color-black);
+  font-size: 1.2rem;
+}
+#navbar .wrapper ul li a:hover {
+  color: var(--color-yellow);
+}
+#navbar .wrapper #toggler {
+  margin-top: 1.8rem;
+}
+#navbar .wrapper #toggler i {
+  font-size: 2rem;
+}
+@media (min-width: 768px) {
+  #navbar .wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #navbar .wrapper #toggler {
+    display: none;
+  }
+  #navbar .wrapper ul {
+    display: flex !important;
+    height: auto !important;
+    flex: 1;
+    top: 0;
+    padding: 0px 0.9rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #navbar .wrapper ul li {
+    padding: 0px 10px;
+    display: hidden;
+    align-self: center;
+    justify-self: center;
+  }
+}
+
+.height-0 {
+  height: 0px;
+  overflow: hidden;
+}
+
+#logo h1 {
+  color: var(--color-green);
+}
+
+.card {
+  max-width: 20rem;
+  min-width: 20rem;
+  width: 20rem;
+  margin-left: 2rem;
+  border-radius: 26px;
+  overflow: hidden;
+}
+.card .text-container {
+  padding: 2rem 0.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.tags {
+  font-size: 0.8rem;
+  padding: 1rem 0px;
+}
+.tags span {
+  padding: 0.4rem;
+  margin-right: 0.6rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-yellow);
+  color: var(--color-black);
+}
+
+.flex, .flex-row, .flex-column {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-2 {
+  flex: 2;
+}
+.flex-3 {
+  flex: 3;
+}
+
+.heading {
+  padding: 3rem 0px;
+}
+
+#hero {
+  padding: 8rem 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+#hero .flex-1 {
+  max-width: 100%;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  #hero {
+    padding: 12rem 0px;
+    text-align: left;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #hero .flex-1 {
+    max-width: 50%;
+    width: 50%;
+  }
+}
+
+footer {
+  padding: 2rem 0px;
+}
+footer .social-media-links {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+footer .social-media-links li {
+  list-style: none;
+  padding: 1rem;
+}
+
+.terminal {
+  min-height: 20rem;
+  background-color: var(--color-dark);
+  width: 100%;
+  border-radius: 2.1rem;
+}
+.terminal .titlebar {
+  padding: 0.8rem 2.1rem;
+}
+.terminal ul li {
+  width: 1rem;
+  height: 1rem;
+  list-style: none;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  margin: 0px 0.2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1rem 0px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 0.9rem 0px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  margin: 0.7rem 0px;
+}
+
+h4 {
+  font-size: 1.4rem;
+  margin: 0.6rem 0px;
+}
+
+h5 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0px;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0.4rem 0px;
+}
+
+#headline {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#headline .headline-picture-container {
+  padding: 0px 4rem;
+}
+#headline .headline-picture-container,
+#headline .headline-text-container {
+  max-width: 100%;
+  text-align: center;
+}
+#headline .headline-picture-container img {
+  max-height: 25rem;
+  object-fit: cover;
+}
+#headline .headline-text-container {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  #headline {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  #headline .headline-picture-container,
+#headline .headline-text-container {
+    max-width: 50%;
+    text-align: left;
+  }
+}
+
+.horizontal-scroll {
+  overflow-x: scroll;
+  max-width: 100%;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.width-half {
+  width: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.button, .button-secondary-inverse, .button-secondary, .button-primary-inverse, .button-primary {
+  background: var(--color-yellow);
+  color: var(--color-white);
+  padding: 0.5rem 1.5rem;
+  margin: 0.6rem 0px;
+  border-radius: 26px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.button-primary {
+  background-color: var(--color-green);
+  color: var(--color-gray);
+}
+.button-primary-inverse {
+  background-color: transparent;
+  border: 1px solid var(--color-green);
+  color: var(--color-black) !important;
+}
+.button-secondary {
+  background-color: var(--color-);
+  color: var(--color-gray);
+}
+.button-secondary-inverse {
+  background-color: transparent;
+  border: 1px solid var(--color-yellow);
+}
+.button:hover, .button-primary:hover, .button-primary-inverse:hover, .button-secondary:hover, .button-secondary-inverse:hover {
+  background: var(--color-yellow);
+}
+
+.text-0 {
+  font-size: 1rem;
+}
+
+.text-1 {
+  font-size: 1.5rem;
+}
+
+.text-2 {
+  font-size: 2rem;
+}
+
+.text-3 {
+  font-size: 2.5rem;
+}
+
+.text-4 {
+  font-size: 3rem;
+}
+
+.text-5 {
+  font-size: 3.5rem;
+}
+
+/*# sourceMappingURL=main.css.map */
