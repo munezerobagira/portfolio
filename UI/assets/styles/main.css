@@ -1,4 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+img {
+  opacity: 0.8;
+}
+
+img:hover {
+  opacity: 1;
+}
+
+:root {
+  --color-primary: #d9c407;
+  --color-secondary: #07cd26;
+  --color-red: #ff5252;
+  --color-gray: #f8f8f8;
+  --color-black: #333333;
+  --color-dark: #222;
+  --color-white: #ffffff;
+  --color-transparent: rgba(0, 0, 0, 0);
+  font-size: 14px;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  max-width: 100%;
+  color: var(--color-gray);
+  background-color: var(--color-dark);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem !important;
+  height: 0.5rem;
+  border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  opacity: 0.5;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+header {
+  display: relative;
+  width: 100%;
+}
+
 .wrapper {
   max-width: 1200px;
   width: 100%;
@@ -25,43 +90,12 @@
   }
 }
 
-* {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-:root {
-  --color-green: #07cd26;
-  --color-yellow: #d9c407;
-  --color-red: #ff5252;
-  --color-gray: #f8f8f8;
-  --color-black: #333333;
-  --color-dark: #222;
-  --color-white: #ffffff;
-  --color-transparent: rgba(0, 0, 0, 0);
-  font-size: 14px;
-}
-
-body,
-html {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  max-width: 100%;
-  color: var(--color-dark);
-}
-
-header {
-  display: relative;
-  width: 100%;
-}
-
 #navbar {
   position: fixed;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
+  z-index: 4444;
 }
 #navbar .wrapper {
   flex-direction: row;
@@ -72,6 +106,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+  transition: 0.5s ease-in-out;
   position: relative;
   top: 2rem;
   flex: 1;
@@ -84,11 +119,11 @@ header {
 }
 #navbar .wrapper ul li a {
   text-decoration: none;
-  color: var(--color-black);
+  color: var(--color-gray);
   font-size: 1.2rem;
 }
 #navbar .wrapper ul li a:hover {
-  color: var(--color-yellow);
+  color: var(--color-secondary);
 }
 #navbar .wrapper #toggler {
   margin-top: 1.8rem;
@@ -126,10 +161,17 @@ header {
 .height-0 {
   height: 0px;
   overflow: hidden;
+  opacity: 0;
+}
+@media (min-width: 768px) {
+  .height-0 {
+    height: auto !important;
+    opacity: 1;
+  }
 }
 
 #logo h1 {
-  color: var(--color-green);
+  color: var(--color-primary);
 }
 
 .card {
@@ -153,10 +195,12 @@ header {
   padding: 1rem 0px;
 }
 .tags span {
+  cursor: pointer;
+  opacity: 0.6;
   padding: 0.4rem;
   margin-right: 0.6rem;
   border-radius: 0.2rem;
-  background-color: var(--color-yellow);
+  background-color: var(--color-primary);
   color: var(--color-black);
 }
 
@@ -184,28 +228,32 @@ header {
 }
 
 #hero {
-  padding: 8rem 0px;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#hero .wrapper {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
   text-align: center;
 }
-#hero .flex-1 {
+#hero .wrapper .flex-1 {
   max-width: 100%;
   width: 100%;
+  padding: 1rem;
 }
 @media (min-width: 768px) {
-  #hero {
-    padding: 12rem 0px;
+  #hero .wrapper {
     text-align: left;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
   }
-  #hero .flex-1 {
+  #hero .wrapper .flex-1 {
     max-width: 50%;
     width: 50%;
   }
@@ -228,7 +276,7 @@ footer .social-media-links li {
 
 .terminal {
   min-height: 20rem;
-  background-color: var(--color-dark);
+  background-color: var(--color-black);
   width: 100%;
   border-radius: 2.1rem;
 }
@@ -274,36 +322,41 @@ p {
   margin: 0.4rem 0px;
 }
 
-#headline {
+#headline .headline {
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#headline .headline-picture-container {
-  padding: 0px 4rem;
+#headline .headline .headline-picture-container {
+  align-self: flex-start;
+  padding: 0px 0rem;
+  width: 100%;
 }
-#headline .headline-picture-container,
-#headline .headline-text-container {
+#headline .headline .headline-picture-container,
+#headline .headline .headline-text-container {
   max-width: 100%;
   text-align: center;
 }
-#headline .headline-picture-container img {
+#headline .headline .headline-picture-container img {
   max-height: 25rem;
-  object-fit: cover;
+  margin-right: auto;
+  width: auto;
+  border-radius: 2rem;
 }
-#headline .headline-text-container {
+#headline .headline .headline-text-container {
   width: 100%;
 }
 @media (min-width: 768px) {
-  #headline {
+  #headline .headline {
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-  #headline .headline-picture-container,
-#headline .headline-text-container {
+  #headline .headline .headline-picture-container,
+#headline .headline .headline-text-container {
     max-width: 50%;
     text-align: left;
+    align-self: flex-start;
   }
 }
 
@@ -325,8 +378,8 @@ p {
 }
 
 .button, .button-secondary-inverse, .button-secondary, .button-primary-inverse, .button-primary {
-  background: var(--color-yellow);
-  color: var(--color-white);
+  background: var(--color-secondary);
+  color: var(--color-white) !important;
   padding: 0.5rem 1.5rem;
   margin: 0.6rem 0px;
   border-radius: 26px;
@@ -335,13 +388,13 @@ p {
   cursor: pointer;
 }
 .button-primary {
-  background-color: var(--color-green);
+  background-color: var(--color-primary);
   color: var(--color-gray);
 }
 .button-primary-inverse {
   background-color: transparent;
-  border: 1px solid var(--color-green);
-  color: var(--color-black) !important;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary) !important;
 }
 .button-secondary {
   background-color: var(--color-);
@@ -349,10 +402,11 @@ p {
 }
 .button-secondary-inverse {
   background-color: transparent;
-  border: 1px solid var(--color-yellow);
+  border: 1px solid var(--color-secondary);
 }
 .button:hover, .button-primary:hover, .button-primary-inverse:hover, .button-secondary:hover, .button-secondary-inverse:hover {
-  background: var(--color-yellow);
+  background: rgba(var(--color-primary), 0.1);
+  border: 1px solid var(--color-primary);
 }
 
 .text-0 {
