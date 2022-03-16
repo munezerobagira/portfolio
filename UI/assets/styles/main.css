@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+section {
+  padding: 1rem auto;
+}
+
 img {
   opacity: 0.8;
+}
+
+.mh-100 {
+  min-height: 100vh;
 }
 
 img:hover {
@@ -9,14 +17,35 @@ img:hover {
 
 :root {
   --color-primary: #d9c407;
-  --color-secondary: #07cd26;
-  --color-red: #ff5252;
+  --color-secondary: #c2cf07;
   --color-gray: #f8f8f8;
   --color-black: #333333;
   --color-dark: #222;
   --color-white: #ffffff;
   --color-transparent: rgba(0, 0, 0, 0);
   font-size: 14px;
+}
+
+.py-1 {
+  padding: 1.5rem auto;
+}
+
+.my-1 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.my-2 {
+  margin-bottom: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
 }
 
 * {
@@ -68,15 +97,16 @@ header {
   max-width: 1200px;
   width: 100%;
   margin: auto;
+  padding: 0px 1rem;
 }
 @media (min-width: 480px) {
   .wrapper {
-    padding: 0px 1rem;
+    padding: 0px 1.5rem;
   }
 }
 @media (min-width: 768px) {
   .wrapper {
-    padding: 0px 1rem;
+    padding: 0px 1.5rem;
   }
 }
 @media (min-width: 992px) {
@@ -92,8 +122,10 @@ header {
 
 #navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   z-index: 4444;
 }
@@ -101,11 +133,12 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  overflow: hidden;
 }
 #navbar .wrapper ul {
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   transition: 0.5s ease-in-out;
   position: relative;
   top: 2rem;
@@ -123,10 +156,11 @@ header {
   font-size: 1.2rem;
 }
 #navbar .wrapper ul li a:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 #navbar .wrapper #toggler {
   margin-top: 1.8rem;
+  padding: 0px 1rem;
 }
 #navbar .wrapper #toggler i {
   font-size: 2rem;
@@ -170,15 +204,16 @@ header {
   }
 }
 
-#logo h1 {
+#logo h1 a {
   color: var(--color-primary);
+  text-decoration: none;
 }
 
 .card {
   max-width: 20rem;
   min-width: 20rem;
   width: 20rem;
-  margin-left: 2rem;
+  margin-right: 2rem;
   border-radius: 26px;
   overflow: hidden;
 }
@@ -384,6 +419,10 @@ p {
   text-align: center;
 }
 
+.margin-nav {
+  margin-top: 5rem;
+}
+
 .button, .button-secondary-inverse, .button-secondary, .button-primary-inverse, .button-primary {
   background: var(--color-secondary);
   color: var(--color-white) !important;
@@ -394,8 +433,15 @@ p {
   font-size: 1.2rem;
   cursor: pointer;
 }
+.button a, .button-secondary-inverse a, .button-secondary a, .button-primary-inverse a, .button-primary a {
+  color: var(--color-white);
+  text-decoration: none;
+}
 .button-primary {
   background-color: var(--color-primary);
+  color: var(--color-gray);
+}
+.button-primary a {
   color: var(--color-gray);
 }
 .button-primary-inverse {
@@ -403,8 +449,14 @@ p {
   border: 1px solid var(--color-primary);
   color: var(--color-primary) !important;
 }
+.button-primary-inverse a {
+  color: var(--color-primary);
+}
 .button-secondary {
   background-color: var(--color-);
+  color: var(--color-gray);
+}
+.button-secondary a {
   color: var(--color-gray);
 }
 .button-secondary-inverse {
@@ -416,28 +468,15 @@ p {
   border: 1px solid var(--color-primary);
 }
 
-.text-0 {
-  font-size: 1rem;
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0px;
 }
-
-.text-1 {
-  font-size: 1.5rem;
-}
-
-.text-2 {
-  font-size: 2rem;
-}
-
-.text-3 {
-  font-size: 2.5rem;
-}
-
-.text-4 {
-  font-size: 3rem;
-}
-
-.text-5 {
-  font-size: 3.5rem;
+.button-group .btn {
+  margin: 0.5rem;
 }
 
 /*# sourceMappingURL=main.css.map */

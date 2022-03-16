@@ -19,15 +19,20 @@
       <nav id="navbar">
         <div class="wrapper flex">
           <div id="logo">
-            <h1>Sostene</h1>
+            <h1><a href="/">Sostene</a></h1>
           </div>
           <ul class="flex height-0" id="navigation">
             <li><a href="/">Home</a></li>
             <li><a href="pages/about/">About</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact</a></li>
-            <div class="button-primary">Login</div>
+            <li><a href="pages/work/">Work</a></li>
+            <li><a href="pages/skills/">Skills</a></li>
+            <li><a href="pages/blog/">Blog</a></li>
+            <li><a href="pages/contactme/">Contact</a></li>
+            <li>
+              <button class="button-primary">
+                <a href="pages/login/">Login</a>
+              </button>
+            </li>
           </ul>
           <div id="toggler">
             <i class="fa-solid fa-bars"></i>
@@ -38,14 +43,14 @@
     <main>
       <section id="hero" class="flex">
         <div class="wrapper flex">
-          <div class="flex-1">
+          <div class="flex-1 margin-nav">
             <h1 class="text-5">Passionate, educative developer</h1>
             <p>Every code is written for reason</p>
             <div>
               <button class="button-primary">Hire me</button>
             </div>
           </div>
-          <div class="flex-1 flex-row">
+          <div class="flex-1 flex-row margin-nav">
             <div class="width-full">
               <div class="terminal">
                 <div class="titlebar">
@@ -60,7 +65,7 @@
           </div>
         </div>
       </section>
-      <section id="headline" class="flex">
+      <section id="headline">
         <div class="wrapper headline flex">
           <div class="headline-picture-container" class="">
             <img
@@ -79,44 +84,53 @@
               distinctio, illo obcaecati commodi at quasi ex totam rerum!
             </p>
             <div>
-              <button class="button-primary">Hire me</button>
+              <button class="button-primary">
+                <a href="/pages/about/">Read more</a>
+              </button>
             </div>
           </div>
         </div>
       </section>
       <section id="ftproject">
         <div class="wrapper">
-          <h2 class="text-center heading">Featured posts</h2>
+          <div class="heading text-center">
+            <h2 class="mb-1">Featured work</h2>
+            <p>Here are some of work which are am proud</p>
+          </div>
           <div class="flex flex-row horizontal-scroll">
             <div class="card">
               <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
+                <img src="assets/images/blogr.png" alt="Typing speed" />
               </div>
               <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
+                <h4>Huddle</h4>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
+                  A landing page for SaaS app made using javascript, html and
+                  css.
                 </p>
                 <div class="tags">
                   <span>General</span><span>javascript</span><span>OSINT</span>
                 </div>
-                <div class="button-group">
+                <div class="button-group flex">
                   <button class="button-primary">Visit site</button>
-                  <button class="button-primary-inverse">
-                    View source code
-                  </button>
+                  <button class="button-primary-inverse">source code</button>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="text-center">
+            <button class="button-primary my-1">
+              <a href="pages/work">View more projects</a>
+            </button>
           </div>
         </div>
       </section>
       <section id="ftpost">
         <div class="wrapper">
-          <h1 class="text-center">Featured posts</h1>
+          <div class="heading text-center">
+            <h2 class="mb-1">Featured posts</h2>
+            <p>Here are some of posts which are am proud of</p>
+          </div>
           <div class="flex flex-row horizontal-scroll">
             <div class="card">
               <div class="card-image">
@@ -134,110 +148,15 @@
                   <span>General</span><span>javascript</span><span>OSINT</span>
                 </div>
                 <div class="button-group">
-                  <button class="button-primary">Readmore</button>
+                  <button class="button-primary">Read more</button>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
-              </div>
-              <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
-                </p>
-                <div class="tags">
-                  <span>General</span><span>javascript</span><span>OSINT</span>
-                </div>
-                <div class="button-group">
-                  <button class="button-primary">Readmore</button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
-              </div>
-              <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
-                </p>
-                <div class="tags">
-                  <span>General</span><span>javascript</span><span>OSINT</span>
-                </div>
-                <div class="button-group">
-                  <button class="button-primary">Readmore</button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
-              </div>
-              <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
-                </p>
-                <div class="tags">
-                  <span>General</span><span>javascript</span><span>OSINT</span>
-                </div>
-                <div class="button-group">
-                  <button class="button-primary">Readmore</button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
-              </div>
-              <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
-                </p>
-                <div class="tags">
-                  <span>General</span><span>javascript</span><span>OSINT</span>
-                </div>
-                <div class="button-group">
-                  <button class="button-primary">Readmore</button>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image">
-                <img src="assets/images/74.png" alt="Typing speed" />
-              </div>
-              <div class="text-container">
-                <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Ipsam autem earum maxime sequi quas placeat exercitationem
-                  numquam beatae, saepe quasi enim, ad iure eius accusantium
-                  odit dicta nihil dolores ut.
-                </p>
-                <div class="tags">
-                  <span>General</span><span>javascript</span><span>OSINT</span>
-                </div>
-                <div class="button-group">
-                  <button class="button-primary">Readmore</button>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="text-center">
+            <button class="button-primary my-1">
+              <a href="pages/blog/">View more posts</a>
+            </button>
           </div>
         </div>
       </section>
