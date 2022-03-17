@@ -269,18 +269,26 @@ header {
 .flex-row {
   flex-direction: row;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 .flex-1 {
   flex: 1;
 }
 .flex-2 {
   flex: 2;
 }
-.flex-3 {
-  flex: 3;
-}
 
 .heading {
   padding: 3rem 0px;
+}
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4 {
+  color: var(--color-primary);
 }
 
 footer {
@@ -339,7 +347,7 @@ p {
 }
 
 .horizontal-scroll {
-  overflow-x: scroll;
+  overflow-x: auto;
   max-width: 100%;
 }
 
@@ -454,5 +462,3 @@ a.silent {
   color: inherit;
   text-decoration: none;
 }
-
-/*# sourceMappingURL=main.css.map */
