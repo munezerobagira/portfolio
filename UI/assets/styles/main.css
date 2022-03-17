@@ -1,4 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+:root {
+  --color-primary: #d9c407;
+  --color-gray: #f8f8f8;
+  --color-black: #333333;
+  --color-dark: #222;
+  --color-white: #ffffff;
+  --color-transparent: rgba(0, 0, 0, 0);
+  font-size: 14px;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+body,
+html {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  max-width: 100%;
+  color: var(--color-gray);
+  background-color: var(--color-dark);
+}
+
 section {
   padding: 1rem auto;
 }
@@ -15,19 +41,23 @@ img:hover {
   opacity: 1;
 }
 
-:root {
-  --color-primary: #d9c407;
-  --color-secondary: #c2cf07;
-  --color-gray: #f8f8f8;
-  --color-black: #333333;
-  --color-dark: #222;
-  --color-white: #ffffff;
-  --color-transparent: rgba(0, 0, 0, 0);
-  font-size: 14px;
-}
-
 .py-1 {
   padding: 1.5rem auto;
+}
+
+.py-2 {
+  padding-bottom: 2rem !important;
+  padding-top: 2rem !important;
+}
+
+.py-3 {
+  padding-bottom: 3rem !important;
+  padding-top: 3rem !important;
+}
+
+.px-3 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
 }
 
 .my-1 {
@@ -46,22 +76,6 @@ img:hover {
 
 .mb-2 {
   margin-bottom: 2rem;
-}
-
-* {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-  max-width: 100%;
-}
-
-body,
-html {
-  font-family: "Poppins", sans-serif;
-  width: 100%;
-  max-width: 100%;
-  color: var(--color-gray);
-  background-color: var(--color-dark);
 }
 
 /* width */
@@ -191,17 +205,20 @@ header {
     justify-self: center;
   }
 }
-
-.height-0 {
+#navbar .height-0 {
   height: 0px;
   overflow: hidden;
   opacity: 0;
 }
 @media (min-width: 768px) {
-  .height-0 {
+  #navbar .height-0 {
     height: auto !important;
     opacity: 1;
   }
+}
+
+.margin-nav {
+  margin-top: 5rem;
 }
 
 #logo h1 a {
@@ -213,12 +230,16 @@ header {
   max-width: 20rem;
   min-width: 20rem;
   width: 20rem;
-  margin-right: 2rem;
-  border-radius: 26px;
+  margin: 2rem 2rem 2rem 0;
+  border-radius: 1rem;
   overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .card .text-container {
-  padding: 2rem 0.5rem;
+  padding: 2rem 1rem;
+}
+.card:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hidden {
@@ -262,38 +283,6 @@ header {
   padding: 3rem 0px;
 }
 
-#hero {
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#hero .wrapper {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  text-align: center;
-}
-#hero .wrapper .flex-1 {
-  max-width: 100%;
-  width: 100%;
-  padding: 1rem;
-}
-@media (min-width: 768px) {
-  #hero .wrapper {
-    text-align: left;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  #hero .wrapper .flex-1 {
-    max-width: 50%;
-    width: 50%;
-  }
-}
-
 footer {
   padding: 2rem 0px;
 }
@@ -316,24 +305,6 @@ footer .social-media-links li a:hover {
   color: var(--color-primary);
 }
 
-.terminal {
-  min-height: 20rem;
-  background-color: var(--color-black);
-  width: 100%;
-  border-radius: 2.1rem;
-}
-.terminal .titlebar {
-  padding: 0.8rem 2.1rem;
-}
-.terminal ul li {
-  width: 1rem;
-  height: 1rem;
-  list-style: none;
-  background-color: var(--color-white);
-  border-radius: 50%;
-  margin: 0px 0.2rem;
-}
-
 h1 {
   font-size: 2rem;
   margin: 1rem 0px;
@@ -346,63 +317,25 @@ h2 {
 
 h3 {
   font-size: 1.6rem;
-  margin: 0.7rem 0px;
+  margin: 1.6rem 0px;
 }
 
 h4 {
   font-size: 1.4rem;
-  margin: 0.6rem 0px;
+  margin: 1.4rem 0px;
 }
 
 h5 {
   font-size: 1.2rem;
-  margin: 0.5rem 0px;
+  margin: 1.2rem 0px;
   font-weight: 300;
 }
 
 p {
   font-size: 1rem;
   line-height: 1.5rem;
-  margin: 0.4rem 0px;
+  margin: 0.8rem 0px;
   font-weight: 200;
-}
-
-#headline .headline {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#headline .headline .headline-picture-container {
-  align-self: flex-start;
-  padding: 0px 0rem;
-  width: 100%;
-}
-#headline .headline .headline-picture-container,
-#headline .headline .headline-text-container {
-  max-width: 100%;
-  text-align: center;
-}
-#headline .headline .headline-picture-container img {
-  max-height: 25rem;
-  margin-right: auto;
-  width: auto;
-  border-radius: 2rem;
-}
-#headline .headline .headline-text-container {
-  width: 100%;
-}
-@media (min-width: 768px) {
-  #headline .headline {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  #headline .headline .headline-picture-container,
-#headline .headline .headline-text-container {
-    max-width: 50%;
-    text-align: left;
-    align-self: flex-start;
-  }
 }
 
 .horizontal-scroll {
@@ -418,20 +351,52 @@ p {
   width: 50%;
 }
 
+/*  -------------Text-align-------------*/
 .text-center {
   text-align: center;
 }
 
-.margin-nav {
-  margin-top: 5rem;
+.text-justify {
+  text-align: justify;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.mh-80 {
+  min-height: 80vh;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+
+.showcase {
+  width: 100%;
+  min-width: 10rem;
+  max-height: 20rem;
+}
+
+.work-svg .st17 {
+  display: none !important;
+  fill: var(--color-primary) !important;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
 }
 
 .button, .button-secondary-inverse, .button-secondary, .button-primary-inverse, .button-primary {
-  background: var(--color-secondary);
+  background: var(--color-primary);
   color: var(--color-white) !important;
   padding: 0.5rem 1.5rem;
   margin: 0.6rem 0px;
-  border-radius: 26px;
+  border-radius: 1rem;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
@@ -464,7 +429,7 @@ p {
 }
 .button-secondary-inverse {
   background-color: transparent;
-  border: 1px solid var(--color-secondary);
+  border: 1px solid var(--color-primary);
 }
 .button:hover, .button-primary:hover, .button-primary-inverse:hover, .button-secondary:hover, .button-secondary-inverse:hover {
   background: rgba(var(--color-primary), 0.1);
@@ -484,6 +449,10 @@ p {
 
 a {
   font-weight: 300;
+}
+a.silent {
+  color: inherit;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=main.css.map */
