@@ -41,6 +41,57 @@ img:hover {
   opacity: 1;
 }
 
+h1 {
+  font-size: 2rem;
+  margin: 1rem 0px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 0.9rem 0px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  margin: 1.6rem 0px;
+}
+
+h4 {
+  font-size: 1.4rem;
+  margin: 1.4rem 0px;
+}
+
+h5 {
+  font-size: 1.2rem;
+  margin: 1.2rem 0px;
+  font-weight: 300;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin: 0.8rem 0px;
+  font-weight: 200;
+}
+
+a {
+  font-weight: 300;
+}
+a.silent {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heading {
+  padding: 3rem 0px;
+}
+.heading h1,
+.heading h2,
+.heading h3,
+.heading h4 {
+  color: var(--color-primary);
+}
+
 .py-1 {
   padding: 1.5rem auto;
 }
@@ -53,6 +104,11 @@ img:hover {
 .py-3 {
   padding-bottom: 3rem !important;
   padding-top: 3rem !important;
+}
+
+.px-2 {
+  padding-right: 3rem !important;
+  padding-left: 3rem !important;
 }
 
 .px-3 {
@@ -102,11 +158,6 @@ img:hover {
   background: var(--color-primary);
 }
 
-header {
-  display: relative;
-  width: 100%;
-}
-
 .wrapper {
   max-width: 1200px;
   width: 100%;
@@ -132,6 +183,11 @@ header {
   .wrapper {
     padding: 0px;
   }
+}
+
+header {
+  display: relative;
+  width: 100%;
 }
 
 #navbar {
@@ -205,6 +261,10 @@ header {
     justify-self: center;
   }
 }
+#navbar .wrapper #logo h1 a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
 #navbar .height-0 {
   height: 0px;
   overflow: hidden;
@@ -219,11 +279,6 @@ header {
 
 .margin-nav {
   margin-top: 5rem;
-}
-
-#logo h1 a {
-  color: var(--color-primary);
-  text-decoration: none;
 }
 
 .card {
@@ -244,20 +299,6 @@ header {
 
 .hidden {
   display: none;
-}
-
-.tags {
-  font-size: 0.8rem;
-  padding: 1rem 0px;
-}
-.tags span {
-  cursor: pointer;
-  opacity: 0.6;
-  padding: 0.4rem;
-  margin-right: 0.6rem;
-  border-radius: 0.2rem;
-  background-color: var(--color-primary);
-  color: var(--color-black);
 }
 
 .flex, .flex-row, .flex-column {
@@ -281,69 +322,12 @@ header {
   flex: 2;
 }
 
-.heading {
-  padding: 3rem 0px;
-}
-.heading h1,
-.heading h2,
-.heading h3,
-.heading h4 {
-  color: var(--color-primary);
+.right {
+  float: right;
 }
 
-footer {
-  padding: 2rem 0px;
-}
-footer .social-media-links {
-  display: flex;
-  padding: 1rem 0;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-footer .social-media-links li {
-  list-style: none;
-  padding: 1rem;
-}
-footer .social-media-links li a {
-  text-decoration: none;
-  color: var(--color-gray);
-}
-footer .social-media-links li a:hover {
-  color: var(--color-primary);
-}
-
-h1 {
-  font-size: 2rem;
-  margin: 1rem 0px;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin: 0.9rem 0px;
-}
-
-h3 {
-  font-size: 1.6rem;
-  margin: 1.6rem 0px;
-}
-
-h4 {
-  font-size: 1.4rem;
-  margin: 1.4rem 0px;
-}
-
-h5 {
-  font-size: 1.2rem;
-  margin: 1.2rem 0px;
-  font-weight: 300;
-}
-
-p {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  margin: 0.8rem 0px;
-  font-weight: 200;
+.left {
+  float: left;
 }
 
 .horizontal-scroll {
@@ -391,17 +375,26 @@ p {
   fill: var(--color-primary) !important;
 }
 
-.right {
-  float: right;
+.tags {
+  font-size: 0.8rem;
+  padding: 1rem 0px;
 }
-
-.left {
-  float: left;
+.tags span {
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0.4rem;
+  margin-right: 0.6rem;
+  border-radius: 0.2rem;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+}
+.tags span:hover {
+  opacity: 1;
 }
 
 .button, .button-secondary-inverse, .button-secondary, .button-primary-inverse, .button-primary {
   background: var(--color-primary);
-  color: var(--color-white) !important;
+  color: var(--color-white);
   padding: 0.5rem 1.5rem;
   margin: 0.6rem 0px;
   border-radius: 1rem;
@@ -455,10 +448,37 @@ p {
   margin: 0.5rem;
 }
 
-a {
-  font-weight: 300;
+footer {
+  padding: 2rem 0px;
 }
-a.silent {
-  color: inherit;
+footer .social-media-links {
+  display: flex;
+  padding: 1rem 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+footer .social-media-links li {
+  list-style: none;
+  padding: 1rem;
+}
+footer .social-media-links li a {
   text-decoration: none;
+  color: var(--color-gray);
+}
+footer .social-media-links li a:hover {
+  color: var(--color-primary);
+}
+
+input,
+textarea {
+  background: transparent;
+  color: inherit;
+  padding: 0.5rem;
+  resize: none;
+  border-radius: 1rem;
+}
+input.control,
+textarea.control {
+  width: 100%;
 }
