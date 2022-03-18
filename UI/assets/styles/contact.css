@@ -1,0 +1,24 @@
+#contact-me .wrapper {
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+#contact-me .wrapper .contact-info {
+  width: 100%;
+}
+#contact-me .wrapper .form-container {
+  width: 100%;
+}
+#contact-me .wrapper .form-container .form-group {
+  width: 100%;
+}
+#contact-me .contact-img {
+  max-width: 20rem;
+}
+@media (min-width: 768px) {
+  #contact-me .wrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
