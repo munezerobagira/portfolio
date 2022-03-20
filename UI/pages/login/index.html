@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../assets/styles/main.css" />
-    <link rel="stylesheet" href="../../assets/styles/contact.css" />
+    <link rel="stylesheet" href="../../assets/styles/login.css" />
 
     <link
       rel="stylesheet"
@@ -32,7 +32,7 @@
             <li><a href="../contactme/">Contact</a></li>
             <li>
               <button class="button-primary">
-                <a href="../login/">Login</a>
+                <a href="../signup/">signup</a>
               </button>
             </li>
           </ul>
@@ -43,62 +43,43 @@
       </nav>
     </header>
     <main>
-      <section id="contact-me" class="flex margin-nav">
-        <div class="wrapper flex py-2">
-          <div class="form-container">
-            <form>
-              <div class="form-group">
-                <input
-                  class="control"
-                  type="text"
-                  name="name"
-                  placeholder="Enter your name"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  class="control"
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  class="control"
-                  type="email"
-                  name="subject"
-                  placeholder="example@example.domain"
-                />
-              </div>
-              <div class="form-group">
-                <textarea
-                  class="control"
-                  id=""
-                  placeholder="Enter your message "
-                  rows="5"
-                ></textarea>
-              </div>
-              <div class="button text-center">Send a message</div>
-            </form>
+      <section id="login" class="flex margin-nav">
+        <div class="wrapper">
+          <div class="heading text-center py-1">
+            <h2>Login</h2>
           </div>
-
-          <div class="contact-info py-1 text-center">
-            <div>
-              <img
-                class="contact-img"
-                src="../../assets/images/aboutme.svg"
-                alt=""
-              />
+          <div class="flex login-wrapper">
+            <div class="form-container">
+              <form action="../admin/index.html">
+                <div class="form-group">
+                  <input
+                    class="control"
+                    type="text"
+                    name="name"
+                    placeholder="username"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    class="control"
+                    type="password"
+                    name="subject"
+                    placeholder="password"
+                  />
+                </div>
+                <button class="button text-center width-full">Login</button>
+              </form>
             </div>
-            <h2>Contact me</h2>
-            <p>
-              You are sending this message to
-              <span class="color-primary">Munezero Bagira Sostene</span>
-            </p>
-            <div>
-              Located in Kigali, Rwanda GMT+2. <br />
-              Current time is <span class="current-time">14:00 AM</span>
+
+            <div class="info text-center">
+              <div>
+                <img
+                  class="contact-img"
+                  src="../../assets/images/aboutme.svg"
+                  alt=""
+                />
+              </div>
+              <p>Login to access some of your treasures</p>
             </div>
           </div>
         </div>
