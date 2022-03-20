@@ -21,15 +21,23 @@
   }
   #featured-post .text-container {
     width: 40%;
+    padding: 1rem;
   }
 }
 
 #posts {
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   max-width: 100%;
+}
+@media (min-width: 768px) {
+  #posts {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }
 
 #post-main {
