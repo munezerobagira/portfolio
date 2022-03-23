@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../../assets/styles/main.css" />
+    <link rel="stylesheet" href="../../../../assets/styles/admin/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Portfolio | Sostene Munezero Bagira</title>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <div class="wrapper flex">
+          <div id="logo">
+            <h1><a href="/">Sostene</a></h1>
+          </div>
+          <ul class="flex height-0" id="navigation">
+            <li></li>
+          </ul>
+          <button class="button-primary">
+            <a href="">Logout</a>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="margin-nav">
+      <div class="flex wrapper">
+        <aside id="sidebar">
+          <div id="sidebar-wrapper" class="flex active">
+            <div id="sidebar-toggler">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="info">
+              Continue,
+              <h3 class="color-primary">Sostene</h3>
+            </div>
+            <ul id="sidebar-menu">
+              <li class="menu-list-item">
+                Posts
+                <ol class="dropdown">
+                  <li><a class="silent" href="../posts/form/">Add post</a></li>
+                  <li><a class="silent" href="../posts/">Edit posts</a></li>
+                </ol>
+              </li>
+              <li class="menu-list-item">
+                Projects
+                <ol class="dropdown">
+                  <li>
+                    <a class="silent" href="../projects/form">Add project</a>
+                  </li>
+                  <li>
+                    <a class="silent" href="../projects/">Edit project</a>
+                  </li>
+                </ol>
+              </li>
+              <li class="menu-list-item">
+                <a href="./" class="silent"> Personal info</a>
+              </li>
+              <li class="menu-list-item">
+                <a href="../enquires/" class="silent"> Personal enquiries</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        <section id="admin-content">
+          <div>
+            <a class="silent">admin</a>>
+            <a href="../" class="silent">dashboard</a> >
+            <a href="./" class="silent">personal</a>
+          </div>
+          <div>
+            <h1>Edit personal information</h1>
+            <div class="form-container">
+              <form action="../">
+                <div class="form-group">
+                  <label>Choose profile image</label>
+                  <input
+                    class="control"
+                    type="file"
+                    name="name"
+                    placeholder="Choose an image"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    class="control"
+                    type="text"
+                    name="name"
+                    placeholder="Keywords: problem solver ..."
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    class="control"
+                    type="text"
+                    name="name"
+                    placeholder="Small info"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    class="control"
+                    type="password"
+                    name="subject"
+                    placeholder="Write a little summary"
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea
+                    class="control"
+                    cols="30"
+                    rows="10"
+                    placeholder="Write full about here"
+                  ></textarea>
+                </div>
+
+                <button class="button text-center width-full">
+                  Edit personal info
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="../../../assets/javascript/main.js"></script>
+  </body>
+</html>

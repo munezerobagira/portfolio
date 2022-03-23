@@ -65,6 +65,13 @@
 
 .comment {
   padding: 0.5rem 0px;
+  border-radius: 1rem;
+}
+.comment .vote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .comment div.comment-wrapper {
   background-color: var(--color-black);
