@@ -54,13 +54,25 @@
           </div>
           <div class="flex-1 flex-row margin-nav">
             <div class="width-full">
-              <div class="terminal">
+              <div class="terminal" id="terminal">
                 <div class="titlebar">
                   <ul class="actions flex">
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li id="terminal-maximize">O</li>
+                    <li id="terminal-minimize">-</li>
+                    <li id="terminal-close">X</li>
                   </ul>
+                </div>
+                <div class="body px-2">
+                  <form id="terminal-form">
+                    <label>sostene@sotene:- $</label>
+                    <input
+                      id="terminal-input"
+                      name="command"
+                      type="text"
+                      autocomplete="off"
+                      class="width-full"
+                    />
+                  </form>
                 </div>
               </div>
             </div>
@@ -318,7 +330,7 @@
           </div>
         </div>
       </section>
-
+      <div id="loading"></div>
       <footer>
         <ul class="social-media-links">
           <li><a href="https://www.linkedin.com">Linkedin</a></li>
@@ -329,5 +341,6 @@
       </footer>
     </main>
     <script src="assets/javascript/main.js"></script>
+    <script src="assets/javascript/terminal.js"></script>
   </body>
 </html>
