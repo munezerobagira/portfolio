@@ -1,7 +1,7 @@
 let contactSchema = {
   name: "string[2]",
   subject: "string[4]",
-  email: "string[5]",
+  email: "email",
   message: "string[5]",
 };
 function onSuccess(data) {

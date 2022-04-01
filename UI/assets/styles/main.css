@@ -7,6 +7,7 @@
   --color-white: #ffffff;
   --color-danger: rgb(219, 136, 136);
   --color-transparent: rgba(0, 0, 0, 0);
+  --color-success: rgb(149, 235, 156);
   font-size: 16px;
 }
 
@@ -527,6 +528,11 @@ textarea:hover textarea:active {
 input.error,
 textarea.error {
   outline: 2px solid var(--color-danger);
+}
+
+input.success,
+textarea.success {
+  outline: 2px solid var(--color-success);
 }
 
 .error-box {

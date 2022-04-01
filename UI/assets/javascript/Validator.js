@@ -47,8 +47,6 @@ function validate(schema, object) {
 
 function withForm(target, schema, onSuccess) {
   let form = document.querySelector(`#${target}`);
-  console.log(form);
-
   if (!form) return console.log(`form with id ${target}  not found`);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -56,6 +54,7 @@ function withForm(target, schema, onSuccess) {
     for (let key in schema) {
       if (form[key]) {
         object[key] = form[key].value;
+        form[key].classList.add("success");
         // object[element].element = form[key].value;
       }
     }
@@ -76,8 +75,9 @@ function withForm(target, schema, onSuccess) {
     }
   });
 }
-function appendFor(target, error, errorKey, classList = [], timeout = 6000) {
+function appendFor(target, error, errorKey, classList = [], timeout = 3000) {
   if (!target) return "";
+  target.classList.remove("success");
   target.classList.add("error");
   let errorElement = document.getElementById(`error-${errorKey}`);
   if (errorElement) errorElement.textContent;
@@ -137,7 +137,9 @@ function separator(rule) {
 }
 const validateFunctions = {
   checkType: function (type) {
-    return ["string", "number", "required", "reference"].includes(type);
+    return ["string", "number", "required", "reference", "email"].includes(
+      type
+    );
   },
   string: function (data, minLength, maxLength) {
     let errors = [];
@@ -165,6 +167,13 @@ const validateFunctions = {
   reference: function (data, referenceData) {
     let errors = [];
     if (data !== referenceData) errors.push("don't match");
+    if (errors.length) return { value: null, errors };
+    return { value: data };
+  },
+  email: function (data) {
+    let errors = [];
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data))
+      errors.push("is not valid");
     if (errors.length) return { value: null, errors };
     return { value: data };
   },
