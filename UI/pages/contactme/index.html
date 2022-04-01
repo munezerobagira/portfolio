@@ -45,7 +45,7 @@
       <section id="contact-me" class="flex margin-nav">
         <div class="wrapper flex py-2">
           <div class="form-container">
-            <form>
+            <form id="contactme">
               <div class="form-group">
                 <input
                   class="control"
@@ -66,19 +66,19 @@
                 <input
                   class="control"
                   type="email"
-                  name="subject"
+                  name="email"
                   placeholder="example@example.domain"
                 />
               </div>
               <div class="form-group">
                 <textarea
                   class="control"
-                  id=""
+                  name="message"
                   placeholder="Enter your message "
                   rows="5"
                 ></textarea>
               </div>
-              <div class="button text-center">Send a message</div>
+              <input type="submit" class="control button text-center" />
             </form>
           </div>
 
@@ -113,5 +113,9 @@
     </footer>
 
     <script src="../../assets/javascript/main.js"></script>
+    <script src="../../assets/javascript/validator.js"></script>
+    <script src="../../assets/javascript/contactme.js"></script>
+
+    <script></script>
   </body>
 </html>

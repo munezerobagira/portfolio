@@ -5,9 +5,9 @@
   --color-black: #333333;
   --color-dark: #222;
   --color-white: #ffffff;
-  --color-danger: darkred;
+  --color-danger: rgb(219, 136, 136);
   --color-transparent: rgba(0, 0, 0, 0);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 * {
@@ -27,7 +27,8 @@ html {
 }
 
 section {
-  padding: 1rem auto;
+  padding: 3rem auto;
+  min-height: 100vh !important;
 }
 
 img {
@@ -371,6 +372,11 @@ header {
   text-align: left;
 }
 
+/* --------*/
+.text-5 {
+  font-size: 2.5rem;
+}
+
 .mh-80 {
   min-height: 80vh;
 }
@@ -490,8 +496,8 @@ footer .social-media-links li a:hover {
 
 section:nth-child(even) {
   background-color: var(--color-black);
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 input,
@@ -516,4 +522,23 @@ textarea:focus,
 textarea:hover input:active,
 textarea:hover textarea:active {
   outline: 2px solid var(--color-primary);
+}
+
+input.error,
+textarea.error {
+  outline: 2px solid var(--color-danger);
+}
+
+.error-box {
+  color: var(--color-danger);
+}
+
+.toast {
+  position: fixed;
+  padding: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: var(--color-black);
+  border: 2px solid var(--color-primary);
+  color: var(var(--color-white));
 }
