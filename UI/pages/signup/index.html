@@ -49,12 +49,12 @@
           </div>
           <div class="flex signup-wrapper">
             <div class="form-container">
-              <form action="../login/index.html">
+              <form id="signupForm">
                 <div class="form-group">
                   <input
                     class="control"
                     type="text"
-                    name="name"
+                    name="username"
                     placeholder="username"
                   />
                 </div>
@@ -62,7 +62,7 @@
                   <input
                     class="control"
                     type="text"
-                    name="name"
+                    name="email"
                     placeholder="email"
                   />
                 </div>
@@ -78,7 +78,7 @@
                   <input
                     class="control"
                     type="password"
-                    name="subject"
+                    name="password"
                     placeholder="password"
                   />
                 </div>
@@ -86,11 +86,13 @@
                   <input
                     class="control"
                     type="password"
-                    name="subject"
+                    name="confirmPassword"
                     placeholder="Confirm password"
                   />
                 </div>
-                <button class="button text-center width-full">signup</button>
+                <button type="submit" class="button text-center width-full">
+                  signup
+                </button>
               </form>
             </div>
 
@@ -117,5 +119,7 @@
       <h5 class="text-center">Copyright &copy; Munezero Bagira Sostene</h5>
     </footer>
     <script src="../../assets/javascript/main.js"></script>
+    <script src="../../assets/javascript/validator.js"></script>
+    <script src="../../assets/javascript/signup.js"></script>
   </body>
 </html>

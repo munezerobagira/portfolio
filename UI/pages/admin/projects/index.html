@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../../../favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../../../assets/styles/main.css" />
     <link rel="stylesheet" href="../../../../assets/styles/admin/main.css" />
@@ -44,18 +44,10 @@
             </div>
             <ul id="sidebar-menu">
               <li class="menu-list-item">
-                Posts
-                <ol class="dropdown">
-                  <li><a class="silent" href="../posts/form/">Add post</a></li>
-                  <li><a class="silent" href="../posts/">Edit posts</a></li>
-                </ol>
+                <a class="silent" href="../posts/">Posts</a>
               </li>
               <li class="menu-list-item">
-                Projects
-                <ol class="dropdown">
-                  <li><a class="silent" href="./form">Add project</a></li>
-                  <li><a class="silent" href="./">Edit posts</a></li>
-                </ol>
+                <a class="silent" href="./">Projects</a>
               </li>
               <li class="menu-list-item">
                 <a href="../personal/" class="silent">Personal info</a>
@@ -74,12 +66,18 @@
           </div>
           <div>
             <div class="flitter">
+              <div class="flex flex-between">
+                <h1>Projects</h1>
+                <button class="button">
+                  <a class="silent" href="./form">Add project</a>
+                </button>
+              </div>
               <form class="flex width-full">
                 <input type="text" class="control mr-1" />
                 <button class="button">Search</button>
               </form>
             </div>
-            <h1>Projects</h1>
+
             <div class="flex flex-row horizontal-scroll flex-wrap">
               <div class="card">
                 <div class="card-image">
@@ -99,7 +97,7 @@
                   </div>
                   <div class="button-group flex">
                     <button class="button-primary-inverse">
-                      <a href="./form/">Edit</a>
+                      <a href="./form/?id=1">Edit</a>
                     </button>
                     <button class="button-danger">Delete</button>
                   </div>
@@ -124,7 +122,7 @@
                   </div>
                   <div class="button-group flex">
                     <button class="button-primary-inverse">
-                      <a href="./form/">Edit</a>
+                      <a href="./form/?id=1">Edit</a>
                     </button>
                     <button class="button-danger">Delete</button>
                   </div>
@@ -149,7 +147,7 @@
                   </div>
                   <div class="button-group flex">
                     <button class="button-primary-inverse">
-                      <a href="./form/">Edit</a>
+                      <a href="./form/?id=1">Edit</a>
                     </button>
                     <button class="button-danger">Delete</button>
                   </div>
@@ -174,7 +172,7 @@
                   </div>
                   <div class="button-group flex">
                     <button class="button-primary-inverse">
-                      <a href="./form/">Edit</a>
+                      <a href="./form/?id=1">Edit</a>
                     </button>
                     <button class="button-danger">Delete</button>
                   </div>
@@ -196,7 +194,7 @@
                   </div>
                   <div class="button-group flex">
                     <button class="button-primary-inverse">
-                      <a href="./form/">Edit</a>
+                      <a href="./form/?id=1">Edit</a>
                     </button>
                     <button class="button-danger">Delete</button>
                   </div>

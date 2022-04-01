@@ -44,22 +44,10 @@
             </div>
             <ul id="sidebar-menu">
               <li class="menu-list-item">
-                Posts
-                <ol class="dropdown">
-                  <li><a class="silent" href="../form">Add post</a></li>
-                  <li><a class="silent" href="../../posts/">Edit posts</a></li>
-                </ol>
+                <a class="silent" href="../../posts/">Posts </a>
               </li>
               <li class="menu-list-item">
-                Projects
-                <ol class="dropdown">
-                  <li>
-                    <a class="silent" href="../../projects/form">Add project</a>
-                  </li>
-                  <li>
-                    <a class="silent" href="../../projects/">Edit project</a>
-                  </li>
-                </ol>
+                <a class="silent" href="../../projects/">Projects</a>
               </li>
               <li class="menu-list-item">
                 <a href="../../personal/" class="silent"> Personal info</a>
@@ -78,14 +66,14 @@
             <a href="./" class="silent">form</a>
           </div>
           <div>
-            <h1>Add post</h1>
+            <h1 id="pageTitle">Add post</h1>
             <div class="form-container">
-              <form action="../login/index.html">
+              <form id="postForm">
                 <div class="form-group">
                   <input
                     class="control"
                     type="text"
-                    name="name"
+                    name="title"
                     placeholder="Title of post"
                   />
                 </div>
@@ -94,7 +82,7 @@
                   <input
                     class="control"
                     type="file"
-                    name="name"
+                    name="image"
                     placeholder="Choose an image"
                   />
                 </div>
@@ -102,21 +90,22 @@
                   <input
                     class="control"
                     type="text"
-                    name="name"
+                    name="tags"
                     placeholder="Tags, separated by commas"
                   />
                 </div>
                 <div class="form-group">
                   <input
                     class="control"
-                    type="password"
-                    name="subject"
+                    type="text"
+                    name="summary"
                     placeholder="Write a little summary"
                   />
                 </div>
                 <div class="form-group">
                   <textarea
-                    class="control"
+                    class="post control"
+                    name="post"
                     cols="30"
                     rows="10"
                     placeholder="Write your post here"
@@ -126,7 +115,13 @@
                   <input type="checkbox" />
                   Checking box will make the post featured
                 </div>
-                <button class="button text-center width-full">Add post</button>
+                <button
+                  type="submit"
+                  class="button text-center width-full"
+                  id="submitBtn"
+                >
+                  Add post
+                </button>
               </form>
             </div>
           </div>
@@ -134,5 +129,7 @@
       </div>
     </main>
     <script src="../../../../assets/javascript/main.js"></script>
+    <script src="../../../../assets/javascript/validator.js"></script>
+    <script src="../../../../assets/javascript/admin/post.js"></script>
   </body>
 </html>

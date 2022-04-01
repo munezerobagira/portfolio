@@ -5,7 +5,7 @@
   --color-black: #333333;
   --color-dark: #222;
   --color-white: #ffffff;
-  --color-danger: rgb(177, 19, 19);
+  --color-danger: rgb(219, 136, 136);
   --color-transparent: rgba(0, 0, 0, 0);
   font-size: 16px;
 }
@@ -522,4 +522,23 @@ textarea:focus,
 textarea:hover input:active,
 textarea:hover textarea:active {
   outline: 2px solid var(--color-primary);
+}
+
+input.error,
+textarea.error {
+  outline: 2px solid var(--color-danger);
+}
+
+.error-box {
+  color: var(--color-danger);
+}
+
+.toast {
+  position: fixed;
+  padding: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: var(--color-black);
+  border: 2px solid var(--color-primary);
+  color: var(var(--color-white));
 }
