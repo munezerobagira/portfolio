@@ -4,9 +4,9 @@ let contactSchema = {
   email: "email",
   message: "string[5]",
 };
+toast("Message was sent successful", 100000);
 function onSuccess(data) {
   console.log(data);
-  toast("Message was sent successful", 10000);
   // window.location.href = "/pages/login";
 }
 

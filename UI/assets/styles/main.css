@@ -548,3 +548,16 @@ textarea.success {
   border: 2px solid var(--color-primary);
   color: var(var(--color-white));
 }
+
+.animated-bottom {
+  animation: from-bottom 500ms ease-in-out;
+}
+
+@keyframes from-bottom {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}

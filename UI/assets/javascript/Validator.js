@@ -55,7 +55,6 @@ function withForm(target, schema, onSuccess) {
       if (form[key]) {
         object[key] = form[key].value;
         form[key].classList.add("success");
-        // object[element].element = form[key].value;
       }
     }
     let result = validate(schema, object);
@@ -67,6 +66,7 @@ function withForm(target, schema, onSuccess) {
       for (let key in schema) {
         if (form[key]) {
           form[key].classList.remove("error");
+          form[key].classList.remove("success");
           form[key].value = "";
           // object[element].element = form[key].value;
         }
@@ -144,8 +144,10 @@ const validateFunctions = {
   string: function (data, minLength, maxLength) {
     let errors = [];
     if (typeof data !== "string") errors.push("not a string");
-    if (minLength && data.length < minLength) errors.push("too short");
-    if (maxLength && data.length > -maxLength) errors.push("too long");
+    if (minLength && data.length < minLength)
+      errors.push(`must be atleast ${minLength} characters`);
+    if (maxLength && data.length > -maxLength)
+      errors.push(`must be no more than ${maxLength} characters`);
     if (errors.length) return { value: null, errors };
     return { value: data };
   },
