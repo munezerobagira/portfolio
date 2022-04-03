@@ -11,5 +11,5 @@ document.head.append(styleELement);
 window.addEventListener("load", () => {
   setTimeout(() => {
     document.body.removeChild(loaderElement);
-  }, 1000);
+  }, 100);
 });
