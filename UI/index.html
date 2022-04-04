@@ -2,6 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link
+      rel="preload"
+      href="assets/javascript/preloadingball.js"
+      as="script"
+    />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/styles/main.css" />
@@ -14,6 +19,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <title>Portfolio|Sostene Munezero Bagira</title>
   </head>
   <body>
@@ -54,25 +60,8 @@
           </div>
           <div class="flex-1 flex-row margin-nav">
             <div class="width-full">
-              <div class="terminal" id="terminal">
-                <div class="titlebar">
-                  <ul class="actions flex">
-                    <li id="terminal-maximize">O</li>
-                    <li id="terminal-minimize">-</li>
-                    <li id="terminal-close">X</li>
-                  </ul>
-                </div>
-                <div class="body px-2">
-                  <form id="terminal-form">
-                    <label>sostene@sotene:- $</label>
-                    <input
-                      id="terminal-input"
-                      name="command"
-                      type="text"
-                      autocomplete="off"
-                      class="width-full"
-                    />
-                  </form>
+              <div  id="terminal">
+                
                 </div>
               </div>
             </div>
@@ -330,7 +319,6 @@
           </div>
         </div>
       </section>
-      <div id="loading"></div>
       <footer>
         <ul class="social-media-links">
           <li><a href="https://www.linkedin.com">Linkedin</a></li>
@@ -340,6 +328,7 @@
         <h5 class="text-center">Copyright &copy; Munezero Bagira Sostene</h5>
       </footer>
     </main>
+    <script src="assets/javascript/preloadingball.js"></script>
     <script src="assets/javascript/main.js"></script>
     <script src="assets/javascript/terminal.js"></script>
   </body>

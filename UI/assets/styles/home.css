@@ -30,14 +30,23 @@
   }
 }
 
-.terminal {
+#terminal {
+  max-height: 20rem;
+  height: 20rem;
+}
+
+.sostene-terminal {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
   transition: 0.2s ease-in-out;
-  min-height: 20rem;
+  height: 100%;
   background-color: var(--color-black);
   width: 100%;
-  border-radius: 2.1rem;
+  border-radius: 1rem;
+  resize: both !important;
 }
-.terminal.closed {
+.sostene-terminal.closed {
   position: fixed;
   height: auto;
   padding: 0px;
@@ -46,36 +55,53 @@
   z-index: 5000;
   bottom: 0px;
   right: 0px;
+  min-height: auto;
 }
-.terminal.closed > * {
+.sostene-terminal.closed .terminal-body {
   display: none;
 }
-.terminal.closed .titlebar {
+.sostene-terminal.closed .titlebar {
   display: flex !important;
 }
-.terminal.maximized {
+.sostene-terminal.closed .titlebar .terminal-close {
+  display: none;
+}
+.sostene-terminal.maximized {
   position: fixed;
-  top: 2rem;
-  bottom: 2rem;
-  right: 2rem;
-  left: 2rem;
-  z-index: 5000;
+  top: -80px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  height: 100vh;
+  z-index: 7000;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.8);
 }
-.terminal #terminal-maximize {
-  background: greenyellow;
+.sostene-terminal .terminal-maximize {
+  background: greenyellow !important;
 }
-.terminal #terminal-minimize {
-  background: yellow;
+.sostene-terminal .terminal-minimize {
+  background: yellow !important;
 }
-.terminal #terminal-close {
-  background: red;
+.sostene-terminal .terminal-close {
+  background: red !important;
 }
-.terminal .titlebar {
-  padding: 0.8rem 2.1rem;
+.sostene-terminal .titlebar {
+  padding: 0.8rem 1rem;
 }
-.terminal ul li {
+.sostene-terminal .terminal-body {
+  overflow-y: scroll;
+  padding: 0px 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.sostene-terminal ul.action {
+  display: flex;
+}
+.sostene-terminal ul.action li {
   list-style: none;
   width: 1rem;
   height: 1rem;
@@ -90,16 +116,22 @@
   cursor: pointer;
   color: black;
 }
-
-#terminal-input,
-#terminal-input:active,
-#terminal-input:focus {
+.sostene-terminal .terminal-input {
+  font-family: inherit;
+  min-height: 2em;
+}
+.sostene-terminal .terminal-input,
+.sostene-terminal .terminal-input:active,
+.sostene-terminal .terminal-input:focus {
+  width: 100%;
+  flex: 1;
   padding: 0px;
-  width: auto;
   border: none;
   outline: none;
   border-radius: 0px !important;
   font-size: 1rem;
+  height: auto;
+  margin: 0px;
 }
 
 #headline .headline {

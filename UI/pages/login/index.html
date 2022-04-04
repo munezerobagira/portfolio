@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+    <link
+      rel="preload"
+      href="../../assets/javascript/preloadingball.js"
+      as="script"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../assets/styles/main.css" />
     <link rel="stylesheet" href="../../assets/styles/login.css" />
@@ -49,12 +55,12 @@
           </div>
           <div class="flex login-wrapper">
             <div class="form-container">
-              <form action="../admin/index.html">
+              <form id="loginForm">
                 <div class="form-group">
                   <input
                     class="control"
                     type="text"
-                    name="name"
+                    name="username"
                     placeholder="username"
                   />
                 </div>
@@ -62,7 +68,7 @@
                   <input
                     class="control"
                     type="password"
-                    name="subject"
+                    name="password"
                     placeholder="password"
                   />
                 </div>
@@ -92,7 +98,9 @@
       </ul>
       <h5 class="text-center">Copyright &copy; Munezero Bagira Sostene</h5>
     </footer>
-
+    <script src="../../assets/javascript/preloadingball.js"></script>
     <script src="../../assets/javascript/main.js"></script>
+    <script src="../../assets/javascript/Validator.js"></script>
+    <script src="../../assets/javascript/login.js"></script>
   </body>
 </html>

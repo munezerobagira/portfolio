@@ -7,6 +7,7 @@
   --color-white: #ffffff;
   --color-danger: rgb(219, 136, 136);
   --color-transparent: rgba(0, 0, 0, 0);
+  --color-success: rgb(149, 235, 156);
   font-size: 16px;
 }
 
@@ -529,6 +530,11 @@ textarea.error {
   outline: 2px solid var(--color-danger);
 }
 
+input.success,
+textarea.success {
+  outline: 2px solid var(--color-success);
+}
+
 .error-box {
   color: var(--color-danger);
 }
@@ -541,4 +547,17 @@ textarea.error {
   background: var(--color-black);
   border: 2px solid var(--color-primary);
   color: var(var(--color-white));
+}
+
+.animated-bottom {
+  animation: from-bottom 500ms ease-in-out;
+}
+
+@keyframes from-bottom {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }
