@@ -315,7 +315,9 @@ header {
   display: none;
 }
 
-.flex, .flex-row, .flex-column {
+.flex,
+.flex-row,
+.flex-column {
   display: flex;
 }
 .flex-column {
@@ -414,7 +416,11 @@ header {
   opacity: 1;
 }
 
-.button, .button-danger-inverse, .button-danger, .button-primary-inverse, .button-primary {
+.button,
+.button-danger-inverse,
+.button-danger,
+.button-primary-inverse,
+.button-primary {
   background: var(--color-primary);
   color: var(--color-white);
   padding: 0.5rem 1.5rem;
@@ -424,7 +430,11 @@ header {
   font-size: 1.2rem;
   cursor: pointer;
 }
-.button a, .button-danger-inverse a, .button-danger a, .button-primary-inverse a, .button-primary a {
+.button a,
+.button-danger-inverse a,
+.button-danger a,
+.button-primary-inverse a,
+.button-primary a {
   color: var(--color-white);
   text-decoration: none;
 }
@@ -517,12 +527,17 @@ input.control,
 textarea.control {
   width: 100%;
 }
-input:hover input:active, input:focus,
+input:hover input:active,
+input:focus,
 input:hover textarea:active,
 textarea:focus,
 textarea:hover input:active,
 textarea:hover textarea:active {
   outline: 2px solid var(--color-primary);
+}
+button[disabled="true"] {
+  background-color: gray;
+  cursor: progress;
 }
 
 input.error,
@@ -561,3 +576,4 @@ textarea.success {
     transform: translate(0, 0);
   }
 }
+

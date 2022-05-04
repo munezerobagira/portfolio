@@ -37,13 +37,13 @@ class Storage {
     if (!this.db) {
       let db = {
         user: {
-          keywords: "Learner, critical thinker",
-          info: "Every codes is written for reason",
-          summary:
-            "BE student, Freecodecamp certified, 3 years of learning in Software Development, understanding of HTML, CSS3, JSON, React, Vue, Database, and SQL queries and Capable of Performance Testing, Security testing, Documentation, and Deployment on live site.",
-          about:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam tempore ea",
+          keywords: "",
+          info: "",
+          summary: "",
+          about: "",
           profilePic: "",
+          name: "",
+          email: "",
           token: "",
         },
         posts: [],
@@ -154,13 +154,26 @@ class Storage {
     this.db.projects = updatedProjects;
     this.saveDb();
   }
-  async updateUser({ keywords, info, summary, about, profilePic }) {
+  async updateUser({ keywords, info, summary, about, profilePic, token }) {
     if (keywords) this.db.user.keywords = keywords;
     if (info) this.db.user.info = info;
     if (summary) this.db.user.summary = summary;
     if (about) this.db.user.about = about;
     if (profilePic) this.db.user.profilePic = profilePic;
     if (token) this.db.user.token = token;
+    this.saveDb();
+  }
+  async resetUser() {
+    this.db.user = {
+      keywords: "",
+      info: "",
+      summary: "",
+      about: "",
+      profilePic: "",
+      name: "",
+      email: "",
+      token: "",
+    };
     this.saveDb();
   }
   async addMessage({ name, subject, email, message }) {
@@ -196,91 +209,87 @@ class Storage {
     return Date.now() + "-" + Math.round(Math.random() * 1e9);
   }
 }
-const db = new Storage();
+const localDB = new Storage();
 
 class FetchAPI {
   host = "https://localhost:5000";
   options = {};
   path = "";
-  user = db.user;
+  user = localDB.user;
   headers = {};
   constructor(host, basePath, options) {
     this.host = `${host}${basePath ? "/" + basePath : ""}`;
     this.options = options;
   }
-  getPath(path = "") {
+  setPath(path = "") {
     if (path.startsWith("/")) this.path = path.slice(1);
     else this.path = path;
-    return this.path;
-  }
-  async get(path = "", options = {}) {
-    let validPath = this.getPath(path);
-    console.log(validPath);
-    this.options = {
-      ...this.options,
-      headers: this.headers,
-      cache: "force-cache",
-    };
-    const response = await fetch(`${host}/${validPath}`, {
-      method: "GET",
-      ...this.options,
-      ...options,
-    });
-    const body = await response.json();
-    return { status: response.status, body };
   }
   setHeaders(headers = {}) {
     for (let key in headers) {
       this.headers[key] = headers[key];
     }
+    console.log(this.headers);
     return this;
   }
-
-  async post(path = "", { object, formData }, options = {}) {
-    let validPath = this.getPath(path);
-    let body = this.bodify({ object, formData });
-    console.log(body);
-    console.log(validPath);
-    this.options = { cache: "no-cache" };
-    const response = await fetch(`${this.host}/${validPath}`, {
-      headers: this.headers,
-      method: "POST",
-      body,
-      ...this.options,
-      ...options,
-    });
-    const data = await response.json();
-    return { status: response.status, body: data };
+  setMethod(METHOD) {
+    this.options = { ...this.options, method: METHOD };
+    return this;
   }
-  async patch(path = "", { object, formData }, options = {}) {
-    let body = this.bodify({ object, formData });
-    let validPath = this.getPath(path);
-    this.options = { ...this.options, cache: "no-cache" };
-    const response = await fetch(`${this.host}/${validPath}`, {
-      method: "PATCH",
-      body,
-      ...this.options,
-      ...options,
-    });
-    const data = await response.json();
-    return { status: response.status, body: data };
+  setOptions(options = {}) {
+    this.options = options;
+    return this;
   }
   bodify({ object, formData }) {
     if (object) return JSON.stringify(object);
     if (formData) return formData;
   }
+  get(path = "", options = {}) {
+    this.options = { ...this.options, cache: "force-cache", ...options };
+    this.setPath(path);
+    this.setMethod("GET");
+    return this;
+  }
 
-  async get(path = "", options = {}) {
-    this.options = { cache: "force-cache" };
-    const validPath = this.getPath(path);
-    const response = await fetch(`${this.hos}/${validPath}`, {
-      method: "POST",
+  post(path = "", options = {}) {
+    console.log(this.options);
+    this.options = {
       ...this.options,
+      cache: "no-cache",
       ...options,
+    };
+    this.setPath(path);
+    this.setMethod("POST");
+    return this;
+  }
+  patch(path = "", options = {}) {
+    this.options = { ...this.options, cache: "no-cache", ...options };
+    this.setPath(path);
+    this.setMethod("PATCH");
+    return this;
+  }
+
+  delete(path = "", options = {}) {
+    this.options = { ...this.options, cache: "no-cache", ...options };
+    this.setPath(path);
+    this.setMethod("DELETE");
+    return this;
+  }
+  async send({ object, formData }) {
+    let data = this.bodify({ object, formData });
+    const response = await fetch(`${this.host}/${this.path}`, {
+      ...this.options,
+      body: data,
+      headers: this.headers,
     });
     const body = await response.json();
     return { status: response.status, body };
   }
 }
-const apiRequest = new FetchAPI("http://localhost:5000/api", "", {});
+
+const apiRequest = new FetchAPI(
+  "https://mybrand-sostene-testing.herokuapp.com/api",
+  "",
+  {}
+);
 

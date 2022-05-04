@@ -63,15 +63,17 @@ function withForm(target, schema, onSuccess) {
         appendFor(form[errorKey], result.errors[errorKey], errorKey);
       }
     } else {
-      for (let key in schema) {
-        if (form[key]) {
-          form[key].classList.remove("error");
-          form[key].classList.remove("success");
-          form[key].value = "";
-          // object[element].element = form[key].value;
+      const clearForm = () => {
+        for (let key in schema) {
+          if (form[key]) {
+            form[key].classList.remove("error");
+            form[key].classList.remove("success");
+            form[key].value = "";
+            // object[element].element = form[key].value;
+          }
         }
-      }
-      return onSuccess(result.value);
+      };
+      return onSuccess(result.value, clearForm);
     }
   });
 }
