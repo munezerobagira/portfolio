@@ -310,9 +310,5 @@ const loginBtn = document.getElementById("loginBtn");
 if (loginBtn && localDB.db.user.token)
   loginBtn.textContent = localDB.db.user.name[0];
 
-const apiRequest = new FetchAPI(
-  "https://mybrand-sostene-testing.herokuapp.com/api",
-  "",
-  {}
-);
+const apiRequest = new FetchAPI("http://localhost:5000/api", "", {});
 
