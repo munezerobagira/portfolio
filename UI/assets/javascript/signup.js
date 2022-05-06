@@ -9,7 +9,8 @@ async function onSuccess(data, clearForm) {
   try {
     const response = await apiRequest
       .setHeaders({ "Content-Type": "application/json" })
-      .post("auth/signup", { object: data });
+      .post("auth/signup")
+      .send({ object: data });
     if (response.status === 201) {
       toast("User created successful", 3000);
       clearForm();
@@ -19,7 +20,7 @@ async function onSuccess(data, clearForm) {
     }
     if (response.status === 400) {
       if (response.error) console.log(response.error);
-      return toast("Please enter the valid data");
+      return toast(JSON.stringify(response.error || response.errors));
     }
     if (response.status === 500) return toast("Unknown error");
   } catch (error) {

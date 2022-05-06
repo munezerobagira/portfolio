@@ -36,7 +36,7 @@
             <li><a href="../../contactme/">Contact</a></li>
             <li>
               <button class="button-primary">
-                <a href="../../login/">Login</a>
+                <a href="../../login/" id="loginBtn">Login</a>
               </button>
             </li>
           </ul>
@@ -49,131 +49,21 @@
     <main>
       <section id="post" class="margin-nav py-2">
         <div class="wrapper">
-          <div class="flex" id="post-main">
-            <div class="main-content">
-              <img
-                src="../../../assets/images/next.jpg"
-                alt="Sostene picture"
-                class="width-full"
-              />
-              <div class="text-container">
-                <h2>How to setup the environment variables in nextJS</h2>
-                <p>
-                  Next.js gives you the best developer experience with all the
-                  features you need for production: hybrid static & server
-                  rendering, TypeScript support, smart bundling, route
-                  pre-fetching, and more. No config needed. Next.js gives you
-                  the best developer experience with all the features you need
-                  for production: hybrid static & server rendering, TypeScript
-                  support, smart bundling, route pre-fetching, and more. No
-                  config needed. Next.js gives you the best developer experience
-                  with all the features you need for production: hybrid static &
-                  server rendering, TypeScript support, smart bundling, route
-                  pre-fetching, and more. No config needed.Next.js gives you the
-                  best developer experience with all the features you need for
-                  production: hybrid static & server rendering, TypeScript
-                  support, smart bundling, route pre-fetching, and more. No
-                  config needed.
-                </p>
-                <p>
-                  Next.js gives you the best developer experience with all the
-                  features you need for production: hybrid static & server
-                  rendering, TypeScript support, smart bundling, route
-                  pre-fetching, and more. No config needed. Next.js gives you
-                  the best developer experience with all the features you need
-                  for production: hybrid static & server rendering, TypeScript
-                  support, smart bundling, route pre-fetching, and more. No
-                  config needed. Next.js gives you the best developer experience
-                  with all the features you need for production: hybrid static &
-                  server rendering, TypeScript support, smart bundling, route
-                  pre-fetching, and more. No config needed.Next.js gives you the
-                  best developer experience with all the features you need for
-                  production: hybrid static & server rendering, TypeScript
-                  support, smart bundling, route pre-fetching, and more. No
-                  config needed.
-                </p>
-              </div>
-            </div>
-            <aside class="post-details">
-              <h5>
-                Written by
-                <a href="../../about/" class="silent">
-                  <span class="color-primary">Sostene Munezero Bagira</span>
-                </a>
-              </h5>
-              <p><small>1 month ago</small></p>
-              <p>222 views</p>
-            </aside>
-          </div>
+          <div class="flex" id="post-main"></div>
           <h1>Comments</h1>
-          <div class="comment-group">
-            <div class="flex comment" level="1">
-              <div class="flex comment-wrapper">
-                <div class="vote">
-                  <button class="button">+</button>
-                  <b>2</b>
-                  <button class="button">-</button>
-                </div>
-                <div class="flex comment-body" level="1">
-                  <div class="flex comment-body-header">
-                    <div class="user flex">
-                      <i class="avatar">A</i>
-                      <h5 class="name">pacsimon</h5>
-                      <small>1 week ago</small>
-                    </div>
-                    <button class="silent button">reply</button>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Possimus fugiat libero at quo vero provident aperiam cumque,
-                    eaque voluptatem consequatur! Culpa iste doloribus
-                    excepturi. Voluptatibus minus ratione deserunt eos
-                    doloribus?
-                  </p>
-                </div>
-              </div>
+          <div class="comment-group" id="comment-container"></div>
+          <form class="form" id="write-comment">
+            <div class="input-group">
+              <textarea
+                name="comment"
+                placeholder="write your comment"
+                cols="40"
+                class="control"
+                rows="5"
+              ></textarea>
             </div>
-            <div class="flex comment" level="2">
-              <div class="flex comment-wrapper">
-                <div class="vote">
-                  <button class="button">+</button>
-                  <b>2</b>
-                  <button class="button">-</button>
-                </div>
-                <div class="flex comment-body" level="1">
-                  <div class="flex comment-body-header">
-                    <div class="user flex">
-                      <i class="avatar">A</i>
-                      <h5 class="name">pacsimon</h5>
-                      <small class="date">1 week ago</small>
-                    </div>
-                    <button class="silent button">reply</button>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Possimus fugiat libero at quo vero provident aperiam cumque,
-                    eaque voluptatem consequatur! Culpa iste doloribus
-                    excepturi. Voluptatibus minus ratione deserunt eos
-                    doloribus?
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="write-comment">
-            <form class="form">
-              <div class="input-group">
-                <textarea
-                  name="comment"
-                  placeholder="write your comment"
-                  cols="40"
-                  class="control"
-                  rows="5"
-                ></textarea>
-              </div>
-              <button class="button">Send comment</button>
-            </form>
-          </div>
+            <button class="button" id="submitBtn">Send comment</button>
+          </form>
         </div>
       </section>
 
@@ -188,5 +78,8 @@
     </main>
     <script src="../../../assets/javascript/preloadingball.js"></script>
     <script src="../../../assets/javascript/main.js"></script>
+    <script src="../../../assets/javascript/validator.js"></script>
+    <script src="../../../assets/javascript/blog.js"></script>
   </body>
 </html>
+
