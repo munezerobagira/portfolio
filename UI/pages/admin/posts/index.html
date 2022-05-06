@@ -30,9 +30,7 @@
           <ul class="flex height-0" id="navigation">
             <li></li>
           </ul>
-          <button class="button-primary">
-            <a href="/pages/login">Logout</a>
-          </button>
+          <button class="button-primary" id="logoutBtn">Logout</button>
         </div>
       </nav>
     </header>
@@ -44,8 +42,7 @@
               <i class="fa-solid fa-bars"></i>
             </div>
             <div class="info">
-              Continue,
-              <h3 class="color-primary">Sostene</h3>
+              <h3 class="color-primary" id="user-name"></h3>
             </div>
             <ul id="sidebar-menu">
               <li class="menu-list-item">
@@ -77,132 +74,17 @@
                   <a class="silent" href="./form">Add post</a>
                 </button>
               </div>
-              <form class="flex width-full">
+              <!-- this is the searchbox -->
+              <!-- <form class="flex width-full">
                 <input type="text" class="control mr-1" />
                 <button class="button">Search</button>
-              </form>
+              </form> -->
             </div>
 
-            <div class="flex flex-row horizontal-scroll flex-wrap" id="posts">
-              <div class="card">
-                <div class="card-image">
-                  <img src="../../../assets/images/74.png" alt="Typing speed" />
-                </div>
-                <div class="text-container">
-                  <h4>How to reach 74 WPM in 10 months from 30 WPM</h4>
-
-                  <div>
-                    <button class="button-primary-inverse">
-                      <a href="./form/?id=1" class="silent">Edit</a>
-                    </button>
-                    <button class="button-danger">Delete</button>
-                  </div>
-                  <div>
-                    <form>
-                      <input type="checkbox" name="" id="" /><span class="px-1"
-                        >Published</span
-                      >
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="../../../assets/images/CTF.jpg"
-                    alt="Typing speed"
-                  />
-                </div>
-                <div class="text-container">
-                  <h4>How to survive your first CTF compention</h4>
-                  <div>
-                    <button class="button-primary-inverse">
-                      <a href="./form/?id=1" class="silent">Edit</a>
-                    </button>
-                    <button class="button-danger">Delete</button>
-                  </div>
-                  <div>
-                    <form>
-                      <input type="checkbox" name="" id="" /><span class="px-1"
-                        >Published</span
-                      >
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="../../../assets/images/next.jpg"
-                    alt="Typing speed"
-                  />
-                </div>
-                <div class="text-container">
-                  <h4>How to setup the environment variables in nextJS</h4>
-                  <div>
-                    <button class="button-primary-inverse">
-                      <a href="./form/?id=1" class="silent">Edit</a>
-                    </button>
-                    <button class="button-danger">Delete</button>
-                  </div>
-                  <div>
-                    <form>
-                      <input type="checkbox" name="" id="" /><span class="px-1"
-                        >Published</span
-                      >
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="../../../assets/images/react.jpg"
-                    alt="Typing speed"
-                  />
-                </div>
-                <div class="text-container">
-                  <h4>Getting started with react component cycle and hooks</h4>
-                  <div>
-                    <button class="button-primary-inverse">
-                      <a href="./form/?id=1" class="silent">Edit</a>
-                    </button>
-                    <button class="button-danger">Delete</button>
-                  </div>
-                  <div>
-                    <form>
-                      <input type="checkbox" name="" id="" /><span class="px-1"
-                        >Published</span
-                      >
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    src="../../../assets/images/graphql.png"
-                    alt="Typing speed"
-                  />
-                </div>
-                <div class="text-container">
-                  <h4>Do you really need use graphql?</h4>
-                  <div>
-                    <button class="button-primary-inverse">
-                      <a href="./form/?id=1" class="silent">Edit</a>
-                    </button>
-                    <button class="button-danger">Delete</button>
-                  </div>
-                  <div>
-                    <form>
-                      <input type="checkbox" name="" id="" /><span class="px-1"
-                        >Published</span
-                      >
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div
+              class="flex flex-row horizontal-scroll flex-wrap"
+              id="posts"
+            ></div>
           </div>
         </section>
       </div>
@@ -210,5 +92,7 @@
     <script src="../../../assets/javascript/preloadingball.js"></script>
     <script src="../../../assets/javascript/main.js"></script>
     <script src="../../../assets/javascript/admin.js"></script>
+    <script src="../../../assets/javascript/admin/post.js"></script>
   </body>
 </html>
+

@@ -30,9 +30,7 @@
           <ul class="flex height-0" id="navigation">
             <li></li>
           </ul>
-          <button class="button-primary">
-            <a href="/pages/login">Logout</a>
-          </button>
+          <button class="button-primary" id="logoutBtn">Logout</button>
         </div>
       </nav>
     </header>
@@ -44,8 +42,7 @@
               <i class="fa-solid fa-bars"></i>
             </div>
             <div class="info">
-              Continue,
-              <h3 class="color-primary">Sostene</h3>
+              <h3 class="color-primary" id="user-name"></h3>
             </div>
             <ul id="sidebar-menu">
               <li class="menu-list-item">
@@ -89,6 +86,7 @@
                     class="control"
                     type="file"
                     name="image"
+                    id="image"
                     placeholder="Choose an image"
                   />
                 </div>
@@ -104,7 +102,7 @@
                   <input
                     class="control"
                     type="text"
-                    name="tags"
+                    name="categories"
                     placeholder="Tags, separated by commas"
                   />
                 </div>
@@ -115,11 +113,6 @@
                     name="summary"
                     placeholder="Write a little summary"
                   ></textarea>
-                </div>
-
-                <div class="form-group">
-                  <input type="checkbox" />
-                  Checking box will make the project will be featured
                 </div>
                 <button class="button text-center width-full" id="submitBtn">
                   Add project
