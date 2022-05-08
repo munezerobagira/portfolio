@@ -33,6 +33,16 @@ const getProjects = async () => {
                       ""
                     )}
                   </div>
+                  <div class="button-group flex">
+                    <button class="button-primary">
+                      <a href="${project.link || "#"}">Visit site</a>
+                    </button>
+                    <button class="button-primary-inverse">
+                      <a href="${project.githubLink || "#"}"
+                        >source code</a
+                      >
+                    </button>
+                </div>
                 </div>
               </div>
       `),

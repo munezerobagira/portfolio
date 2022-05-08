@@ -62,6 +62,19 @@ const getPosts = async () => {
     return (featuredPostContainer.innerHTML = `<h1 class="color-primary">Uknown error occured/h1>`);
   }
 };
+const deleteComment = async (id, element) => {
+  element.setAttribute("disabled", "true");
+  const response = await apiRequest
+    .setHeaders({ "Content-Type": "application/json" })
+    .delete(`articles/comments/${id}`)
+    .send({});
+  if (response.status == 200) {
+    toast("You have successfull deleted the comment");
+    window.location.reload();
+  } else if (response.status == 401) {
+    toast("You need to login");
+  }
+};
 const getPost = async () => {
   const commentSchema = {
     comment: "string[5], required",
@@ -130,8 +143,15 @@ const getPost = async () => {
                 <div class="flex comment-body" level="1">
                   <div class="flex comment-body-header">
                     <div class="user flex">
-                      <i class="avatar">${comment.author.name[0]}</i>
+                      <i class="avatar">${comment.author.name[0]}</i> 
                       <h5 class="name px-2">${comment.author.name}</h5>
+                      ${
+                        (comment.author._id == localDB.db.user._id &&
+                          '<button class="fa-solid fa-trash button" onclick="deleteComment(\'' +
+                            comment._id +
+                            "', this)\"></button>") ||
+                        ""
+                      }
                       <small class="px-2">${new Date(
                         comment.createdAt
                       ).toLocaleString()}</small>

@@ -69,16 +69,27 @@
           <div>
             <h1 id="form-title">Edit personal information</h1>
             <div class="form-container">
-              <form id="personalInfoForm">
+              <form id="userForm">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input
+                    class="control"
+                    type="text"
+                    name="name"
+                    placeholder="Please Enter name here"
+                  />
+                </div>
                 <div class="form-group">
                   <label>Choose profile image</label>
                   <input
                     class="control"
                     type="file"
-                    name="image"
+                    name="profilePic"
+                    id="profilePic"
                     placeholder="Choose an image"
                   />
                 </div>
+
                 <div class="form-group">
                   <input
                     class="control"
@@ -99,7 +110,7 @@
                 <div class="form-group">
                   <input
                     class="control"
-                    type="password"
+                    type="text"
                     name="summary"
                     placeholder="Write a little summary"
                   />
@@ -114,7 +125,7 @@
                   ></textarea>
                 </div>
 
-                <button class="button text-center width-full">
+                <button class="button text-center width-full" id="submitBtn">
                   Edit personal info
                 </button>
               </form>

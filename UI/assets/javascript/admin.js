@@ -6,7 +6,8 @@ const isLoggedIn = async () => {
       localDB.updateUser({ ...user });
       return true;
     }
-    if (response.status === 400 || response.status == 401) {
+
+    if (response.status === 400 || response.status === 401) {
       if (response.error) console.log(response.error);
       localDB.resetUser();
       window.location.href = "/pages/login";

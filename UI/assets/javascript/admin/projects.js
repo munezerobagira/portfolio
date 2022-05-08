@@ -11,6 +11,7 @@ const projectSchema = {
   summary: "string[5]",
   project: "string[5]",
   link: "string[5]",
+  githubLink: "string[5]",
   featured: "boolean",
   published: "boolean",
 };
