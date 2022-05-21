@@ -1,15 +1,23 @@
 export default class Terminal {
+  terminal = document.createElement("div");
+  title = document.createElement("div");
+  action = document.createElement("ul");
+  titleBar = document.createElement("div");
+  maximizeButton = document.createElement("li");
+  minimizeButton = document.createElement("li");
+  closeButton = document.createElement("li");
+  terminalBody = document.createElement("div");
+  outputDisplay = document.createElement("div");
+  terminalInput = document.createElement("textarea");
+  user = { name: "guest", group: "fan", mode: "guest" };
+  terminalLocation: HTMLElement;
+  userInput = "";
+  systemEmvironment = [];
+  commandsHistory = { active: null, history: [] };
+
   constructor(elementId) {
-    // create terminal
-    this.terminal = document.createElement("div");
     this.terminal.classList.add("sostene-terminal", "margin-nav");
     //titlebar
-    this.titleBar = document.createElement("div");
-
-    this.action = document.createElement("ul");
-    this.maximizeButton = document.createElement("li");
-    this.minimizeButton = document.createElement("li");
-    this.closeButton = document.createElement("li");
     this.minimizeButton.innerHTML = "-";
     this.maximizeButton.innerHTML = "O";
     this.closeButton.innerHTML = "X";
@@ -27,12 +35,10 @@ export default class Terminal {
     );
     this.titleBar.appendChild(this.action);
 
-    this.terminalBody = document.createElement("div");
-    this.outputDisplay = document.createElement("div");
-    this.outputDisplay.clearDisplay = function () {
+    this.outputDisplay["clearDisplay"] = function () {
       this.outputDisplay.innerHTML = "";
     }.bind(this);
-    this.terminalInput = document.createElement("textarea");
+
     this.terminalBody.append(this.outputDisplay, this.terminalInput);
 
     this.terminalInput.classList.add("terminal-input");
@@ -45,45 +51,39 @@ export default class Terminal {
     this.terminalLocation.prepend(this.terminal);
     this.user = { name: "guest", group: "fan", mode: "guest" };
     this.userInput = "";
-    // this.storage = window.localStorage;
+
     this.initateTerminal();
     this.commandsHistory = { active: null, history: [] };
     this.systemEmvironment = [];
   }
   initateTerminal() {
-    this.initateMinimize();
-    this.initiateMaximize();
-    this.initiateClose();
+    // this.initateMinimize();
+    this.minimizeButton.addEventListener("click", () => {
+      this.terminal.classList.remove("maximized");
+      this.terminal.classList.remove("closed");
+    });
+    // this.initiateMaximize();
+    this.maximizeButton.addEventListener("click", () => {
+      this.terminal.classList.remove("closed");
+      this.terminal.classList.add("maximized");
+    });
+    // this.initiateClose();
+    this.closeButton.addEventListener("click", () => {
+      this.terminal.classList.remove("maximized");
+      this.terminal.classList.add("closed");
+    });
     this.acceptInput();
     this.terminal.draggable = true;
     this.terminal.addEventListener("click", () => {
       this.terminalInput.focus();
     });
   }
-  initateMinimize() {
-    this.minimizeButton.addEventListener("click", () => {
-      this.terminal.classList.remove("maximized");
-      this.terminal.classList.remove("closed");
-    });
-  }
-  initiateMaximize() {
-    this.maximizeButton.addEventListener("click", () => {
-      this.terminal.classList.remove("closed");
-      this.terminal.classList.add("maximized");
-    });
-  }
-  initiateClose() {
-    this.closeButton.addEventListener("click", () => {
-      this.terminal.classList.remove("maximized");
-      this.terminal.classList.add("closed");
-    });
-  }
   acceptInput() {
     this.terminalInput.value = this.getTerminalContext();
-    this.terminalInput.clearInput = function () {
+    this.terminalInput["clearInput"] = function () {
       this.terminalInput.value = this.getTerminalContext();
     }.bind(this);
-    this.terminalInput.clearInput();
+    this.terminalInput["clearInput"]();
     this.terminalInput.focus();
     this.terminalInput.setSelectionRange(
       this.getTerminalContext().length,
@@ -131,7 +131,7 @@ export default class Terminal {
           this.commandsHistory.history.push(this.userInput);
         this.commandsHistory.active = this.commandsHistory.history.length;
         this.intrepreter();
-        this.terminalInput.clearInput();
+        this.terminalInput["clearInput"]();
         break;
       case "Backspace":
       case "Delete":
@@ -176,7 +176,15 @@ export default class Terminal {
       }
     }
     if (excuter) return excuter(this.userInput);
-    this.write("Unkown command " + command[0]);
+    this.write("Unknown command " + command[0]);
+  }
+  addExtension(pulgin, command, description) {
+    pulgin = pulgin.bind(this);
+    this.systemEmvironment.push({
+      command,
+      description,
+      function: pulgin,
+    });
   }
 }
 

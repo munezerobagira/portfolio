@@ -1,9 +1,11 @@
 import localDB from "./localStorage";
 import User from "../Types/User";
 type FetchBodyData = {
-  object: string;
-  formData: FormData;
+  object?: string;
+  formData?: FormData;
 };
+{
+}
 class FetchAPI {
   host = "https://localhost:5000";
   options = {};
@@ -80,9 +82,5 @@ class FetchAPI {
     return { status: response.status, body };
   }
 }
-export default new FetchAPI(
-  "https://mybrand-sostene-testing.herokuapp.com",
-  "api",
-  {}
-);
+export default new FetchAPI("http://localhost:5000", "api", {});
 
