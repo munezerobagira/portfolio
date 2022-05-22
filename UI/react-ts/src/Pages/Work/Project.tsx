@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ProjectType from "../../Types/Project";
 import apiRequest from "../../util/apiRequest";
 
-function Post() {
+function Project() {
   const [isLoading, setIsLoading] = useState(true);
-  const [blog, setBlog] = useState({});
-  const { articleId } = useParams();
-  console.log(articleId);
+  const [project, setBlog] = useState<ProjectType>({});
+  const { projectId } = useParams();
+  console.log(projectId);
   useEffect(() => {
     (async () => {
       const response = await apiRequest
-        .get("/articles?published=false")
+        .get(`/projects/${projectId}?published=false`)
         .send({});
       setIsLoading(false);
       if (response.status == 200) {
-        const { articles } = response.body;
-        setBlog(articles);
+        const { project } = response.body;
+        setBlog(project);
       }
     })();
   }, []);
@@ -43,5 +44,5 @@ function Post() {
     </section>
   );
 }
-export default Post;
+export default Project;
 

@@ -24,11 +24,11 @@ function Navbar() {
               <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <Link to="/contactme">Contact</Link>
+              <Link to="/contact">Contact</Link>
             </li>
             <li>
               <button className="button-primary">
-                <Link to="../login/" id="loginBtn">
+                <Link to="../signin/" id="loginBtn">
                   Login
                 </Link>
               </button>

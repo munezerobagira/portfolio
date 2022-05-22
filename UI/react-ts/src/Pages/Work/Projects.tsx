@@ -3,21 +3,21 @@ import { Link } from "react-router-dom";
 
 import LoadingBall from "../../components/LoadingBall";
 import apiRequest from "../../util/apiRequest";
-import Post from "../../Types/Post";
+import Project from "../../Types/Project";
 import "./index.css";
 
-function Posts() {
+function Projects() {
   const [isLoading, setIsLoading] = useState(true);
-  const [blogs, setBlogs] = useState<Array<Post>>([]);
+  const [blogs, setBlogs] = useState<Array<Project>>([]);
   useEffect(() => {
     (async () => {
       const response = await apiRequest
-        .get("/articles?published=false")
+        .get("/projects?published=false")
         .send({});
       setIsLoading(false);
       if (response.status == 200) {
-        const { articles } = response.body;
-        setBlogs(articles);
+        const { projects } = response.body;
+        setBlogs(projects);
       }
     })();
   }, []);
@@ -31,22 +31,22 @@ function Posts() {
         <div className="flex flex-wrap" id="featured-post"></div>
 
         <div className="flex flex-row horizontal-scroll flex-wrap" id="posts">
-          {blogs.map((post) => (
-            <div className="card" key={post._id}>
+          {blogs.map((project) => (
+            <div className="card" key={project._id}>
               <div className="card-image">
-                <Link to={`/blogs/${post._id}`}>
-                  <img src={post.image.path} alt={post.title} />
+                <Link to={`/blogs/${project._id}`}>
+                  <img src={project.image.path} alt={project.title} />
                 </Link>
               </div>
               <div className="text-container">
-                <h4>{post.title}</h4>
+                <h4>{project.title}</h4>
                 <p>
-                  {post.summary.length > 100
-                    ? post.summary.slice(0, 50) + "  ..."
-                    : post.summary}
+                  {project.summary.length > 100
+                    ? project.summary.slice(0, 50) + "  ..."
+                    : project.summary}
                 </p>
                 <div className="tags">
-                  {post.categories.map((category) => (
+                  {project.categories.map((category) => (
                     <span>{category.title} </span>
                   ))}
                 </div>
@@ -60,5 +60,5 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default Projects;
 

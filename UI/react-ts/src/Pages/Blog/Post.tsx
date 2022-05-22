@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./index.css";
 import LoadingBall from "../../components/LoadingBall";
 import PostType from "../../Types/Post";
 import apiRequest from "../../util/apiRequest";
+import NotFound from "../NotFound";
 
 function Post() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +21,7 @@ function Post() {
     })();
   }, []);
   if (isLoading) return <LoadingBall />;
+  if (!post._id) return <NotFound />;
   return (
     <section id="post" className="margin-nav py-2">
       <div className="wrapper">
