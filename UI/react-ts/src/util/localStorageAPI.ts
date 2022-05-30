@@ -13,16 +13,17 @@ class Storage {
           info: "",
           summary: "",
           about: "",
-          profilePic: "",
+          profilePic: {
+            width: "",
+            height: "",
+            path: "",
+          },
           name: "",
           email: "",
           token: "",
           role: "",
           _id: "",
         },
-        posts: [],
-        projects: [],
-        messages: [],
       };
       this.db = db;
       this.saveDb();
@@ -160,7 +161,11 @@ class Storage {
       info: "",
       summary: "",
       about: "",
-      profilePic: "",
+      profilePic: {
+        width: "",
+        height: "",
+        path: "",
+      },
       name: "",
       email: "",
       token: "",
@@ -202,5 +207,6 @@ class Storage {
   //   return Date.now() + "-" + Math.round(Math.random() * 1e9);
   // }
 }
-export default new Storage();
+const localStorageAPI = new Storage();
+export default localStorageAPI;
 

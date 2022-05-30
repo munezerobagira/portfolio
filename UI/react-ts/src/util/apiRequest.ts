@@ -1,7 +1,7 @@
-import localDB from "./localStorage";
+import localDB from "./localStorageAPI";
 import User from "../Types/User";
 type FetchBodyData = {
-  object?: string;
+  object?: object;
   formData?: FormData;
 };
 {

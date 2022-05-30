@@ -2,7 +2,7 @@ export default interface Project {
   _id?: string;
   title?: string;
   githubLink?: string;
-  liveLink?: string;
+  link?: string;
   summary?: string;
   image?: {
     path: string;

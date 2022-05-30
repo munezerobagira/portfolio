@@ -50,6 +50,21 @@ function Projects() {
                     <span>{category.title} </span>
                   ))}
                 </div>
+                <div className="flex flex-between">
+                  <a
+                    href={project.link}
+                    className="button silent"
+                    target="_blank"
+                  >
+                    Live url
+                  </a>
+                  <a
+                    href={project.githubLink || "#"}
+                    className="button silent mx-1"
+                  >
+                    Github
+                  </a>
+                </div>
               </div>
             </div>
           ))}
