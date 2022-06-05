@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { Children, useEffect } from "react";
 import Post from "../Types/Post";
-
+import { withHTMLForm } from "../util/validator";
 interface PostProps extends Post {
   onSuccess: Function;
+  children: JSX.Element;
 }
 function PostForm({
   _id,
@@ -12,11 +13,12 @@ function PostForm({
   title,
   image,
   onSuccess,
+  children,
 }: PostProps) {
   useEffect(() => {});
   return (
     <>
-      <h1 id="pageTitle">Add post</h1>
+      {children}
       <div className="form-container">
         <form id="postForm">
           <div className="form-group">
@@ -57,8 +59,8 @@ function PostForm({
             <textarea
               className="post control"
               name="content"
-              cols="30"
-              rows="10"
+              cols={30}
+              rows={10}
               placeholder="Write your post here"
             ></textarea>
           </div>

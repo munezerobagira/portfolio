@@ -1,7 +1,6 @@
-import React from "react";
 
 function DashboardProject() {
-  return <div>Dashboard Project</div>;
+  return 
 }
 
 export default DashboardProject;

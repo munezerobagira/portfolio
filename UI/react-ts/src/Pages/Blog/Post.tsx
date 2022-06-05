@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import "./index.css";
 import LoadingBall from "../../components/LoadingBall";
 import PostType from "../../Types/Post";
@@ -33,7 +35,10 @@ function Post() {
               className="width-full"
             />
             <div className="text-container">
-              <h2>{post.title}</h2>${post.content}
+              <ReactMarkdown
+                children={post.content}
+                remarkPlugins={[remarkGfm]}
+              />
             </div>
           </div>
           <aside className="post-details">

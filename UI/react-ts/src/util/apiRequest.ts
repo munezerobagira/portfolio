@@ -48,7 +48,6 @@ class FetchAPI {
   }
 
   post(path = "", options = {}) {
-    console.log(this.options);
     this.options = {
       ...this.options,
       cache: "no-cache",

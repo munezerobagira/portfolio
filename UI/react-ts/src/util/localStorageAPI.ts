@@ -3,7 +3,7 @@ import LocalDB from "../Types/LocalDB";
 
 class Storage {
   db: LocalDB = JSON.parse(
-    window.localStorage.getItem("sostene-protofolio") || ""
+    window.localStorage.getItem("sostene-protofolio") || null
   );
   constructor() {
     if (!this.db) {

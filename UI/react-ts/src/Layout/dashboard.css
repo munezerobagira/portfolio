@@ -3,13 +3,13 @@ footer {
   float: right;
 }
 
-.wrapper {
+/* .wrapper {
   position: relative;
 }
 .wrapper aside,
 .wrapper section {
   display: inline;
-}
+} */
 
 .card {
   width: auto !important;
@@ -25,18 +25,19 @@ footer {
 }
 
 #sidebar {
-  max-width: 3rem;
+  /* max-width: 3rem; */
   position: relative;
   overflow: hidden;
-  height: calc(100vh - 6rem);
+  height: 100vh;
+  width: 25%;
 }
 #sidebar #sidebar-wrapper {
   display: flex;
-  margin-top: 0.5rem;
+  width: 100%;
   padding: 1rem;
   overflow-y: auto;
   z-index: 5000;
-  height: calc(100vh - 6rem);
+  height: 100%;
   width: inherit;
   position: fixed;
   list-style: none;
@@ -49,7 +50,7 @@ footer {
   display: none;
 }
 #sidebar #sidebar-wrapper.active {
-  max-width: 20rem;
+  max-width: 25%;
   width: 100%;
   background: var(--color-black);
 }
@@ -82,7 +83,7 @@ footer {
 @media (min-width: 768px) {
   #sidebar {
     min-width: 20rem !important;
-    max-width: 30%;
+    max-width: 25%;
   }
   #sidebar #sidebar-wrapper.active {
     background: var(--color-black);
@@ -100,10 +101,10 @@ section#admin-content {
 }
 @media (min-width: 768px) {
   section#admin-content {
-    max-width: calc(70% - 3rem);
+    max-width: 85%;
   }
   section#admin-content.active {
-    max-width: calc(100% - 3rem);
+    max-width: 100%;
     flex: 1 !important;
   }
 }
@@ -162,3 +163,4 @@ section#admin-content {
 .flex-between {
   justify-content: space-between;
 }
+

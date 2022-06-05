@@ -22,6 +22,7 @@ function index() {
         const { articles } = (
           await apiRequest.get("articles?count=10000&published=false").send({})
         ).body;
+
         setPosts(articles);
         const { comments } = (
           await apiRequest.get("articles/comments?count=10000").send({})
@@ -29,28 +30,28 @@ function index() {
         setComments(comments);
       }
     })();
-  });
+  }, []);
 
   return (
     <div className="flex flex-wrap flex-between">
-      <div className="card px-2">
+      {/* <div className="card px-2">
         <h4>
           <span className="color-primary">${posts.length}</span> posts
         </h4>
-      </div>
+      </div> */}
       <div className="card px-2">
         <h4>
-          <span className="color-primary">${comments.length}</span> comments
+          <span className="color-primary">{comments.length}</span> comments
         </h4>
       </div>
       <div className="card px-2">
         <h4>
-          <span className="color-primary">${projects.length}</span> projects
+          <span className="color-primary">{projects.length}</span> projects
         </h4>
       </div>
       <div className="card px-2">
         <h4>
-          <span className="color-primary">${messages.length}</span> messages
+          <span className="color-primary">{messages.length}</span> messages
         </h4>
       </div>
     </div>

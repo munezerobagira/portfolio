@@ -1,7 +1,6 @@
-import React from "react";
-
 function DashboardProfile() {
-  return <div>DashboardProfile</div>;
+  return <div>Dashboard Profile</div>;
 }
 
 export default DashboardProfile;
+

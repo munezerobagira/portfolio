@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import LoadingBall from "../../components/LoadingBall";
+import useAuth from "../../hooks/useAuth";
 import apiRequest from "../../util/apiRequest";
-import localStorage from "../../util/localStorage";
+import localStorageAPI from "../../util/localStorageAPI";
 import toast from "../../util/toast";
 import { withHTMLForm } from "../../util/validator";
 
 function index() {
-  const location = useLocation();
-  let loginSchema = {
-    email: "string, required",
-    password: "string, required",
-  };
+  const navigate = useNavigate();
+  const { loading, user } = useAuth();
+
   async function onValidatorSuccess(data, clearForm) {
     const submitBtn = document.getElementById("submit");
     submitBtn.setAttribute("disabled", "true");
@@ -28,12 +28,10 @@ function index() {
 
       if (response.status == 200) {
         const user = response.body.user;
-        localStorage.updateUser({ ...user, token });
+        await localStorageAPI.updateUser({ ...user, token });
         toast("Logged  successful", 3000);
         clearForm();
-        return setTimeout(() => {
-          window.location.href = "/pages/admin";
-        }, 1000);
+        navigate("/dashboard", {});
       }
     }
 
@@ -58,10 +56,15 @@ function index() {
     }
   }
   useEffect(() => {
-    if (localStorage.db.user.token) console.log("We have the token");
+    const loginSchema = {
+      email: "string, required",
+      password: "string, required",
+    };
+    if (user && user._id) navigate("/dashboard");
     withHTMLForm("loginForm", loginSchema, onValidatorSuccess);
-  });
+  }, [user]);
 
+  if (loading) return <LoadingBall />;
   return (
     <main>
       <section id="login" className="flex margin-nav">

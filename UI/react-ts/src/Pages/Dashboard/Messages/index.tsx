@@ -61,7 +61,7 @@ function Messages() {
                       className="silent button "
                       onClick={() => replyMessage(message._id)}
                     >
-                      repl
+                      reply
                     </button>
                   </div>
                   <p>{message.message}</p>
