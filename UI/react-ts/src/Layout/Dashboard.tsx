@@ -5,14 +5,21 @@ import {
   FaUser,
   FaEnvelope,
   FaArtstation,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import "./dashboard.css";
+import { useEffect } from "react";
 
 function Dashboard() {
   const { user, isAdmin, loading } = useAuth();
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/signin");
+    }
+  });
   const breadcrumbs = pathname.split("/").filter(Boolean);
   if (loading) return <div>Loading...</div>;
   const onSidBarTogglerClick = (e) => {
@@ -20,8 +27,7 @@ function Dashboard() {
     document.getElementById("admin-content").classList.toggle("active");
     document.getElementById("sidebar").classList.toggle("active");
   };
-  console.log(user);
-  // if (!user || !user.token) navigate("/signin");
+  if (!user) navigate("/signin");
   return (
     <>
       <main>
@@ -32,7 +38,9 @@ function Dashboard() {
                 <FaBars />
               </div>
               <div className="info">
-                <h3 className="color-primary" id="user-name"></h3>
+                <h4 className="color-primary" id="user-name">
+                  {user.name}
+                </h4>
               </div>
               <ul id="sidebar-menu">
                 {isAdmin && (
@@ -62,6 +70,11 @@ function Dashboard() {
                   </Link>
                 </li>
               </ul>
+              <div>
+                <button className="button">
+                  Logout <FaSignOutAlt />
+                </button>
+              </div>
             </div>
           </aside>
           <section id="admin-content">

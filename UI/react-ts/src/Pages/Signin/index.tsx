@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingBall from "../../components/LoadingBall";
 import useAuth from "../../hooks/useAuth";
 import apiRequest from "../../util/apiRequest";
 import localStorageAPI from "../../util/localStorageAPI";
 import toast from "../../util/toast";
 import { withHTMLForm } from "../../util/validator";
+import "./login.css";
 
 function index() {
   const navigate = useNavigate();

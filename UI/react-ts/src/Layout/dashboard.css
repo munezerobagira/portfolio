@@ -42,7 +42,7 @@ footer {
   position: fixed;
   list-style: none;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
 }
 #sidebar #sidebar-wrapper > :not(#sidebar-toggler) {

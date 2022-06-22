@@ -1,0 +1,24 @@
+#login .wrapper .login-wrapper {
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+#login .wrapper .login-wrapper .info {
+  width: 100%;
+}
+#login .wrapper .login-wrapper .form-container {
+  width: 100%;
+}
+#login .wrapper .login-wrapper .form-container .form-group {
+  width: 100%;
+}
+#login .contact-img {
+  max-width: 20rem;
+}
+@media (min-width: 768px) {
+  #login .wrapper .login-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}

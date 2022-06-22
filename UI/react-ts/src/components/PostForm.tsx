@@ -2,8 +2,9 @@ import { Children, useEffect } from "react";
 import Post from "../Types/Post";
 import { withHTMLForm } from "../util/validator";
 interface PostProps extends Post {
-  onSuccess: Function;
+  onSuccess: (data: this["schema"]) => void;
   children: JSX.Element;
+  schema: {...Post, categories: string };
 }
 function PostForm({
   _id,
@@ -13,20 +14,33 @@ function PostForm({
   title,
   image,
   onSuccess,
+  schema,
   children,
 }: PostProps) {
-  useEffect(() => {});
+  useEffect(() => {
+    withHTMLForm("postForm", schema, onSuccess);
+  });
   return (
     <>
       {children}
       <div className="form-container">
         <form id="postForm">
+          {_id && (
+            <input
+              className="control"
+              type="hidden"
+              name="title"
+              placeholder="id"
+              value={_id}
+            />
+          )}
           <div className="form-group">
             <input
               className="control"
               type="text"
               name="title"
               placeholder="Title of post"
+              value={title || ""}
             />
           </div>
           <div className="form-group">
@@ -38,6 +52,7 @@ function PostForm({
               placeholder="Choose an image"
               id="image"
             />
+            {image && <img src={image.path} alt={title} />}
           </div>
           <div className="form-group">
             <input
@@ -45,6 +60,9 @@ function PostForm({
               type="text"
               name="categories"
               placeholder="Tags, separated by commas"
+              value={
+                categories.map((category) => category.title).join(", ") || ""
+              }
             />
           </div>
           <div className="form-group">
@@ -53,6 +71,7 @@ function PostForm({
               type="text"
               name="summary"
               placeholder="Write a little summary"
+              value={summary || ""}
             />
           </div>
           <div className="form-group">
@@ -62,6 +81,7 @@ function PostForm({
               cols={30}
               rows={10}
               placeholder="Write your post here"
+              value={content || ""}
             ></textarea>
           </div>
           <button
@@ -69,7 +89,7 @@ function PostForm({
             className="button text-center width-full"
             id="submitBtn"
           >
-            Add post
+            {_id ? "Add post" : "Edit Post "}
           </button>
         </form>
       </div>
