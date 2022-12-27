@@ -6,6 +6,22 @@ import Terminal from "../util/Terminal/Terminal";
 import { clearScreen, helloworld } from "../util/Terminal/extensions";
 
 function index() {
+  return (
+    <>
+      <div>
+        <h1
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          This site is underconstruction
+        </h1>
+      </div>
+    </>
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [ownerInfo, setOwnerInfo] = useState<User>({});
   const [terminalContainer, setTerminalContainer] = useState(null);

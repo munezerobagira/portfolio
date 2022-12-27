@@ -10,7 +10,7 @@ function Navbar() {
               <Link href="/">Sostene</Link>
             </h1>
           </div>
-          <ul className="flex height-0" id="navigation">
+          {/* <ul className="flex height-0" id="navigation">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -33,7 +33,7 @@ function Navbar() {
                 </Link>
               </button>
             </li>
-          </ul>
+          </ul> */}
           <div id="toggler">
             <i className="fa-solid fa-bars"></i>
           </div>
