@@ -35,10 +35,9 @@ function Post() {
               className="width-full"
             />
             <div className="text-container">
-              <ReactMarkdown
-                children={post.content}
-                remarkPlugins={[remarkGfm]}
-              />
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {post.content}
+              </ReactMarkdown>
             </div>
           </div>
           <aside className="post-details">

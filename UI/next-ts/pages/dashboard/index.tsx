@@ -3,7 +3,7 @@ import LoadingBall from "../../components/LoadingBall";
 import apiRequest from "../../util/apiRequest";
 import localStorageAPI from "../../util/localStorageAPI";
 
-function index() {
+function Index() {
   const [messages, setMessages] = useState([]);
   const [projects, setProjects] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -60,5 +60,5 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
 

@@ -1,4 +1,4 @@
-import { validate } from "../../validator";
+import { validate } from "..";
 import appendFor from "./appendError";
 
 export default function withHTMLForm(targetID: string, schema, onSuccess) {

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import apiRequest from "../util/apiRequest";
 import toast from "../util/toast";
 import { withHTMLForm } from "../util/validator";
-function index() {
+function Signup() {
   let signupSchema = {
     username: "string[2]",
     email: "email",
@@ -111,5 +111,5 @@ function index() {
   );
 }
 
-export default index;
+export default Signup;
 

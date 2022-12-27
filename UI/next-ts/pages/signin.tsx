@@ -7,7 +7,7 @@ import localStorageAPI from "../util/localStorageAPI";
 import toast from "../util/toast";
 import { withHTMLForm } from "../util/validator";
 
-function index() {
+function Signin() {
   const router = useRouter();
   const { loading, user } = useAuth();
 
@@ -114,5 +114,5 @@ function index() {
   );
 }
 
-export default index;
+export default Signin;
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LoadingBall from "../../components/LoadingBall";
 import apiRequest from "../../util/apiRequest";
 import Post from "../../Types/Post";
+import Image from "next/image";
 
 function Posts() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +34,7 @@ function Posts() {
             <div className="card" key={post._id}>
               <div className="card-image">
                 <a href={`/blog/${post._id}`}>
-                  <img src={post.image.path} alt={post.title} />
+                  <Image src={post.image.path} alt={post.title} />
                 </a>
               </div>
               <div className="text-container">
@@ -44,8 +45,8 @@ function Posts() {
                     : post.summary}
                 </p>
                 <div className="tags">
-                  {post.categories.map((category) => (
-                    <span>{category.title} </span>
+                  {post.categories.map((category, key) => (
+                    <span key={key}>{category.title} </span>
                   ))}
                 </div>
               </div>

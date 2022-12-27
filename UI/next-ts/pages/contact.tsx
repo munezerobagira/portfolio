@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import apiRequest from "../util/apiRequest";
 import toast from "../util/toast";
 import { withHTMLForm } from "../util/validator";
-function index() {
+import Image from "next/image";
+function Contact() {
   const contactSchema = {
     name: "string[2]",
     subject: "string[4]",
@@ -79,7 +80,7 @@ function index() {
 
           <div className="contact-info py-1 text-center">
             <div>
-              <img
+              <Image
                 className="contact-img"
                 src="../../assets/images/aboutme.svg"
                 alt=""
@@ -101,5 +102,5 @@ function index() {
   );
 }
 
-export default index;
+export default Contact;
 

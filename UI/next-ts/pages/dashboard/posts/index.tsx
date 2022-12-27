@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import LoadingBall from "../../../components/LoadingBall";
 import Post from "../../../Types/Post";
@@ -45,9 +46,9 @@ function DashboardPosts() {
         <div className="flitter">
           <div className="flex flex-between">
             <h1>Posts</h1>
-            <a className="silent" href="/dashboard/posts/add">
+            <Link className="silent" href="/dashboard/posts/add">
               <button className="button">Add post</button>
-            </a>
+            </Link>
           </div>
           <form className="flex width-full">
             <input type="text" className="control mr-1" />
@@ -56,12 +57,12 @@ function DashboardPosts() {
         </div>
 
         <div className="flex flex-row horizontal-scroll flex-wrap" id="posts">
-          {posts.map((post) => (
-            <div className="card">
+          {posts.map((post, key) => (
+            <div className="card" key={key}>
               <div className="card-image">
-                <a href="/s/admin/posts/form/index.html?id=${post._id}">
+                <Link href="/s/admin/posts/form/index.html?id=${post._id}">
                   <img src={post.image.path} alt={post.summary} />
-                </a>
+                </Link>
               </div>
               <div className="text-container">
                 <h4>{post.title}</h4>
@@ -71,13 +72,13 @@ function DashboardPosts() {
                     : post.summary}
                 </p>
                 <div className="tags">
-                  {post.categories.map((category) => (
-                    <span> {category.title} </span>
+                  {post.categories.map((category, key) => (
+                    <span key={key}> {category.title} </span>
                   ))}
                 </div>
                 <div>
                   <button className="button-primary-inverse">
-                    <a href={`/dashboard/posts/${post._id}`}>Edit</a>
+                    <Link href={`/dashboard/posts/${post._id}`}>Edit</Link>
                   </button>
                   <button
                     className="button-danger"

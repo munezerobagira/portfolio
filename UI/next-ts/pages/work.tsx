@@ -45,25 +45,25 @@ function Projects() {
                     : project.summary}
                 </p>
                 <div className="tags">
-                  {project.categories.map((category) => (
-                    <span>{category.title} </span>
+                  {project.categories.map((category, key) => (
+                    <span key={key}>{category.title} </span>
                   ))}
                 </div>
                 <div className="flex flex-between">
-                  <a
+                  <Link
                     href={project.link}
                     className="button silent"
                     target="_blank"
                   >
                     Live url
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={project.githubLink || "#"}
                     className="button silent mx-1"
                     target="_blank"
                   >
                     Github
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
