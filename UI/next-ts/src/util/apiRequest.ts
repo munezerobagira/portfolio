@@ -83,6 +83,6 @@ class FetchAPI {
 }
 const fetchApi =
   typeof window !== "undefined" &&
-  new FetchAPI("https://mbags.azurewebsites.net/api-docs/", "api", {});
+  new FetchAPI("https://mbags.azurewebsites.net", "api", {});
 export default fetchApi;
 
