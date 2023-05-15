@@ -1,38 +1,9 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const toggler = document.querySelector("#toggler");
-  const nav = document.querySelector("#navigation");
-  const adminContent = document.querySelector("#admin-content");
-  const sidebar = document.querySelector("#sidebar");
-  if (toggler)
-    toggler.addEventListener("click", (e) => {
-      e.preventDefault();
-      nav.classList.toggle("height-0");
-      nav.parentNode.classList.toggle("active");
-      console.log(nav);
-    });
-
-  const sidebarToggler = document.querySelector("#sidebar-toggler");
-  if (sidebarToggler)
-    sidebarToggler.addEventListener("click", () => {
-      sidebarToggler.parentElement.classList.toggle("active");
-      adminContent.classList.toggle("active");
-      sidebar.classList.toggle("active");
-    });
-});
-
-const toast = function (description, timeOut = 3000) {
-  let element = document.createElement("div");
-  element.classList.add("toast");
-  element.innerHTML = description;
-  document.body.append(element);
-  element.classList.add("animated-bottom");
-  setTimeout(() => {
-    document.body.removeChild(element);
-  }, timeOut);
-};
-const storageDb = window.localStorage.getItem("sostene-protofolio");
+import User from "../src/Types/User";
+import LocalDB from "../src/Types/LocalDB";
 class Storage {
-  db = JSON.parse(window.localStorage.getItem("sostene-protofolio"));
+  db: LocalDB = JSON.parse(
+    window?.localStorage?.getItem("sostene-protofolio") || null
+  );
   constructor() {
     if (!this.db) {
       let db = {
@@ -41,16 +12,17 @@ class Storage {
           info: "",
           summary: "",
           about: "",
-          profilePic: "",
+          profilePic: {
+            width: "",
+            height: "",
+            path: "",
+          },
           name: "",
           email: "",
           token: "",
           role: "",
           _id: "",
         },
-        posts: [],
-        projects: [],
-        messages: [],
       };
       this.db = db;
       this.saveDb();
@@ -168,7 +140,7 @@ class Storage {
     token,
     role,
     _id,
-  }) {
+  }: User) {
     if (keywords) this.db.user.keywords = keywords;
     if (info) this.db.user.info = info;
     if (summary) this.db.user.summary = summary;
@@ -188,10 +160,16 @@ class Storage {
       info: "",
       summary: "",
       about: "",
-      profilePic: "",
+      profilePic: {
+        width: "",
+        height: "",
+        path: "",
+      },
       name: "",
       email: "",
       token: "",
+      _id: "",
+      role: "",
     };
     this.saveDb();
   }
@@ -228,87 +206,6 @@ class Storage {
   //   return Date.now() + "-" + Math.round(Math.random() * 1e9);
   // }
 }
-const localDB = new Storage();
-
-class FetchAPI {
-  host = "https://localhost:5000";
-  options = {};
-  path = "";
-  user = localDB.user;
-  headers = {};
-  constructor(host, basePath, options) {
-    this.host = `${host}${basePath ? "/" + basePath : ""}`;
-    this.options = options;
-    if (localDB.db.user.token)
-      this.setHeaders({ Authorization: `Bearer ${localDB.db.user.token}` });
-  }
-  setPath(path = "") {
-    if (path.startsWith("/")) this.path = path.slice(1);
-    else this.path = path;
-  }
-  setHeaders(headers = {}) {
-    for (let key in headers) {
-      this.headers[key] = headers[key];
-    }
-    return this;
-  }
-  setMethod(METHOD) {
-    this.options = { ...this.options, method: METHOD };
-    return this;
-  }
-  setOptions(options = {}) {
-    this.options = options;
-    return this;
-  }
-  bodify({ object, formData }) {
-    if (object) return JSON.stringify(object);
-    if (formData) return formData;
-  }
-  get(path = "", options = {}) {
-    this.options = { ...this.options, ...options };
-    this.setPath(path);
-    this.setMethod("GET");
-    return this;
-  }
-
-  post(path = "", options = {}) {
-    console.log(this.options);
-    this.options = {
-      ...this.options,
-      cache: "no-cache",
-      ...options,
-    };
-    this.setPath(path);
-    this.setMethod("POST");
-    return this;
-  }
-  patch(path = "", options = {}) {
-    this.options = { ...this.options, cache: "no-cache", ...options };
-    this.setPath(path);
-    this.setMethod("PATCH");
-    return this;
-  }
-
-  delete(path = "", options = {}) {
-    this.options = { ...this.options, cache: "no-cache", ...options };
-    this.setPath(path);
-    this.setMethod("DELETE");
-    return this;
-  }
-  async send({ object, formData }) {
-    let data = this.bodify({ object, formData });
-    const response = await fetch(`${this.host}/${this.path}`, {
-      ...this.options,
-      body: data,
-      headers: this.headers,
-    });
-    const body = await response.json();
-    return { status: response.status, body };
-  }
-}
-const loginBtn = document.getElementById("loginBtn");
-if (loginBtn && localDB.db.user.token)
-  loginBtn.textContent = localDB.db.user.name[0];
-
-const apiRequest = new FetchAPI("https://mbags.azurewebsites.net", "api", {});
+const localStorageAPI = typeof window !== "undefined" && new Storage();
+export default localStorageAPI;
 

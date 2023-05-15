@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
+    "next": "13.x",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.3.1",

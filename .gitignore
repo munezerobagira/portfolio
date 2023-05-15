@@ -26,3 +26,4 @@ dev/
 *.css.map
 *.bat
 *.sh
+.yarn/cache

@@ -1,6 +1,4 @@
 [submodule "mybrand-backend"]
 	path = mybrand-backend
 	url = https://github.com/munezerobagira/mybrand-backend
-[submodule "personal_blog"]
-	path = personal_blog
-	url = https://github.com/munezerobagira/personal_blog.git
+
