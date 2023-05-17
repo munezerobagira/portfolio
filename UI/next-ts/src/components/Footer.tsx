@@ -6,9 +6,7 @@ function Footer() {
     <footer style={{ display: "block", width: "100%" }}>
       <ul className="social-media-links">
         <li>
-          <a href="https://www.linkedin.com/in/sostene-munezero-bagira-755256197/">
-            Linkedin
-          </a>
+          <a href="https://www.linkedin.com/in/sostene/">Linkedin</a>
         </li>
         <li>
           <a href="https://github.com/munezerobagira">Github</a>
