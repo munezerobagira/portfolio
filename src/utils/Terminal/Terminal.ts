@@ -17,6 +17,10 @@ export default class Terminal {
 
   constructor(element) {
     this.terminal.classList.add("sostene-terminal", "margin-nav");
+
+    this.terminalInput.classList.add("w-full");
+    this.terminalInput.style.resize = "none";
+    this.terminalInput.style.background = "transparent";
     //titlebar
     this.minimizeButton.innerHTML = "-";
     this.maximizeButton.innerHTML = "O";

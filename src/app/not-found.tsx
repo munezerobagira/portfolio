@@ -14,9 +14,7 @@ function NotFound() {
       >
         <div style={{ textAlign: "center" }}>
           <h5>The page you are looking for can not be found </h5>
-          <Link href="/">
-            <a className="silent text-primary">Go to home</a>
-          </Link>
+          <Link href="/">Go to home</Link>
         </div>
       </div>
     </>

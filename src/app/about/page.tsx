@@ -1,19 +1,15 @@
+"use client";
 import { useEffect, useState } from "react";
 import LoadingBall from "@/components/LoadingBall";
 import User from "@/types/User";
-import apiRequest from "@/utils/apiRequest";
+import { data } from "@/data";
 
 function About() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [ownerInfo, setOwnerInfo] = useState<User>({});
   useEffect(() => {
     (async () => {
-      const response = await apiRequest.get("/owner").send({});
-      setIsLoading(false);
-      if (response.status == 200) {
-        const { user } = response.body;
-        setOwnerInfo(user);
-      }
+      setOwnerInfo(data.user);
     })();
   }, []);
   if (isLoading) return <LoadingBall />;
@@ -30,7 +26,7 @@ function About() {
           </div>
           <div className="headline-picture-container reverse">
             <img
-              src={ownerInfo.profilePic.path}
+              src={ownerInfo.profilePic?.url}
               id="owner-image"
               className="width-full"
             />

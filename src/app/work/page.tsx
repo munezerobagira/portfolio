@@ -1,22 +1,23 @@
+"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import LoadingBall from "../../components/LoadingBall";
-import apiRequest from "../../utils/apiRequest";
-import Project from "../../Types/Project";
+import Project from "@/types/Project";
 
 function Projects() {
   const [isLoading, setIsLoading] = useState(true);
   const [blogs, setBlogs] = useState<Array<Project>>([]);
   useEffect(() => {
     (async () => {
-      const response = await apiRequest
-        .get("/projects?published=false")
-        .send({});
+      const response = await fetch(
+        "https://api.github.com/users/mbags-playground/repos"
+      );
+      const data: Array<any> = await response.json();
       setIsLoading(false);
+      const githubProjects = data.map((project) => Project.fromGithub(project));
       if (response.status == 200) {
-        const { projects } = response.body;
-        setBlogs(projects);
+        setBlogs([...githubProjects]);
       }
     })();
   }, []);
@@ -40,8 +41,8 @@ function Projects() {
               <div className="text-container">
                 <h4>{project.title}</h4>
                 <p>
-                  {project.summary.length > 100
-                    ? project.summary.slice(0, 50) + "  ..."
+                  {project.summary?.length > 100
+                    ? project.summary?.slice(0, 50) + "  ..."
                     : project.summary}
                 </p>
                 <div className="tags">
@@ -51,7 +52,7 @@ function Projects() {
                 </div>
                 <div className="flex flex-between">
                   <Link
-                    href={project.link}
+                    href={project.link || "#"}
                     className="button silent"
                     target="_blank"
                   >

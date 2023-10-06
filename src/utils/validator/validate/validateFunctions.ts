@@ -36,7 +36,7 @@ const validateFunctions = {
     )
       errors.push("is not a boealean");
     if (errors.length) return { value: null, errors };
-    return { value: new Boolean(data) };
+    return { value: data };
   },
   required: function (data) {
     let errors = [];
@@ -57,7 +57,7 @@ const validateFunctions = {
     if (errors.length) return { value: null, errors };
     return { value: data };
   },
-  regeX: function (regex) {
+  regeX: function (data, regex) {
     let regexExp = new RegExp(regex);
     if (!regexExp.test(data)) throw new Error("not valid");
     return data;

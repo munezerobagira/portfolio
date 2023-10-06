@@ -4,7 +4,7 @@ export default interface User {
   summary?: string;
   about?: string;
   profilePic?: {
-    path: string;
+    url: string;
     width: string;
     height: string;
   };
@@ -12,6 +12,6 @@ export default interface User {
   email?: string;
   token?: string;
   role?: string;
-  _id?: string;
+  id?: string;
 }
 

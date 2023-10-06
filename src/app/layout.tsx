@@ -1,12 +1,15 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import "@/styles/App.scss";
 function User({ children }) {
   return (
-    <>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
-    </>
+    <html>
+      <body>
+        <Navbar />
+        <div>{children}</div>
+        <Footer />
+      </body>
+    </html>
   );
 }
 
