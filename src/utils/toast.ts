@@ -1,4 +1,4 @@
-export default function (description, timeOut = 3000) {
+export default function toast(description, timeOut = 3000) {
   let element = document.createElement("div");
   element.classList.add("toast");
   element.innerHTML = description;

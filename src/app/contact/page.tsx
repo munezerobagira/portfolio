@@ -1,42 +1,23 @@
 "use client";
-import { useEffect } from "react";
-import apiRequest from "../../utils/apiRequest";
-import toast from "../../utils/toast";
-import { withHTMLForm } from "../../utils/validator";
+import { useEffect, useMemo } from "react";
+import { withHTMLForm } from "@/utils/validator";
 import Image from "next/image";
 function Contact() {
-  const contactSchema = {
-    name: "string[2]",
-    subject: "string[4]",
-    email: "email",
-    message: "string[5]",
-  };
+  const contactSchema = useMemo(
+    () => ({
+      name: "string[2]",
+      subject: "string[4]",
+      email: "email",
+      message: "string[5]",
+    }),
+    []
+  );
   async function onSuccess(data, clearForm) {
-    try {
-      console.log("clicked");
-      const response = await apiRequest
-        .setHeaders({ "Content-Type": "application/json" })
-        .post("messages")
-        .send({ object: data });
-      console.log(response);
-      if (response.status === 201) {
-        clearForm();
-        return toast("Message was sent successful", 10000);
-      }
-
-      if (response.status === 400) {
-        console.log(response.body);
-        if (response.body.errors) return toast("Please enter the valid data");
-      }
-      if (response.status === 500) return toast("Unknown error");
-    } catch (error) {
-      if (error.status && error.status == 400)
-        return toast("Unknow error occured");
-    }
+    console.log(data);
   }
   useEffect(() => {
     withHTMLForm("contactme", contactSchema, onSuccess);
-  }, []);
+  }, [contactSchema]);
   return (
     <main>
       <section id="contact-me" className="flex margin-nav">

@@ -19,7 +19,7 @@ function Footer() {
     <footer style={{ display: "block", width: "100%" }}>
       <ul className="social-media-links">
         {socialMedias.map((social) => (
-          <li>
+          <li key={social.url}>
             <a href={social.url}>{social.label}</a>
           </li>
         ))}

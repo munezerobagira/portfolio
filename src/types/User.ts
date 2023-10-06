@@ -5,8 +5,8 @@ export default interface User {
   about?: string;
   profilePic?: {
     url: string;
-    width: string;
-    height: string;
+    width: number;
+    height: number;
   };
   name?: string;
   email?: string;

@@ -7,70 +7,73 @@ import Project from "@/types/Project";
 
 function Projects() {
   const [isLoading, setIsLoading] = useState(true);
-  const [blogs, setBlogs] = useState<Array<Project>>([]);
+  const [hobbyProjects, sethobbyProjects] = useState<Array<Project>>([]);
   useEffect(() => {
     (async () => {
-      const response = await fetch(
+      let response = await fetch(
+        "https://api.github.com/users/munezerobagira/repos?sort=pushed&direction=desc"
+      );
+
+      let projects = await response.json();
+      response = await fetch(
         "https://api.github.com/users/mbags-playground/repos"
       );
-      const data: Array<any> = await response.json();
+      let data: Array<any> = await response.json();
+      projects = [...projects, ...data];
       setIsLoading(false);
-      const githubProjects = data.map((project) => Project.fromGithub(project));
+      const githubProjects = projects.map((project) =>
+        Project.fromGithub(project)
+      );
       if (response.status == 200) {
-        setBlogs([...githubProjects]);
+        sethobbyProjects([...githubProjects]);
       }
     })();
   }, []);
   if (isLoading) return <LoadingBall />;
   return (
-    <section id="blog" className="margin-nav py-2">
-      <div className="wrapper">
-        <div className="heading text-center">
-          <h2>Blog posts</h2>
-        </div>
-        <div className="flex flex-wrap" id="featured-post"></div>
-
-        <div className="flex flex-row horizontal-scroll flex-wrap" id="posts">
-          {blogs.map((project) => (
-            <div className="card" key={project._id}>
-              <div className="card-image">
-                <Link href={`/blogs/${project._id}`}>
-                  <img src={project.image.path} alt={project.title} />
+    <section id="blog" className="margin-nav py-24">
+      <h2 className="text-center text-2xl my-6">Opensource hobby projects</h2>
+      <div
+        className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3"
+        id="posts"
+      >
+        {hobbyProjects.map((project) => (
+          <div
+            className="card  bg-black bg-opacity-30 shadow-xl"
+            key={project.id}
+          >
+            <div className="card-body">
+              <h4 className="card-title">{project.title}</h4>
+              <p>
+                {project.summary?.length > 100
+                  ? project.summary?.slice(0, 50) + "  ..."
+                  : project.summary}
+              </p>
+              <div className="card-actions">
+                {project.categories.map((category, key) => (
+                  <span key={key}>{category.title} </span>
+                ))}
+              </div>
+              <div className="card-actions flex justify-between">
+                <Link
+                  href={project.link || "#"}
+                  className="btn btn-primary"
+                  target="_blank"
+                >
+                  Live url
+                </Link>
+                <Link
+                  href={project.githubLink || "#"}
+                  className="btn btn-secondary"
+                  target="_blank"
+                >
+                  Github
                 </Link>
               </div>
-              <div className="text-container">
-                <h4>{project.title}</h4>
-                <p>
-                  {project.summary?.length > 100
-                    ? project.summary?.slice(0, 50) + "  ..."
-                    : project.summary}
-                </p>
-                <div className="tags">
-                  {project.categories.map((category, key) => (
-                    <span key={key}>{category.title} </span>
-                  ))}
-                </div>
-                <div className="flex flex-between">
-                  <Link
-                    href={project.link || "#"}
-                    className="button silent"
-                    target="_blank"
-                  >
-                    Live url
-                  </Link>
-                  <Link
-                    href={project.githubLink || "#"}
-                    className="button silent mx-1"
-                    target="_blank"
-                  >
-                    Github
-                  </Link>
-                </div>
-              </div>
             </div>
-          ))}
-          <p className="text-center width-full">...</p>
-        </div>
+          </div>
+        ))}
+        <p className="text-center width-full">...</p>
       </div>
     </section>
   );
