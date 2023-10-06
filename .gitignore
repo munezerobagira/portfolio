@@ -14,7 +14,6 @@ dist-ssr
 
 # Editor directories and files
 .vscode/*
-dev/
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -23,7 +22,7 @@ dev/
 *.njsproj
 *.sln
 *.sw?
-*.css.map
-*.bat
-*.sh
-.yarn/cache
+.next
+.yarn/*
+!.yarn/releases
+
