@@ -1,3 +1,5 @@
+import { BaseExtension } from "./types/BaseExtension";
+
 export default class Terminal {
   terminal = document.createElement("div");
   title = document.createElement("div");
@@ -12,54 +14,60 @@ export default class Terminal {
   user = { name: "guest", group: "fan", mode: "guest" };
   terminalLocation: HTMLElement;
   userInput = "";
-  systemEmvironment = [];
+  systemEmvironment: {
+    function: Function;
+    command: string;
+    description: string;
+  }[] = [];
   commandsHistory = { active: null, history: [] };
 
-  constructor(element) {
-    this.terminal.classList.add("sostene-terminal", "margin-nav");
+  constructor(element?) {
+    if (element) {
+      this.terminal.classList.add("sostene-terminal", "margin-nav");
 
-    this.terminalInput.classList.add("w-full");
-    this.terminalInput.style.resize = "none";
-    this.terminalInput.style.background = "transparent";
-    //titlebar
-    this.minimizeButton.innerHTML = "-";
-    this.maximizeButton.innerHTML = "O";
-    this.closeButton.innerHTML = "X";
+      this.terminalInput.classList.add("w-full");
+      this.terminalInput.style.resize = "none";
+      this.terminalInput.style.background = "transparent";
+      //titlebar
+      this.minimizeButton.innerHTML = "-";
+      this.maximizeButton.innerHTML = "O";
+      this.closeButton.innerHTML = "X";
 
-    this.titleBar.classList.add("titlebar");
-    this.action.classList.add("action");
-    this.maximizeButton.classList.add("terminal-maximize");
-    this.minimizeButton.classList.add("terminal-minimize");
-    this.closeButton.classList.add("terminal-close");
+      this.titleBar.classList.add("titlebar");
+      this.action.classList.add("action");
+      this.maximizeButton.classList.add("terminal-maximize");
+      this.minimizeButton.classList.add("terminal-minimize");
+      this.closeButton.classList.add("terminal-close");
 
-    this.action.append(
-      this.maximizeButton,
-      this.minimizeButton,
-      this.closeButton
-    );
-    this.titleBar.appendChild(this.action);
+      this.action.append(
+        this.maximizeButton,
+        this.minimizeButton,
+        this.closeButton
+      );
+      this.titleBar.appendChild(this.action);
 
-    this.outputDisplay["clearDisplay"] = function () {
-      this.outputDisplay.innerHTML = "";
-    }.bind(this);
+      this.outputDisplay["clearDisplay"] = function () {
+        this.outputDisplay.innerHTML = "";
+      }.bind(this);
 
-    this.terminalBody.append(this.outputDisplay, this.terminalInput);
+      this.terminalBody.append(this.outputDisplay, this.terminalInput);
 
-    this.terminalInput.classList.add("terminal-input");
-    this.terminal.append(this.titleBar, this.terminalBody);
+      this.terminalInput.classList.add("terminal-input");
+      this.terminal.append(this.titleBar, this.terminalBody);
 
-    this.terminalLocation = element;
-    console.log(element);
-    if (!this.terminalLocation) throw new Error("Element is not found");
+      this.terminalLocation = element;
+      console.log(element);
+      if (!this.terminalLocation) throw new Error("Element is not found");
 
-    this.terminalBody.classList.add("terminal-body");
-    this.terminalLocation.prepend(this.terminal);
-    this.user = { name: "guest", group: "fan", mode: "guest" };
-    this.userInput = "";
+      this.terminalBody.classList.add("terminal-body");
+      this.terminalLocation.prepend(this.terminal);
+      this.user = { name: "guest", group: "fan", mode: "guest" };
+      this.userInput = "";
 
-    this.initateTerminal();
-    this.commandsHistory = { active: null, history: [] };
-    this.systemEmvironment = [];
+      this.initateTerminal();
+      this.commandsHistory = { active: null, history: [] };
+      this.systemEmvironment = [];
+    }
   }
   initateTerminal() {
     // this.initateMinimize();
@@ -111,8 +119,8 @@ export default class Terminal {
     );
   }
   getTerminalContext() {
-    return `${this.user.name}@sostene-protofolio${
-      this.user.mode == "guest" ? "$ " : "# "
+    return `${this.user.name}@mbags-protofolio${
+      this.user.mode == "mbags" ? "# " : "$"
     }`;
   }
   setUserInput() {
@@ -184,6 +192,7 @@ export default class Terminal {
     this.write("Unknown command " + command[0]);
   }
   addExtension(pulgin: Function, command: string, description: string) {
+    console.log("Loaded extension:" + command, pulgin, description);
     pulgin = pulgin.bind(this);
     this.systemEmvironment.push({
       command,
@@ -191,5 +200,9 @@ export default class Terminal {
       function: pulgin,
     });
   }
+}
+export interface LoadTerminalExtensionsOptions {
+  terminal: Terminal;
+  extensions: BaseExtension[];
 }
 
