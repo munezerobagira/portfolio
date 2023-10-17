@@ -3,9 +3,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import User from "@/types/User";
 import LoadingBall from "@/components/LoadingBall";
 import Terminal from "@/utils/Terminal/Terminal";
-import { clearScreen, helloworld } from "@/utils/Terminal/extensions";
+
 import { data } from "@/data";
-import Header from "@/components/Header";
+import HelloWorldExtesion from "@/utils/Terminal/extensions/helloworld";
+import ManExtension from "@/utils/Terminal/extensions/man";
+import HelpExtension from "@/utils/Terminal/extensions/help";
 const AnimatedStack = ({ items }: { items: string[] }) => {
   const itemsLength = items.length;
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -45,8 +47,9 @@ function Index() {
       terminalContainer.current?.childNodes.length < 1
     ) {
       const terminal = new Terminal(terminalContainer.current);
-      terminal.addExtension(helloworld, "hi", "Display helloworld");
-      terminal.addExtension(clearScreen, "clear", "Clear screen");
+      new HelloWorldExtesion({ terminal });
+      new ManExtension({ terminal });
+      new HelpExtension({ terminal });
     }
   }, [terminalContainer]);
   if (isLoading) return <LoadingBall />;

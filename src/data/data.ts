@@ -8,7 +8,7 @@ export const data: {
 } = {
   user: {
     keywords:
-      "Skilled Software Engineer, Exprienced Software Engineer, Web Security Engineer",
+      "Highly Skilled Software Engineer, Exprienced Software Engineer, Web Security Engineer",
     info: "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
     summary:
       "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
@@ -27,71 +27,88 @@ export const data: {
   skills: [
     {
       name: "Javascript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/javascript.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     },
     {
       name: "Typescript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/typescript.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
     },
     {
       name: "Vue.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/vuejs.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
     },
     {
       name: "React",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/react.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
       name: "Next.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/nextjs.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
     },
     {
       name: "Nest.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/nestjs.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg",
     },
     {
       name: "Express.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/express.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
     },
     {
       name: "Mocha.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/mocha.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mocha/mocha-plain.svg",
     },
     {
       name: "Jest",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/jest.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg",
     },
-    {
-      name: "gRPC",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/grpc.svg",
-    },
+
     {
       name: "Python",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/python.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     },
     {
       name: "FastAPI",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/fastapi.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
     },
     {
-      name: "Visual Studio Code",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/vscode.svg",
+      name: "Flask",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+    },
+    {
+      name: "VSCode",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
     },
     {
       name: "Dart",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/dart.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
     },
     {
       name: "Flutter",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/flutter.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
     },
     {
       name: "React Native",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/react-native.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     },
     {
-      name: "Neovim",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicons/icons/neovim.svg",
+      name: "Docker",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    },
+    {
+      name: "Kubernetes",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+    },
+    {
+      name: "Azure",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    },
+    {
+      name: "Figma",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    },
+    {
+      name: "Git",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
     },
   ],
 };
