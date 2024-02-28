@@ -2,12 +2,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import User from "@/types/User";
 import LoadingBall from "@/components/LoadingBall";
-import Terminal from "@/utils/Terminal/Terminal";
 
 import { data } from "@/data";
 import HelloWorldExtesion from "@/utils/Terminal/extensions/helloworld";
 import ManExtension from "@/utils/Terminal/extensions/man";
 import HelpExtension from "@/utils/Terminal/extensions/help";
+import ClearExtension from "@/utils/Terminal/extensions/clear";
+import useTerminal from "@/hooks/useTerminal";
 const AnimatedStack = ({ items }: { items: string[] }) => {
   const itemsLength = items.length;
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -25,7 +26,7 @@ const AnimatedStack = ({ items }: { items: string[] }) => {
 
   return (
     <div className="stack">
-      <h1 className="text-8xl my-4 font-bold" id="keywords">
+      <h1 className="text-6xl md:text-8xl  leading-[3rem] font-bold" id="keywords">
         {data}
       </h1>
     </div>
@@ -46,10 +47,8 @@ function Index() {
       terminalContainer.current &&
       terminalContainer.current?.childNodes.length < 1
     ) {
-      const terminal = new Terminal(terminalContainer.current);
-      new HelloWorldExtesion({ terminal });
-      new ManExtension({ terminal });
-      new HelpExtension({ terminal });
+      const { terminal } = useTerminal({ container: terminalContainer.current });
+      terminal;
     }
   }, [terminalContainer]);
   if (isLoading) return <LoadingBall />;

@@ -20,8 +20,8 @@ const navbarLinks = [
 ];
 function Navbar() {
   return (
-    <header className="fixed w-full flex align-center z-50 top-5">
-      <nav className=" max-w-3xl mx-auto inline-flex  px-6 bg-black bg-opacity-70 rounded-lg">
+    <header className="fixed w-full flex align-center z-50 top-5 overflow-y-scroll">
+      <nav className=" max-w-3xl mx-auto inline-flex  px-6 bg-black bg-opacity-70 rounded-lg overflow-y-scroll">
         <div className="flex items-center justify-between">
           <span className="px-2">
             <Link href="/" className="text-primary">

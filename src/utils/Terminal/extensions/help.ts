@@ -10,17 +10,17 @@ export default class HelpExtension extends BaseExtension {
       manPage: "Display help commands",
       terminal,
     });
+    // call extens
   }
   extension(args: any): void {
     const helpString: string = this.systemEmvironment
       .map(
         (c) => `
-      ------------
-      - ${c.command}
+       ${c.command} -
       ${c.description}
       `
       )
-      .join("");
+      .join("<br>");
     this.write(helpString);
   }
 }

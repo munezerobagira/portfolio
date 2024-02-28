@@ -12,13 +12,13 @@ export default class ManExtension extends BaseExtension {
     });
   }
   extension(args: any): void {
-    if (!args[1]) return this.write("Please provide an arguments");
+    if (!args[1]?.trim?.()) return this.write("Please provide an arguments");
     const command: string = args[1];
     const systemCommand = this.systemEmvironment.find(
       (c) => c.command == command
     );
     if (!systemCommand) this.write(command + " command is not found");
-    this.write(systemCommand.description);
+    this.write(systemCommand?.description);
   }
 }
 
