@@ -1,21 +1,8 @@
 import Link from "next/link";
 const navbarLinks = [
-  { url: "/", label: "Home" },
-  {
-    url: "/about",
-    label: "About",
-  },
-  {
-    url: "/work",
-    label: "Work",
-  },
   {
     label: "Blog",
     url: "https://blog.mbags.space",
-  },
-  {
-    url: "mailto:bagira.sostenee+contactform@gmail.com",
-    label: "Contact me",
   },
 ];
 function Navbar() {

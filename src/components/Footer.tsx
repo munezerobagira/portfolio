@@ -25,7 +25,7 @@ function Footer() {
         ))}
       </ul>
       <h5 className="text-center">
-        Copyright &copy;2021-{year} Munezero Bagira Sostene
+        Copyright &copy;{year} Munezero Bagira Sostene
       </h5>
     </footer>
   );

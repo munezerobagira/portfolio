@@ -3,16 +3,22 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import User from "@/types/User";
 import LoadingBall from "@/components/LoadingBall";
 
-import { data } from "@/data";
+import Image from "next/image";
+import { data as siteData } from "@/data";
 import HelloWorldExtesion from "@/utils/Terminal/extensions/helloworld";
 import ManExtension from "@/utils/Terminal/extensions/man";
 import HelpExtension from "@/utils/Terminal/extensions/help";
 import ClearExtension from "@/utils/Terminal/extensions/clear";
-import useTerminal from "@/hooks/useTerminal";
+import injectTerminal from "@/utils/Terminal/injectTerminal";
+
+import "devicon/devicon.min.css";
+import AnimatedRow from "@/components/AnimatedRow";
+import SkillCard from "@/components/SkillCard";
 const AnimatedStack = ({ items }: { items: string[] }) => {
   const itemsLength = items.length;
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const data = useMemo(() => items[activeItemIndex], [activeItemIndex, items]);
+  const { } = data;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,48 +32,65 @@ const AnimatedStack = ({ items }: { items: string[] }) => {
 
   return (
     <div className="stack">
-      <h1 className="text-6xl md:text-8xl  leading-[3rem] font-bold" id="keywords">
+      <h1 className="text-4xl sm:text-6xl md:text-8xl  leading-[3rem] md:leading-[7rem] font-bold" id="keywords">
         {data}
       </h1>
     </div>
   );
 };
 function Index() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [creatorInfo, setCreatorInfo] = useState<User>({});
+  const [isLoading, setIsLoading] = useState(true);
   const terminalContainer = useRef(null);
+  const [ownerInfo, setOwnerInfo] = useState<User>({});
+  const [relativityOne, setRelativityOne] = useState(0.001);
+  const [firstRowSkills, setFirstRowSkills] = useState([]);
+  const [secondRowSkills, setSecondRowSkills] = useState([]);
+
+
   useEffect(() => {
     (async () => {
-      setCreatorInfo(data.user);
-      setIsLoading(false);
+      setOwnerInfo(siteData.user);
+      setFirstRowSkills(siteData.skills.filter((_, index) => index % 2 === 0));
+      setSecondRowSkills(siteData.skills.filter((_, index) => index % 2 !== 0));
+      setIsLoading(false)
+
     })();
   }, []);
+
   useEffect(() => {
-    if (
-      terminalContainer.current &&
-      terminalContainer.current?.childNodes.length < 1
-    ) {
-      const { terminal } = useTerminal({ container: terminalContainer.current });
-      terminal;
-    }
+    const { terminal } = injectTerminal({ container: terminalContainer.current });
+    terminal;
   }, [terminalContainer]);
   if (isLoading) return <LoadingBall />;
   return (
     <>
-      <section className="hero min-h-screen ">
+      <section className="py-48 container">
         <div className="text-center">
-          {creatorInfo.keywords && (
-            <AnimatedStack items={creatorInfo.keywords.split(",") ?? []} />
+          {ownerInfo.keywords && (
+            <AnimatedStack items={ownerInfo.keywords.split(",") ?? []} />
           )}
 
-          <p className="my-4">{creatorInfo.info}</p>
-          <div>
-            <button className="btn btn-primary">Hire me</button>
-          </div>
+          <p className="my-4">{ownerInfo.info}</p>
+          <a href="mailto:bagirasostene+portfolio@gmail.com">
+            <button className="btn btn-primary">Contact me</button>
+          </a>
         </div>
       </section>
-      <section className="min-h-screen flex items-stretch py-6 ">
-        <div id="terminal" className="w-full" ref={terminalContainer}></div>
+      <section>
+        <div>
+          <div className="text-center py-2">
+            <div className="heading">
+              <h2 className="text-2xl font-bold my-12">
+                Skills
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4 overflow-hidden scroll-m-5 relative" id="about-info">
+              {<AnimatedRow elements={firstRowSkills} renderElement={(skill) => <SkillCard skill={skill} />} />}
+              {<AnimatedRow elements={secondRowSkills} animationDirection="left" renderElement={(skill) => <SkillCard skill={skill} />} />}
+
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

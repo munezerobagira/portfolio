@@ -8,15 +8,15 @@ export const data: {
 } = {
   user: {
     keywords:
-      "Highly Skilled Software Engineer, Exprienced Software Engineer, Web Security Engineer",
+      "Just another Engineer",
     info: "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
     summary:
       "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
     about: "Software Engineer",
     profilePic: {
-      width: 512,
-      height: 512,
-      url: "/profile.jpeg",
+      width: 433,
+      height: 577,
+      url: "/profile-image.png",
     },
     name: "Sostene Munezero Bagira",
     email: "hi@mbags.space",
@@ -27,89 +27,89 @@ export const data: {
   skills: [
     {
       name: "Javascript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      icon: "javascript-plain",
     },
     {
       name: "Typescript",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      icon: "typescript-plain",
     },
     {
       name: "Vue.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+      icon: "vuejs-plain",
     },
     {
       name: "React",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      icon: "react-plain",
     },
     {
       name: "Next.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+      icon: "nextjs-plain",
     },
     {
       name: "Nest.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg",
+      icon: "nestjs-plain",
     },
     {
       name: "Express.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      icon: "express-original",
     },
     {
       name: "Mocha.js",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mocha/mocha-plain.svg",
+      icon: "mocha-plain",
     },
     {
       name: "Jest",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg",
+      icon: "jest-plain",
     },
-
     {
       name: "Python",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      icon: "python-plain",
     },
     {
       name: "FastAPI",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+      icon: "fastapi-plain",
     },
     {
       name: "Flask",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
-    },
-    {
-      name: "VSCode",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+      icon: "flask-plain",
     },
     {
       name: "Dart",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+      icon: "dart-plain",
     },
     {
       name: "Flutter",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+      icon: "flutter-plain",
     },
     {
       name: "React Native",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      icon: "react-plain",
     },
     {
       name: "Docker",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      icon: "docker-plain",
     },
     {
       name: "Kubernetes",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
+      icon: "kubernetes-plain",
     },
     {
       name: "Azure",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+      icon: "azure-plain",
     },
     {
       name: "Figma",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+      icon: "figma-plain",
     },
     {
       name: "Git",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      icon: "git-plain",
     },
+    {
+      name: "NeoVim",
+      icon: "neovim-plain",
+    },
+
   ],
 };
 

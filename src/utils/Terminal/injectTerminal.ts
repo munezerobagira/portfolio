@@ -6,12 +6,14 @@ import ManExtension from "@/utils/Terminal/extensions/man";
 interface TerminalOptions {
   container: HTMLElement;
 }
-const useTerminal = ({ container }: TerminalOptions) => {
+const injectTerminal = ({ container }: TerminalOptions) => {
   const terminal = new Terminal(container);
   new HelloWorldExtesion({ terminal });
   new HelpExtension({ terminal });
   new ManExtension({ terminal });
   new ClearExtension({ terminal })
+  console.log(terminal)
   return { terminal }
+
 }
-export default useTerminal;
+export default injectTerminal;

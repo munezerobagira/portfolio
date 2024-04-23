@@ -21,7 +21,7 @@ export default class Terminal {
   }[] = [];
   commandsHistory = { active: null, history: [] };
 
-  constructor(element?) {
+  constructor(element?: HTMLElement) {
     if (element) {
       this.terminal.classList.add("sostene-terminal", "margin-nav");
 
@@ -46,7 +46,7 @@ export default class Terminal {
       );
       this.titleBar.appendChild(this.action);
 
-      this.outputDisplay["clearDisplay"] = function () {
+      this.outputDisplay["clearDisplay"] = function() {
         this.outputDisplay.innerHTML = "";
       }.bind(this);
 
@@ -93,7 +93,7 @@ export default class Terminal {
   }
   acceptInput() {
     this.terminalInput.value = this.getTerminalContext();
-    this.terminalInput["clearInput"] = function () {
+    this.terminalInput["clearInput"] = function() {
       this.terminalInput.value = this.getTerminalContext();
     }.bind(this);
     this.terminalInput["clearInput"]();
@@ -119,13 +119,12 @@ export default class Terminal {
     );
   }
   getTerminalContext() {
-    return `${this.user.name}@mbags-protofolio${
-      this.user.mode == "mbags" ? "# " : "$"
-    }`;
+    return `${this.user.name}@mbags-protofolio${this.user.mode == "mbags" ? "# " : "$"
+      }`;
   }
   setUserInput() {
     setTimeout(
-      function () {
+      function() {
         let value = this.terminalInput.value;
         // let terminalContext=this.getTerminalContext()
         value = value.replace(this.getTerminalContext(), "");
@@ -172,9 +171,8 @@ export default class Terminal {
     return;
   }
   write(message = "", startBreak = true) {
-    let output = `${this.terminalInput.value}${
-      startBreak ? "</br>" : ""
-    } ${message}</br>`;
+    let output = `${this.terminalInput.value}${startBreak ? "</br>" : ""
+      } ${message}</br>`;
 
     this.outputDisplay.innerHTML += output;
   }

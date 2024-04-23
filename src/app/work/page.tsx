@@ -11,7 +11,7 @@ function Projects() {
   useEffect(() => {
     (async () => {
       let response = await fetch(
-        "https://api.github.com/users/munezerobagira/repos?sort=pushed&direction=desc"
+        "https://api.github.com/users/mbags-playground/repos?sort=pushed&direction=desc"
       );
 
       let projects = await response.json();

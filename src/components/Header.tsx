@@ -5,7 +5,7 @@ function Header() {
   return (
     <>
       <Head>
-        <title>MBAGS|Sostene|Sostene Munezero Bagira</title>
+        <title>MBAGS|Sostene|Sostene Munezero Bagira|Software engineer</title>
         <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
       </Head>
     </>
