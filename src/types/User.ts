@@ -1,5 +1,5 @@
 export default interface User {
-  keywords?: string;
+  keywords?: string[];
   info?: string;
   summary?: string;
   about?: string;
@@ -14,4 +14,3 @@ export default interface User {
   role?: string;
   id?: string;
 }
-

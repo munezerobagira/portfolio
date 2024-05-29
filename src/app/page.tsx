@@ -69,9 +69,7 @@ function Index() {
     <>
       <section className="py-48 container">
         <div className="text-center">
-          {ownerInfo.keywords && (
-            <AnimatedStack items={ownerInfo.keywords.split(",") ?? []} />
-          )}
+          {ownerInfo.keywords && <AnimatedStack items={ownerInfo.keywords} />}
 
           <p className="my-4">{ownerInfo.info}</p>
           <a href="mailto:bagirasostene+portfolio@gmail.com">
@@ -89,19 +87,15 @@ function Index() {
               className="flex flex-col gap-4 overflow-hidden scroll-m-5 relative"
               id="about-info"
             >
-              {
-                <AnimatedRow
-                  elements={firstRowSkills}
-                  renderElement={(skill) => <SkillCard skill={skill} />}
-                />
-              }
-              {
-                <AnimatedRow
-                  elements={secondRowSkills}
-                  animationDirection="left"
-                  renderElement={(skill) => <SkillCard skill={skill} />}
-                />
-              }
+              <AnimatedRow
+                elements={firstRowSkills}
+                renderElement={(skill) => <SkillCard skill={skill} />}
+              />
+              <AnimatedRow
+                elements={secondRowSkills}
+                animationDirection="left"
+                renderElement={(skill) => <SkillCard skill={skill} />}
+              />
             </div>
           </div>
         </div>
@@ -111,4 +105,3 @@ function Index() {
 }
 
 export default Index;
-

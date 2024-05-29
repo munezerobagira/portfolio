@@ -7,12 +7,17 @@ export const data: {
   skills: { icon: string; name: string }[];
 } = {
   user: {
-    keywords:
-      "Just another Engineer",
-    info: "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
+    keywords: [
+      "Full-Stack Engineer",
+      "Frontend Engineer",
+      "Backend Engineer",
+      "Mobile Engineer",
+      "Cloud & DevOps",
+    ],
+    info: "Enthusiastic remote full-stack developer with over 5 years of experience crafting secure and user-centric applications. Adept at tackling projects from concept to deployment across diverse technologies, including front-end, back-end, mobile development, and cloud platforms. Proven ability to lead and collaborate effectively in remote environments.",
     summary:
-      "Security-focused software engineer with more than 3 years of experience in developing and maintaining secure software applications. Expertise in Javascript and Typescript tools, and framework, with a focus on security best practices and threat modeling. Proven ability to identify, analyze, and mitigate security vulnerabilities. Passionate about building secure and reliable software.",
-    about: "Software Engineer",
+      "I'm a results-oriented remote software engineer with a passion for building secure, scalable software solutions.  I possess a comprehensive skillset encompassing both back-end development (JavaScript, TypeScript, Python) and front-end development (Vue.js, React, React Native).  Experienced in leading remote teams, delivering projects on time, and prioritizing the highest security standards.",
+    about: "",
     profilePic: {
       width: 433,
       height: 577,
@@ -23,6 +28,7 @@ export const data: {
     role: "creator",
     id: "1",
   },
+
   projects: [],
   skills: [
     {
@@ -109,7 +115,5 @@ export const data: {
       name: "NeoVim",
       icon: "neovim-plain",
     },
-
   ],
 };
-
