@@ -1,24 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import LoadingBall from "../../components/LoadingBall";
-import Project from "@/types/Project";
 import { data as siteData } from "@/data";
 
 function Projects() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [projects, setProjects] = useState<Array<Project>>([]);
-  
-  useEffect(() => {
-    (async () => {
-      setProjects(siteData.projects);
-      setIsLoading(false);
-    })();
-  }, []);
-
-  if (isLoading) return <LoadingBall />;
-  
   return (
     <section id="projects" className="margin-nav py-24">
       <h2 className="text-center text-2xl my-6">Professional Projects</h2>
@@ -29,7 +14,7 @@ function Projects() {
         className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3"
         id="projects-list"
       >
-        {projects.map((project) => (
+        {siteData.projects.map((project) => (
           <div
             className="card bg-black bg-opacity-30 shadow-xl"
             key={project.id}
@@ -42,9 +27,9 @@ function Projects() {
                   : project.summary}
               </p>
               <div className="card-actions mt-2">
-                {project.categories?.map((category, key) => (
+                {project.categories?.map((category) => (
                   <span 
-                    key={key}
+                    key={category.id}
                     className="badge badge-outline"
                   >
                     {category.title}

@@ -36,8 +36,8 @@ export const data: {
       link: "https://ini.rw",
       summary: "A comprehensive platform for Rwanda, providing essential services and information to the community.",
       categories: [
-        { id: "1", title: "Web Development" },
-        { id: "2", title: "Full Stack" },
+        { id: "web-dev", title: "Web Development" },
+        { id: "full-stack", title: "Full Stack" },
       ],
     },
     {
@@ -46,8 +46,8 @@ export const data: {
       link: "https://passresource.com",
       summary: "A resource management platform designed to streamline operations and improve efficiency.",
       categories: [
-        { id: "3", title: "Web Development" },
-        { id: "4", title: "SaaS" },
+        { id: "web-dev", title: "Web Development" },
+        { id: "saas", title: "SaaS" },
       ],
     },
     {
@@ -56,8 +56,8 @@ export const data: {
       link: "https://sokofund.com",
       summary: "A crowdfunding platform that connects entrepreneurs with investors and supporters.",
       categories: [
-        { id: "5", title: "FinTech" },
-        { id: "6", title: "Full Stack" },
+        { id: "fintech", title: "FinTech" },
+        { id: "full-stack", title: "Full Stack" },
       ],
     },
   ],
