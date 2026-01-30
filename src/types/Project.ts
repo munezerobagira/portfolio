@@ -7,7 +7,7 @@ export default class Project {
   image?: {
     path: string;
   };
-  categories?: [{ id: string; title: string }];
+  categories?: Array<{ id: string; title: string }>;
   static fromGithub(githubRepository: any): Project {
     const project = new Project();
     project.title = githubRepository?.name;

@@ -29,7 +29,38 @@ export const data: {
     id: "1",
   },
 
-  projects: [],
+  projects: [
+    {
+      id: "1",
+      title: "ini.rw",
+      link: "https://ini.rw",
+      summary: "A comprehensive platform for Rwanda, providing essential services and information to the community.",
+      categories: [
+        { id: "1", title: "Web Development" },
+        { id: "2", title: "Full Stack" },
+      ],
+    },
+    {
+      id: "2",
+      title: "passresource.com",
+      link: "https://passresource.com",
+      summary: "A resource management platform designed to streamline operations and improve efficiency.",
+      categories: [
+        { id: "3", title: "Web Development" },
+        { id: "4", title: "SaaS" },
+      ],
+    },
+    {
+      id: "3",
+      title: "sokofund.com",
+      link: "https://sokofund.com",
+      summary: "A crowdfunding platform that connects entrepreneurs with investors and supporters.",
+      categories: [
+        { id: "5", title: "FinTech" },
+        { id: "6", title: "Full Stack" },
+      ],
+    },
+  ],
   skills: [
     {
       name: "Javascript",

@@ -1,6 +1,10 @@
 import Link from "next/link";
 const navbarLinks = [
   {
+    label: "Projects",
+    url: "/projects",
+  },
+  {
     label: "Blog",
     url: "https://blog.mbags.space",
   },
