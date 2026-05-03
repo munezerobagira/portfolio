@@ -21,7 +21,7 @@ function Tag({ children }: { children: React.ReactNode }) {
       className="font-mono text-[10px] uppercase tracking-widest px-2 py-1"
       style={{
         border: "1px solid rgba(0,240,255,0.25)",
-        color: "#00F0FF",
+        color: "#00ff55",
         background: "rgba(0,240,255,0.05)",
       }}
     >
@@ -34,7 +34,7 @@ function Tag({ children }: { children: React.ReactNode }) {
 function StatusBadge({ status }: { status: string }) {
   const color =
     status === "ACTIVE"
-      ? "#00F0FF"
+      ? "#00ff55"
       : status === "DEPLOYED"
         ? "#4ade80"
         : "rgba(255,255,255,0.4)";
@@ -86,10 +86,10 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto w-full">
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-6 h-px" style={{ background: "#00F0FF" }} />
+            <span className="w-6 h-px" style={{ background: "#00ff55" }} />
             <span
               className="font-mono text-xs uppercase tracking-[0.25em]"
-              style={{ color: "#00F0FF" }}
+              style={{ color: "#00ff55" }}
             >
               Kigali, Rwanda · Available for Hire
             </span>
@@ -105,7 +105,7 @@ export default function HomePage() {
           >
             Architecting Secure
             <br />
-            <span style={{ color: "#00F0FF" }} className="glow-cyan">
+            <span style={{ color: "#00ff55" }} className="glow-cyan">
               Ecosystems.
             </span>{" "}
             Designing
@@ -186,7 +186,7 @@ export default function HomePage() {
                 <span
                   className="font-mono text-[10px] uppercase tracking-[0.2em]"
                   style={{
-                    color: node.accentColor === "cyan" ? "#00F0FF" : "#FF003C",
+                    color: node.accentColor === "cyan" ? "#00ff55" : "#FF003C",
                   }}
                 >
                   {node.tag}
@@ -338,7 +338,7 @@ export default function HomePage() {
             >
               <span
                 className="font-mono text-[10px] uppercase tracking-widest"
-                style={{ color: "#00F0FF" }}
+                style={{ color: "#00ff55" }}
               >
                 Current Enrollment
               </span>
@@ -380,7 +380,7 @@ export default function HomePage() {
             {certifications.map((cert) => (
               <SpotlightCard
                 key={cert.id}
-                accentColor={cert.color === "#00F0FF" ? "cyan" : "magenta"}
+                accentColor={cert.color === "#00ff55" ? "cyan" : "magenta"}
                 className="p-6 flex flex-col items-center gap-3 text-center"
               >
                 <div

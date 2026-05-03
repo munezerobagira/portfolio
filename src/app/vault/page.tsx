@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Architecture: "#00F0FF",
+  Architecture: "#00ff55",
   "Security Operations": "#FF003C",
   "Product Strategy": "#a78bfa",
 };
@@ -23,10 +23,10 @@ export default function VaultPage() {
         {/* Header */}
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <span className="w-6 h-px" style={{ background: "#00F0FF" }} />
+            <span className="w-6 h-px" style={{ background: "#00ff55" }} />
             <span
               className="font-mono text-xs uppercase tracking-[0.25em]"
-              style={{ color: "#00F0FF" }}
+              style={{ color: "#00ff55" }}
             >
               Intellectual Repository
             </span>
@@ -110,7 +110,7 @@ export default function VaultPage() {
 
                 {/* Arrow */}
                 <div
-                  className="flex-shrink-0 font-mono text-white/20 group-hover:text-[#00F0FF] transition-colors duration-200"
+                  className="flex-shrink-0 font-mono text-white/20 group-hover:text-[#00ff55] transition-colors duration-200"
                   style={{ fontSize: "1.2rem" }}
                 >
                   →

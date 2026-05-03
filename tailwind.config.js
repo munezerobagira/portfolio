@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         void: "#05050A",
-        "neon-cyan": "#00F0FF",
+        "neon-cyan": "#00ff55",
         "neon-magenta": "#FF003C",
         "border-subtle": "rgba(255,255,255,0.1)",
       },

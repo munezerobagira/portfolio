@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import type { ReactElement } from "react";
 import { getAllPosts, getPostBySlug } from "@/utils/vault";
 
 // next-mdx-remote v6 MDXRemote is an async React Server Component.
@@ -10,7 +11,7 @@ import { getAllPosts, getPostBySlug } from "@/utils/vault";
 // Tracked upstream: https://github.com/hashicorp/next-mdx-remote/issues/430
 const MDXContent = MDXRemote as unknown as (props: {
   source: string;
-}) => JSX.Element;
+}) => ReactElement;
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -31,7 +32,7 @@ export async function generateMetadata({
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Architecture: "#00F0FF",
+  Architecture: "#055a21",
   "Security Operations": "#FF003C",
   "Product Strategy": "#a78bfa",
 };
@@ -52,7 +53,7 @@ export default async function VaultPostPage({
         {/* Back link */}
         <Link
           href="/vault"
-          className="font-mono text-xs uppercase tracking-widest text-white/30 hover:text-[#00F0FF] transition-colors duration-200 flex items-center gap-2 mb-12"
+          className="font-mono text-xs uppercase tracking-widest text-white/30 hover:text-[#00ff55] transition-colors duration-200 flex items-center gap-2 mb-12"
         >
           ← Back to Vault
         </Link>
@@ -113,7 +114,7 @@ export default async function VaultPostPage({
         >
           <Link
             href="/vault"
-            className="font-mono text-xs uppercase tracking-widest text-white/30 hover:text-[#00F0FF] transition-colors duration-200 flex items-center gap-2"
+            className="font-mono text-xs uppercase tracking-widest text-white/30 hover:text-[#00ff55] transition-colors duration-200 flex items-center gap-2"
           >
             ← Back to Vault
           </Link>

@@ -163,7 +163,7 @@ export const certifications: Certification[] = [
     name: "Professional Cloud Architect",
     issuer: "Google Cloud",
     acronym: "GCP PCA",
-    color: "#00F0FF",
+    color: "#00ff55",
   },
   {
     id: "kcna",

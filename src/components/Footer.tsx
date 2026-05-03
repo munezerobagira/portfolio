@@ -19,7 +19,7 @@ export default function Footer() {
         <Link
           href="/"
           className="font-display font-semibold tracking-widest text-sm uppercase"
-          style={{ color: "#00F0FF" }}
+          style={{ color: "#00ff55" }}
         >
           MBAGS
         </Link>
@@ -32,7 +32,7 @@ export default function Footer() {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-widest text-white/50 hover:text-[#00F0FF] transition-colors duration-200"
+                className="font-mono text-xs uppercase tracking-widest text-white/50 hover:text-[#00ff55] transition-colors duration-200"
               >
                 {s.label}
               </a>

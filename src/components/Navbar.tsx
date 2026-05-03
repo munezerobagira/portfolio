@@ -26,7 +26,7 @@ export default function Navbar() {
         <Link
           href="/"
           className="font-display font-semibold tracking-widest text-sm uppercase"
-          style={{ color: "#00F0FF", letterSpacing: "0.15em" }}
+          style={{ color: "#00ff55", letterSpacing: "0.15em" }}
         >
           MBAGS
         </Link>
@@ -37,7 +37,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00F0FF] transition-colors duration-200"
+                className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00ff55] transition-colors duration-200"
               >
                 {link.label}
               </Link>
@@ -73,7 +73,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00F0FF] transition-colors"
+              className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00ff55] transition-colors"
               onClick={() => setOpen(false)}
             >
               {link.label}

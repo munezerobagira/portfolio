@@ -9,7 +9,7 @@
 /* ── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
   --void: #05050a;
-  --neon-cyan: #00f0ff;
+  --neon-cyan: #00ff55;
   --neon-magenta: #ff003c;
   --border-subtle: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(5, 5, 10, 0.6);
@@ -152,7 +152,8 @@ pre,
   }
 
   .terminal-maximize {
-    background: #00f0ff !important;
+    background: #06822f
+!important;
   }
 
   .terminal-minimize {
@@ -247,7 +248,7 @@ footer {
 /* ── Navbar Contact ─────────────────────────────────────────────────────── */
 .navbar-contact {
   border: 1px solid rgba(0, 240, 255, 0.35);
-  color: #00f0ff;
+  color: #00ff55;
 
   &:hover {
     background: rgba(0, 240, 255, 0.08);
@@ -258,7 +259,7 @@ footer {
 .cta-primary {
   background: rgba(0, 240, 255, 0.1);
   border: 1px solid rgba(0, 240, 255, 0.4);
-  color: #00f0ff;
+  color: #00ff55;
 
   &:hover {
     background: rgba(0, 240, 255, 0.2);
