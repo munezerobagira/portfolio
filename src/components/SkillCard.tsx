@@ -5,7 +5,7 @@ interface SkillCardProps {
 export default function SkillCard({ skill }: SkillCardProps) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-3 p-5 cursor-default transition-all duration-200 group"
+      className="skill-card flex flex-col items-center justify-center gap-3 p-5 cursor-default transition-all duration-200 group"
       style={{
         background: "rgba(5,5,10,0.6)",
         border: "1px solid rgba(255,255,255,0.08)",
@@ -13,17 +13,6 @@ export default function SkillCard({ skill }: SkillCardProps) {
         width: "140px",
         height: "130px",
         flexShrink: 0,
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor =
-          "rgba(0,240,255,0.25)";
-        (e.currentTarget as HTMLElement).style.boxShadow =
-          "0 0 20px rgba(0,240,255,0.08)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor =
-          "rgba(255,255,255,0.08)";
-        (e.currentTarget as HTMLElement).style.boxShadow = "none";
       }}
     >
       <i

@@ -3,6 +3,15 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/utils/vault";
 
+// next-mdx-remote v6 MDXRemote is an async React Server Component.
+// TypeScript does not yet model async RSCs in JSX (return type is
+// Promise<ReactElement> rather than ReactElement). Casting to a sync
+// FC is intentional and safe — the component is server-only.
+// Tracked upstream: https://github.com/hashicorp/next-mdx-remote/issues/430
+const MDXContent = MDXRemote as unknown as (props: {
+  source: string;
+}) => JSX.Element;
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((p) => ({ slug: p.slug }));
@@ -94,8 +103,7 @@ export default async function VaultPostPage({
 
         {/* MDX content */}
         <article className="vault-prose">
-          {/* @ts-expect-error - React Server Component async return type */}
-          <MDXRemote source={post.content} />
+          <MDXContent source={post.content} />
         </article>
 
         {/* Footer */}

@@ -48,18 +48,7 @@ export default function Navbar() {
         {/* CTA */}
         <Link
           href="mailto:hi@mbags.space"
-          className="hidden md:inline-flex items-center gap-2 font-mono text-xs px-4 py-2 transition-all duration-200"
-          style={{
-            border: "1px solid rgba(0,240,255,0.35)",
-            color: "#00F0FF",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.background =
-              "rgba(0,240,255,0.08)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.background = "transparent";
-          }}
+          className="navbar-contact hidden md:inline-flex items-center gap-2 font-mono text-xs px-4 py-2 transition-all duration-200"
         >
           CONTACT
         </Link>

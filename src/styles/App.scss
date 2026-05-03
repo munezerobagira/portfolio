@@ -244,6 +244,43 @@ footer {
   }
 }
 
+/* ── Navbar Contact ─────────────────────────────────────────────────────── */
+.navbar-contact {
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: #00f0ff;
+
+  &:hover {
+    background: rgba(0, 240, 255, 0.08);
+  }
+}
+
+/* ── Hero CTAs ──────────────────────────────────────────────────────────── */
+.cta-primary {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+
+  &:hover {
+    background: rgba(0, 240, 255, 0.2);
+  }
+}
+
+.cta-vault {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+
+  &:hover {
+    border-color: rgba(255, 0, 60, 0.4);
+    color: #ff003c;
+  }
+}
+
+/* ── Skill Card ─────────────────────────────────────────────────────────── */
+.skill-card:hover {
+  border-color: rgba(0, 240, 255, 0.25) !important;
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08);
+}
+
 /* ── Vault / Blog ───────────────────────────────────────────────────────── */
 .vault-prose {
   font-family: "Inter", sans-serif;

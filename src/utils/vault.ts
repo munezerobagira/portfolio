@@ -33,7 +33,9 @@ export function getAllPosts(): VaultPost[] {
         content,
       } as VaultPost;
     })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 }
 
 export function getPostBySlug(slug: string): VaultPost | null {

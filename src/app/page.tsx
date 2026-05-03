@@ -127,41 +127,13 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-4">
             <a
               href="#advantage"
-              className="font-mono text-sm px-6 py-3 transition-all duration-200"
-              style={{
-                background: "rgba(0,240,255,0.1)",
-                border: "1px solid rgba(0,240,255,0.4)",
-                color: "#00F0FF",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.background =
-                  "rgba(0,240,255,0.2)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.background =
-                  "rgba(0,240,255,0.1)";
-              }}
+              className="cta-primary font-mono text-sm px-6 py-3 transition-all duration-200"
             >
               [ Deploy Capabilities ]
             </a>
             <Link
               href="/vault"
-              className="font-mono text-sm px-6 py-3 transition-all duration-200"
-              style={{
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "rgba(255,255,255,0.7)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "rgba(255,0,60,0.4)";
-                (e.currentTarget as HTMLElement).style.color = "#FF003C";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor =
-                  "rgba(255,255,255,0.15)";
-                (e.currentTarget as HTMLElement).style.color =
-                  "rgba(255,255,255,0.7)";
-              }}
+              className="cta-vault font-mono text-sm px-6 py-3 transition-all duration-200"
             >
               [ Access Markdown Vault ]
             </Link>
