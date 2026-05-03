@@ -1,8 +1,37 @@
 "use client";
 
-import { useRef, useMemo, useEffect, useCallback } from "react";
+import { useRef, useMemo, useEffect, useCallback, Component } from "react";
+import type { ReactNode } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+
+/* ── WebGL Error Boundary ─────────────────────────────────────────────── */
+class SmokeErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div
+          className="fixed inset-0 -z-10"
+          style={{
+            background:
+              "radial-gradient(ellipse at 20% 80%, rgba(0,204,68,0.14) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0,255,85,0.08) 0%, transparent 50%), #05050a",
+          }}
+        />
+      );
+    }
+    return this.props.children;
+  }
+}
 
 /* ── GLSL Shaders ─────────────────────────────────────────────────────── */
 const vertexShader = `
@@ -107,13 +136,13 @@ const fragmentShader = `
     float cyanGlow = exp(-cyanDist * 0.9) * 0.35;
     col += vec3(0.0, 0.94, 1.0) * cyanGlow * smoke;
 
-    /* Neon magenta backlight: lower-right region */
-    float magentaDist = length(pos - vec2(1.2, -0.5));
-    float magentaGlow = exp(-magentaDist * 1.1) * 0.25;
-    col += vec3(1.0, 0.0, 0.24) * magentaGlow * smoke;
+    /* Neon green backlight: lower-right region */
+    float greenDist = length(pos - vec2(1.2, -0.5));
+    float greenGlow = exp(-greenDist * 1.1) * 0.28;
+    col += vec3(0.0, 1.0, 0.33) * greenGlow * smoke;
 
-    /* Mouse proximity cyan reactive glow */
-    col += vec3(0.0, 0.94, 1.0) * exp(-mouseDist * 1.8) * 0.18 * smoke;
+    /* Mouse proximity green reactive glow */
+    col += vec3(0.0, 1.0, 0.33) * exp(-mouseDist * 1.8) * 0.18 * smoke;
 
     /* Smoke as dark volume tinted slightly */
     col = mix(vec3(0.02, 0.02, 0.04), col, smoke * 0.9);
@@ -200,22 +229,24 @@ export default function SmokeCanvas() {
   }, [handleMouseMove]);
 
   return (
-    <div
-      className="fixed inset-0 -z-10"
-      aria-hidden="true"
-      style={{ background: "#05050a" }}
-    >
-      <Canvas
-        dpr={[0.5, 1]}
-        camera={{ position: [0, 0, 1], near: 0.1, far: 10 }}
-        gl={{
-          antialias: false,
-          powerPreference: "low-power",
-          alpha: false,
-        }}
+    <SmokeErrorBoundary>
+      <div
+        className="fixed inset-0 -z-10"
+        aria-hidden="true"
+        style={{ background: "#05050a" }}
       >
-        <SmokeScene mouseRef={mouseRef} mouseVelRef={mouseVelRef} />
-      </Canvas>
-    </div>
+        <Canvas
+          dpr={[0.5, 1]}
+          camera={{ position: [0, 0, 1], near: 0.1, far: 10 }}
+          gl={{
+            antialias: false,
+            powerPreference: "low-power",
+            alpha: false,
+          }}
+        >
+          <SmokeScene mouseRef={mouseRef} mouseVelRef={mouseVelRef} />
+        </Canvas>
+      </div>
+    </SmokeErrorBoundary>
   );
 }

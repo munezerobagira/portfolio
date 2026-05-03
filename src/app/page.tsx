@@ -7,11 +7,26 @@ import "devicon/devicon.min.css";
 import SpotlightCard from "@/components/SpotlightCard";
 import AnimatedRow from "@/components/AnimatedRow";
 import SkillCard from "@/components/SkillCard";
-import { data as siteData, advantageNodes, deployments, certifications } from "@/data";
+import {
+  data as siteData,
+  advantageNodes,
+  deployments,
+  certifications,
+  researchPapers,
+} from "@/data";
 
 /* Lazy-load the WebGL canvas so it doesn't block the initial render */
 const SmokeCanvas = dynamic(() => import("@/components/SmokeCanvas"), {
   ssr: false,
+  loading: () => (
+    <div
+      className="fixed inset-0 -z-10"
+      style={{
+        background:
+          "radial-gradient(ellipse at 20% 80%, rgba(0,204,68,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0,255,85,0.08) 0%, transparent 50%), #05050a",
+      }}
+    />
+  ),
 });
 
 /* ── Tag chip ───────────────────────────────────────────────────────────── */
@@ -20,9 +35,9 @@ function Tag({ children }: { children: React.ReactNode }) {
     <span
       className="font-mono text-[10px] uppercase tracking-widest px-2 py-1"
       style={{
-        border: "1px solid rgba(0,240,255,0.25)",
+        border: "1px solid rgba(0,255,85,0.25)",
         color: "#00ff55",
-        background: "rgba(0,240,255,0.05)",
+        background: "rgba(0,255,85,0.05)",
       }}
     >
       {children}
@@ -51,6 +66,29 @@ function StatusBadge({ status }: { status: string }) {
           animation: status === "ACTIVE" ? "glow-pulse 2s infinite" : "none",
         }}
       />
+      {status}
+    </span>
+  );
+}
+
+/* ── Paper status badge ─────────────────────────────────────────────────── */
+function PaperStatus({ status }: { status: string }) {
+  const colorMap: Record<string, string> = {
+    Published: "#00ff55",
+    "Under Review": "#4ade80",
+    "In Progress": "#00cc44",
+    Preprint: "#86efac",
+  };
+  const color = colorMap[status] ?? "#00ff55";
+  return (
+    <span
+      className="font-mono text-[10px] uppercase tracking-widest px-2 py-0.5"
+      style={{
+        border: `1px solid ${color}40`,
+        color,
+        background: `${color}10`,
+      }}
+    >
       {status}
     </span>
   );
@@ -105,12 +143,12 @@ export default function HomePage() {
           >
             Architecting Secure
             <br />
-            <span style={{ color: "#00ff55" }} className="glow-cyan">
+            <span style={{ color: "#00ff55" }} className="glow-green">
               Ecosystems.
             </span>{" "}
-            Designing
+            Advancing
             <br />
-            the Future.
+            Research.
           </h1>
 
           {/* Hook */}
@@ -118,34 +156,34 @@ export default function HomePage() {
             className="font-prose text-white/60 mb-10 max-w-2xl"
             style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", lineHeight: 1.7 }}
           >
-            Cloud-Native Engineer, Product Architect, and UI/UX Designer
-            operating out of Kigali. I build platforms that scale without
-            breaking and perform without vulnerabilities.
+            Cloud-Native Engineer, Researcher, and UI/UX Designer operating out
+            of Kigali. I build platforms that scale without breaking, publish
+            research that advances the field, and design experiences that matter.
           </p>
 
           {/* Action Matrix */}
           <div className="flex flex-wrap gap-4">
             <a
-              href="#advantage"
+              href="#research"
               className="cta-primary font-mono text-sm px-6 py-3 transition-all duration-200"
             >
-              [ Deploy Capabilities ]
+              [ Research & Publications ]
             </a>
             <Link
               href="/vault"
               className="cta-vault font-mono text-sm px-6 py-3 transition-all duration-200"
             >
-              [ Access Markdown Vault ]
+              [ Access Vault ]
             </Link>
           </div>
 
-          {/* Tri-brid tags */}
+          {/* Tags */}
           <div className="flex flex-wrap gap-2 mt-12">
             {[
-              "Product Management",
-              "UI/UX Design",
               "Cloud Engineering",
-              "Security Ops",
+              "Security Research",
+              "Product Architecture",
+              "UI/UX Design",
             ].map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
@@ -164,7 +202,7 @@ export default function HomePage() {
             className="w-px h-8"
             style={{
               background:
-                "linear-gradient(to bottom, rgba(0,240,255,0.6), transparent)",
+                "linear-gradient(to bottom, rgba(0,255,85,0.6), transparent)",
             }}
           />
         </div>
@@ -185,9 +223,7 @@ export default function HomePage() {
                 {/* Tag */}
                 <span
                   className="font-mono text-[10px] uppercase tracking-[0.2em]"
-                  style={{
-                    color: node.accentColor === "cyan" ? "#00ff55" : "#FF003C",
-                  }}
+                  style={{ color: "#00ff55" }}
                 >
                   {node.tag}
                 </span>
@@ -214,10 +250,7 @@ export default function HomePage() {
                 <div
                   className="glass-panel p-3 mt-2"
                   style={{
-                    borderColor:
-                      node.accentColor === "cyan"
-                        ? "rgba(0,240,255,0.12)"
-                        : "rgba(255,0,60,0.12)",
+                    borderColor: "rgba(0,255,85,0.12)",
                   }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest text-white/30 block mb-1">
@@ -248,6 +281,95 @@ export default function HomePage() {
             animationDirection="left"
             renderElement={(skill) => <SkillCard skill={skill} />}
           />
+        </div>
+      </section>
+
+      {/* ── RESEARCH & PUBLICATIONS ─────────────────────────────────────── */}
+      <section id="research" className="relative px-6 py-24">
+        <div className="max-w-6xl mx-auto">
+          <SectionLabel text="04 · Research & Publications" />
+
+          <p className="font-prose text-white/50 text-sm mb-10 max-w-xl">
+            Academic work at the intersection of cloud security, AI systems, and
+            resilient infrastructure engineering.
+          </p>
+
+          <div className="flex flex-col gap-px" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            {researchPapers.map((paper) => (
+              <div
+                key={paper.id}
+                className="group py-8 px-4 transition-all duration-200 hover:bg-white/[0.02]"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                {/* Top row: year + status */}
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="font-mono text-[11px] text-white/30">{paper.year}</span>
+                  <PaperStatus status={paper.status} />
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="font-display font-semibold leading-snug mb-2"
+                  style={{ fontSize: "clamp(1rem, 2vw, 1.25rem)" }}
+                >
+                  {paper.title}
+                </h3>
+
+                {/* Venue */}
+                <p
+                  className="font-mono text-xs mb-3"
+                  style={{ color: "#4ade80" }}
+                >
+                  {paper.venue}
+                </p>
+
+                {/* Abstract */}
+                <p className="font-prose text-white/50 text-sm leading-relaxed max-w-3xl mb-4">
+                  {paper.abstract}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {paper.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] px-2 py-0.5"
+                      style={{
+                        border: "1px solid rgba(0,255,85,0.15)",
+                        color: "rgba(0,255,85,0.6)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* DOI/link if present */}
+                {paper.doi && (
+                  <a
+                    href={`https://doi.org/${paper.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[10px] uppercase tracking-widest mt-3 inline-flex items-center gap-1 transition-colors duration-200"
+                    style={{ color: "#00ff55" }}
+                  >
+                    DOI: {paper.doi} →
+                  </a>
+                )}
+                {paper.url && !paper.doi && (
+                  <a
+                    href={paper.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[10px] uppercase tracking-widest mt-3 inline-flex items-center gap-1 transition-colors duration-200"
+                    style={{ color: "#00ff55" }}
+                  >
+                    Read Paper →
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -307,7 +429,7 @@ export default function HomePage() {
                 {/* Outcome */}
                 <div
                   className="glass-panel p-3 mt-2"
-                  style={{ borderColor: "rgba(0,240,255,0.1)" }}
+                  style={{ borderColor: "rgba(0,255,85,0.1)" }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-widest text-white/30 block mb-1">
                     Outcome
@@ -354,12 +476,12 @@ export default function HomePage() {
             </SpotlightCard>
 
             <SpotlightCard
-              accentColor="magenta"
+              accentColor="green"
               className="p-6 flex flex-col gap-3"
             >
               <span
                 className="font-mono text-[10px] uppercase tracking-widest"
-                style={{ color: "#FF003C" }}
+                style={{ color: "#4ade80" }}
               >
                 Foundation
               </span>
@@ -380,7 +502,7 @@ export default function HomePage() {
             {certifications.map((cert) => (
               <SpotlightCard
                 key={cert.id}
-                accentColor={cert.color === "#00ff55" ? "cyan" : "magenta"}
+                accentColor="cyan"
                 className="p-6 flex flex-col items-center gap-3 text-center"
               >
                 <div
@@ -411,3 +533,4 @@ export default function HomePage() {
     </>
   );
 }
+

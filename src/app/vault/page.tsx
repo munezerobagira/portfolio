@@ -9,8 +9,8 @@ export const metadata = {
 
 const CATEGORY_COLORS: Record<string, string> = {
   Architecture: "#00ff55",
-  "Security Operations": "#FF003C",
-  "Product Strategy": "#a78bfa",
+  "Security Operations": "#4ade80",
+  "Product Strategy": "#00cc44",
 };
 
 export default function VaultPage() {

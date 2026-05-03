@@ -1,2 +1,2 @@
-export { data, advantageNodes, deployments, certifications } from "./data";
-export type { AdvantageNode, Deployment, Certification } from "./data";
+export { data, advantageNodes, deployments, certifications, researchPapers } from "./data";
+export type { AdvantageNode, Deployment, Certification, ResearchPaper } from "./data";
