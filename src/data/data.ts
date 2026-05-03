@@ -195,7 +195,7 @@ export const researchPapers: ResearchPaper[] = [
     venue: "CMU Africa Research Symposium",
     year: "2024",
     abstract:
-      "We present a framework that integrates Large Language Models into Security Operations Center workflows, enabling analysts to query SIEM data using natural language and receive contextualised alert summaries. Evaluation on a 6-month production log corpus shows an 88% reduction in mean-time-to-investigate.",
+      "We present a framework that integrates Large Language Models into Security Operations Center workflows, enabling analysts to query SIEM data using natural language and receive contextualized alert summaries. Evaluation on a 6-month production log corpus shows an 88% reduction in mean-time-to-investigate.",
     tags: ["LLM", "Cybersecurity", "SIEM", "NLP", "SOC"],
     status: "Published",
   },
@@ -217,7 +217,7 @@ export const researchPapers: ResearchPaper[] = [
     venue: "CMU Africa MSIT Capstone",
     year: "2025",
     abstract:
-      "A systematic study of failure modes in cloud-native deployment pipelines. We categorise 23 anti-patterns observed across production environments and propose a resilience framework validated through chaos-engineering experiments across three infrastructure stacks.",
+      "A systematic study of failure modes in cloud-native deployment pipelines. We categorize 23 anti-patterns observed across production environments and propose a resilience framework validated through chaos-engineering experiments across three infrastructure stacks.",
     tags: [
       "DevOps",
       "Cloud-Native",
