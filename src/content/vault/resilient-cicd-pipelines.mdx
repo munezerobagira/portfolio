@@ -1,0 +1,121 @@
+---
+title: "Designing Resilient CI/CD Pipelines: Lessons from the Field"
+date: "2024-03-15"
+category: "Architecture"
+readingTime: 8
+excerpt: "How to architect CI/CD pipelines that survive production chaos — from GitOps workflows to blue-green deployments on Kubernetes."
+---
+
+# Designing Resilient CI/CD Pipelines: Lessons from the Field
+
+Modern software delivery demands pipelines that are not just *fast* but
+**fault-tolerant**. After scaling PassResource to 600+ concurrent users and
+operating infrastructure across GCP and Azure, I want to share patterns that
+actually hold under pressure.
+
+## The Problem with Naive Pipelines
+
+Most teams start with a linear: `push → test → build → deploy`. It works — until
+it doesn't. A slow integration test blocks every other engineer. A deployment
+script with no rollback blows up on Friday at 5 PM.
+
+```bash
+# ❌ Naive: all-or-nothing deploy
+ssh prod "git pull && pm2 restart all"
+
+# ✅ Better: health-checked, rollback-ready
+kubectl set image deployment/api api=registry/api:$SHA --record
+kubectl rollout status deployment/api --timeout=120s || kubectl rollout undo deployment/api
+```
+
+## Pattern 1: Trunk-Based Development + Feature Flags
+
+Long-lived branches are the enemy of velocity. Trunk-based development — where
+every engineer pushes to `main` at least daily — forces integration early and
+exposes conflicts when they're small.
+
+Pair this with **feature flags** (LaunchDarkly, Unleash, or a simple JSON in
+your config store) so unfinished features ship to production but stay dark.
+
+```typescript
+// Feature flag check — clean, cheap, reversible
+const isNewDashboardEnabled = await flags.isEnabled("new-dashboard", userId);
+
+if (isNewDashboardEnabled) {
+  return <NewDashboard />;
+}
+return <LegacyDashboard />;
+```
+
+## Pattern 2: Canary Deployments on Kubernetes
+
+Never send 100% of traffic to a new version simultaneously.
+
+```yaml
+# canary-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-canary
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"   # 10% of traffic
+spec:
+  rules:
+  - host: api.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: api-canary
+            port:
+              number: 80
+```
+
+Monitor your error rate. If it stays within SLO, gradually increase the weight.
+If it spikes, `kubectl delete ingress api-canary` — instant rollback.
+
+## Pattern 3: Immutable Artifacts
+
+Build once. Tag with the commit SHA. Promote the same image through
+`dev → staging → prod`. Never rebuild for production.
+
+```python
+# Dockerfile — multi-stage to keep image lean
+FROM python:3.11-slim AS builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
+
+FROM python:3.11-slim
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0"]
+```
+
+## Measuring What Matters
+
+A pipeline is only as good as its feedback loops. Track:
+
+| Metric | Target |
+|--------|--------|
+| DORA — Deployment Frequency | ≥ 1/day |
+| DORA — Lead Time for Change | < 1 hour |
+| Change Failure Rate | < 5% |
+| MTTR | < 30 minutes |
+
+> "The pipeline should be so reliable that deploying is boring."
+> That's the goal.
+
+## Closing Thoughts
+
+Resilient CI/CD is a product in itself — it needs ownership, SLOs, and
+continuous improvement. The patterns above are starting points, not blueprints.
+Adapt them to your team's topology and your system's risk profile.
+
+Next up: **Zero-Downtime Database Migrations** — how to evolve schemas without
+locking tables or dropping production.

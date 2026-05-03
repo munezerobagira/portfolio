@@ -1,0 +1,130 @@
+---
+title: "Product Strategy in Technical Teams: Aligning Code with Business Outcomes"
+date: "2024-07-18"
+category: "Product Strategy"
+readingTime: 6
+excerpt: "Why the best technical leaders think in outcomes, not outputs — and how to translate product strategy into engineering decisions."
+---
+
+# Product Strategy in Technical Teams: Aligning Code with Business Outcomes
+
+The most dangerous phrase in engineering is *"we'll figure out the product
+direction later."* Technical debt is recoverable. Strategic debt — building the
+wrong thing — often isn't.
+
+As someone who operates across PM, design, and engineering, I've seen both
+sides of this failure mode. Here's how I think about the bridge.
+
+## Outputs vs. Outcomes
+
+An **output** is a feature shipped. An **outcome** is a behaviour changed.
+
+```
+Output:   "We added push notifications."
+Outcome:  "Daily active users increased 23% because users return when nudged."
+```
+
+Technical teams default to output thinking because it's measurable and within
+our control. But hiring managers, investors, and users care about outcomes. Your
+engineering roadmap should trace every major initiative to a metric that moves.
+
+## The Opportunity Solution Tree
+
+Teresa Torres's OST is the most useful PM framework I've encountered for
+engineering-heavy teams. It forces explicit linkage:
+
+```
+Desired Outcome
+├── Opportunity 1
+│   ├── Solution A  →  Assumption: [testable]
+│   └── Solution B  →  Assumption: [testable]
+└── Opportunity 2
+    └── Solution C  →  Assumption: [testable]
+```
+
+Before writing a line of code, ask: *what assumption does this validate?* If you
+can't name the assumption, you're not ready to build.
+
+## Technical Strategy as Business Strategy
+
+At Mpuza Inc., we needed to handle 10,000+ daily API requests reliably. The
+naive solution was "add more servers." But that's output thinking.
+
+The outcome we needed: **sub-200ms p99 latency to keep payment conversion above
+target**.
+
+That reframe changed the solution space entirely:
+
+```python
+# Output thinking: vertical scaling
+# → More expensive, single point of failure
+
+# Outcome thinking: identify the bottleneck
+import cProfile
+
+with cProfile.Profile() as pr:
+    result = process_payment(payload)
+
+# Found: 340ms spent on synchronous external KYC API call
+# Solution: async background processing + optimistic UI
+
+@app.post("/payments")
+async def initiate_payment(payload: PaymentPayload):
+    job_id = await queue.enqueue("process_payment", payload)
+    return {"status": "processing", "job_id": job_id}  # Instant response
+```
+
+P99 dropped from 1.2s to 94ms. No new servers required.
+
+## Writing Engineering Specs That PMs Can Read
+
+A common failure: engineers write specs so technical they exclude product
+stakeholders. Result: misaligned expectations, scope creep, and rework.
+
+My template:
+
+```markdown
+## Feature: [Name]
+
+**Why this matters (the outcome)**
+One sentence linking to a metric.
+
+**What we're building (the output)**
+Bullet list of deliverables.
+
+**What we're NOT building**
+Explicitly scoped out to prevent creep.
+
+**How we'll know it worked**
+Success metric + measurement method + timeline.
+
+**Key technical decisions + tradeoffs**
+Short paragraphs; link to ADRs for depth.
+```
+
+The "how we'll know it worked" section is the most skipped and most important.
+If you can't measure it, you can't learn from it.
+
+## The Three Conversations Every Engineer Should Have
+
+1. **With your PM:** "What behaviour change are we trying to create, and how
+   will we measure it?"
+
+2. **With your designer:** "What's the riskiest assumption in the UX, and how do
+   we test it before full build?"
+
+3. **With yourself:** "If this feature disappeared tomorrow, would users notice?
+   Would revenue change?"
+
+If the answer to the last question is consistently "no" — you're building
+features, not value.
+
+## Closing
+
+Code is just a medium. The constraint that matters is attention — user attention,
+market attention, team attention. Technical excellence without strategic clarity
+is noise.
+
+The best engineers I've worked with think like PMs, prototype like designers,
+and build like architects. That's the tri-brid mindset, and it's the only one
+that ships things people actually use.

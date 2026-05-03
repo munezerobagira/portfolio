@@ -1,35 +1,98 @@
+"use client";
+
 import Link from "next/link";
-const navbarLinks = [
-  {
-    label: "Blog",
-    url: "https://blog.mbags.space",
-  },
+import { useState } from "react";
+
+const navLinks = [
+  { label: "Advantage", href: "#advantage" },
+  { label: "Deployments", href: "#deployments" },
+  { label: "Academy", href: "#academy" },
+  { label: "Vault", href: "/vault" },
 ];
-function Navbar() {
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="fixed w-full flex align-center z-50 top-5 overflow-y-scroll">
-      <nav className=" max-w-3xl mx-auto inline-flex  px-6 bg-black bg-opacity-70 rounded-lg overflow-y-scroll">
-        <div className="flex items-center justify-between">
-          <span className="px-2">
-            <Link href="/" className="text-primary">
-              MBAGS
-            </Link>
-          </span>
-          <ul className="menu menu-horizontal" id="navigation">
-            {navbarLinks.map((link) => (
-              <li key={link.url}>
-                <Link href={link.url}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-          <div id="toggler">
-            <i className="fa-solid fa-bars"></i>
-          </div>
-        </div>
+    <header className="fixed w-full top-0 z-50">
+      <nav
+        className="glass-panel mx-auto mt-4 flex items-center justify-between px-6 py-3"
+        style={{
+          maxWidth: "900px",
+          border: "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
+        {/* Logo */}
+        <Link
+          href="/"
+          className="font-display font-semibold tracking-widest text-sm uppercase"
+          style={{ color: "#00F0FF", letterSpacing: "0.15em" }}
+        >
+          MBAGS
+        </Link>
+
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00F0FF] transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        {/* CTA */}
+        <Link
+          href="mailto:hi@mbags.space"
+          className="hidden md:inline-flex items-center gap-2 font-mono text-xs px-4 py-2 transition-all duration-200"
+          style={{
+            border: "1px solid rgba(0,240,255,0.35)",
+            color: "#00F0FF",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.background =
+              "rgba(0,240,255,0.08)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.background = "transparent";
+          }}
+        >
+          CONTACT
+        </Link>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden text-white/60 hover:text-white focus:outline-none"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <span className="font-mono text-lg">{open ? "✕" : "☰"}</span>
+        </button>
       </nav>
+
+      {/* Mobile dropdown */}
+      {open && (
+        <div
+          className="glass-panel mx-auto mt-1 px-6 py-4 flex flex-col gap-4"
+          style={{ maxWidth: "900px" }}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="font-mono text-xs uppercase tracking-widest text-white/60 hover:text-[#00F0FF] transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </header>
   );
 }
-
-export default Navbar;
 

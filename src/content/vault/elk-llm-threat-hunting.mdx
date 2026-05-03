@@ -1,0 +1,151 @@
+---
+title: "Threat Hunting with ELK + LLM: Cutting Alert Fatigue by 88%"
+date: "2024-05-02"
+category: "Security Operations"
+readingTime: 10
+excerpt: "How we integrated an LLM middleware layer into our ELK stack to auto-triage alerts and dramatically reduce analyst investigation time."
+---
+
+# Threat Hunting with ELK + LLM: Cutting Alert Fatigue by 88%
+
+Alert fatigue is the silent killer of security operations. When analysts are
+drowning in thousands of daily alerts, real threats slip through. At Irembo we
+built a system that routes raw ELK alerts through an LLM layer before they ever
+reach human eyes — and the results were dramatic.
+
+## Architecture Overview
+
+```
+Logstash  →  Elasticsearch  →  Kibana Watcher
+                                     ↓
+                              Flask LLM Middleware
+                                     ↓
+                         Enriched + Triaged Alert
+                                     ↓
+                           Analyst Notification
+```
+
+The key insight: **LLMs are exceptional at natural-language summarisation and
+pattern correlation** — exactly what analysts need when triaging 2 AM alerts.
+
+## Stage 1: Structured Ingestion with Logstash
+
+Logs arrive from firewalls, endpoints, and cloud audit trails as unstructured
+blobs. Logstash normalises them into a common schema.
+
+```ruby
+# logstash/pipeline/main.conf
+filter {
+  grok {
+    match => { "message" => "%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:host} %{GREEDYDATA:raw_event}" }
+  }
+
+  mutate {
+    add_field => {
+      "event.type"    => "network"
+      "event.module"  => "firewall"
+    }
+  }
+
+  # GeoIP enrichment
+  geoip {
+    source => "source.ip"
+    target => "source.geo"
+  }
+}
+```
+
+## Stage 2: Detection Rules in Elasticsearch
+
+Elasticsearch's Detection Engine runs rules against the normalised events.
+We write rules as structured YAML — version-controlled, peer-reviewed.
+
+```python
+# Example: impossible travel detection
+rule = {
+    "name": "Impossible Travel",
+    "type": "threshold",
+    "query": """
+      event.category: authentication AND
+      event.outcome: success
+    """,
+    "threshold": {
+        "field": "user.name",
+        "value": 2,
+        "cardinality": [{"field": "source.geo.country_iso_code", "value": 1}]
+    },
+    "interval": "5m",
+    "from": "now-10m"
+}
+```
+
+## Stage 3: Flask LLM Middleware
+
+When a rule fires, instead of immediately paging an analyst, the alert hits our
+Flask service. We enrich it with context and ask the LLM: *"Is this real?"*
+
+```python
+from flask import Flask, request, jsonify
+import openai
+
+app = Flask(__name__)
+
+SYSTEM_PROMPT = """
+You are a senior SOC analyst. Given an enriched security alert, your job is to:
+1. Assess the likelihood this is a TRUE POSITIVE (0-100 score)
+2. Provide a 2-sentence summary an analyst can act on immediately
+3. Suggest the single most important next investigation step
+Respond as JSON: {"score": int, "summary": str, "next_step": str}
+"""
+
+@app.route("/triage", methods=["POST"])
+def triage_alert():
+    alert = request.json
+    context = build_context(alert)   # fetch WHOIS, threat intel, user history
+
+    response = openai.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": context}
+        ],
+        response_format={"type": "json_object"}
+    )
+
+    triage = response.choices[0].message.content
+    return jsonify(triage)
+```
+
+## Stage 4: Analyst Dashboard
+
+Only alerts scoring above 65 reach the analyst queue — pre-enriched with an
+AI summary and a recommended next step. The Kibana dashboard shows:
+
+- **True Positive Rate** — tracked over 30 days
+- **Mean Time to Triage** — our target: < 3 minutes
+- **Suppressed Volume** — how many raw alerts the LLM absorbed
+
+## Results
+
+After 90 days of operation:
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Alerts reaching analysts | 4,200/day | 504/day |
+| Mean Time to Triage | 22 min | 2.6 min |
+| True Positive Rate | 3.1% | 19.4% |
+| Alert fatigue incidents | 7/month | 0/month |
+
+**88% reduction in investigation time.** Analysts spend their time on real
+threats, not noise.
+
+## Lessons Learned
+
+1. **Prompt engineering matters more than model size.** GPT-4o-mini with a
+   well-crafted system prompt outperformed GPT-4 with a naive one.
+2. **Ground truth loops are essential.** Feed analyst feedback back into the
+   scoring model monthly.
+3. **Never fully automate remediation.** The LLM triages; humans decide.
+
+This architecture is adaptable to any SIEM. The principles — normalise, enrich,
+synthesise, route — are universal.
