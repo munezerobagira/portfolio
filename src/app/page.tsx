@@ -2,11 +2,13 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useState } from "react";
 import "devicon/devicon.min.css";
 
 import SpotlightCard from "@/components/SpotlightCard";
 import AnimatedRow from "@/components/AnimatedRow";
 import SkillCard from "@/components/SkillCard";
+import CornerFrame from "@/components/CornerFrame";
 import {
   data as siteData,
   advantageNodes,
@@ -15,7 +17,7 @@ import {
   researchPapers,
 } from "@/data";
 
-/* Lazy-load the WebGL canvas so it doesn't block the initial render */
+/* Lazy-load the canvas so it doesn't block the initial render */
 const SmokeCanvas = dynamic(() => import("@/components/SmokeCanvas"), {
   ssr: false,
   loading: () => (
@@ -23,11 +25,135 @@ const SmokeCanvas = dynamic(() => import("@/components/SmokeCanvas"), {
       className="fixed inset-0 -z-10"
       style={{
         background:
-          "radial-gradient(ellipse at 20% 80%, rgba(0,204,68,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0,255,85,0.08) 0%, transparent 50%), #05050a",
+          "radial-gradient(ellipse at 15% 80%, rgba(0,204,68,0.12) 0%, transparent 50%), radial-gradient(ellipse at 85% 20%, rgba(0,255,85,0.06) 0%, transparent 50%), #05050a",
       }}
     />
   ),
 });
+
+
+/* ── Contact form ───────────────────────────────────────────────────────── */
+function ContactForm() {
+  const [fields, setFields] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, email, message } = fields;
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+    window.open(
+      `mailto:hi@mbags.space?subject=${subject}&body=${body}`,
+      "_blank"
+    );
+    setSent(true);
+  };
+
+  const inputStyle: React.CSSProperties = {
+    background: "rgba(255,255,255,0.03)",
+    border: "1px solid rgba(0,255,85,0.18)",
+    color: "#f8f8f8",
+    outline: "none",
+    width: "100%",
+    padding: "0.75rem 1rem",
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: "0.8rem",
+  };
+
+  if (sent) {
+    return (
+      <CornerFrame color="rgba(0,255,85,0.35)" size={12}>
+        <div
+          className="glass-panel p-8 flex flex-col items-center justify-center gap-4 text-center"
+          style={{ minHeight: "280px", borderColor: "rgba(0,255,85,0.12)" }}
+        >
+          <span
+            className="font-mono text-3xl"
+            style={{ color: "#00ff55" }}
+          >
+            ✓
+          </span>
+          <p className="font-display font-semibold text-lg">Message Drafted</p>
+          <p className="font-prose text-white/50 text-sm">
+            Your email client should have opened with a pre-filled message. Hit
+            send when you&apos;re ready.
+          </p>
+          <button
+            onClick={() => setSent(false)}
+            className="font-mono text-xs text-white/40 hover:text-[#00ff55] transition-colors mt-2"
+          >
+            Send another →
+          </button>
+        </div>
+      </CornerFrame>
+    );
+  }
+
+  return (
+    <CornerFrame color="rgba(0,255,85,0.35)" size={12}>
+      <form
+        onSubmit={handleSubmit}
+        className="glass-panel p-6 flex flex-col gap-4"
+        style={{ borderColor: "rgba(0,255,85,0.12)" }}
+      >
+        <div className="flex flex-col gap-1">
+          <label className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+            Name
+          </label>
+          <input
+            required
+            type="text"
+            placeholder="Your name"
+            value={fields.name}
+            onChange={(e) => setFields((f) => ({ ...f, name: e.target.value }))}
+            style={inputStyle}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+            Email
+          </label>
+          <input
+            required
+            type="email"
+            placeholder="your@email.com"
+            value={fields.email}
+            onChange={(e) =>
+              setFields((f) => ({ ...f, email: e.target.value }))
+            }
+            style={inputStyle}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="font-mono text-[10px] uppercase tracking-widest text-white/30">
+            Message
+          </label>
+          <textarea
+            required
+            rows={5}
+            placeholder="What would you like to discuss?"
+            value={fields.message}
+            onChange={(e) =>
+              setFields((f) => ({ ...f, message: e.target.value }))
+            }
+            style={{ ...inputStyle, resize: "none" }}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="cta-primary font-mono text-sm px-6 py-3 transition-all duration-200 w-full mt-2"
+        >
+          [ Send Message ]
+        </button>
+      </form>
+    </CornerFrame>
+  );
+}
 
 /* ── Tag chip ───────────────────────────────────────────────────────────── */
 function Tag({ children }: { children: React.ReactNode }) {
@@ -120,11 +246,12 @@ export default function HomePage() {
       <SmokeCanvas />
 
       {/* ── 2.1 APEX / HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20">
+      <section className="relative min-h-screen flex flex-col justify-center px-6 pt-32 pb-20">
         <div className="max-w-6xl mx-auto w-full">
+          <CornerFrame color="rgba(0,255,85,0.3)" size={18} className="py-10 px-8">
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-6 h-px" style={{ background: "#00ff55" }} />
+          <div className="flex items-center gap-3 mb-8">
+            <span className="w-8 h-px" style={{ background: "#00ff55" }} />
             <span
               className="font-mono text-xs uppercase tracking-[0.25em]"
               style={{ color: "#00ff55" }}
@@ -135,10 +262,10 @@ export default function HomePage() {
 
           {/* Primary headline */}
           <h1
-            className="font-display font-bold leading-[1.05] mb-6"
+            className="font-display font-bold leading-[1.02] mb-8"
             style={{
-              fontSize: "clamp(2.5rem, 7vw, 6rem)",
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(3rem, 9vw, 8.5rem)",
+              letterSpacing: "-0.03em",
             }}
           >
             Architecting Secure
@@ -153,8 +280,8 @@ export default function HomePage() {
 
           {/* Hook */}
           <p
-            className="font-prose text-white/60 mb-10 max-w-2xl"
-            style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", lineHeight: 1.7 }}
+            className="font-prose text-white/60 mb-12 max-w-2xl"
+            style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.3rem)", lineHeight: 1.7 }}
           >
             Cloud-Native Engineer, Researcher, and UI/UX Designer operating out
             of Kigali. I build platforms that scale without breaking, publish
@@ -169,12 +296,12 @@ export default function HomePage() {
             >
               [ Research & Publications ]
             </a>
-            <Link
-              href="/vault"
+            <a
+              href="#contact"
               className="cta-vault font-mono text-sm px-6 py-3 transition-all duration-200"
             >
-              [ Access Vault ]
-            </Link>
+              [ Get in Touch ]
+            </a>
           </div>
 
           {/* Tags */}
@@ -188,6 +315,7 @@ export default function HomePage() {
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
+          </CornerFrame>
         </div>
 
         {/* Scroll cue */}
@@ -211,6 +339,7 @@ export default function HomePage() {
       {/* ── 2.2 UNFAIR ADVANTAGE ────────────────────────────────────────── */}
       <section id="advantage" className="relative px-6 py-24">
         <div className="max-w-6xl mx-auto">
+          <CornerFrame color="rgba(0,255,85,0.2)" size={14} className="px-4 pb-4">
           <SectionLabel text="02 · The Unfair Advantage" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -263,6 +392,7 @@ export default function HomePage() {
               </SpotlightCard>
             ))}
           </div>
+          </CornerFrame>
         </div>
       </section>
 
