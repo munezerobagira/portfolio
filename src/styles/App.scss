@@ -9,8 +9,10 @@
 /* ── Design Tokens ──────────────────────────────────────────────────────── */
 :root {
   --void: #05050a;
-  --neon-cyan: #00ff55;
-  --neon-magenta: #ff003c;
+  --neon-green: #00ff55;
+  --neon-cyan: #00f0ff;
+  --green-mid: #4ade80;
+  --green-dark: #00cc44;
   --border-subtle: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(5, 5, 10, 0.6);
   --color-gray: #f8f8f8;
@@ -61,21 +63,20 @@ pre,
 }
 
 /* ── Neon Glow Helpers ──────────────────────────────────────────────────── */
+.glow-green {
+  text-shadow: 0 0 20px rgba(0, 255, 85, 0.6), 0 0 40px rgba(0, 255, 85, 0.3);
+}
+
 .glow-cyan {
   text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
 }
 
-.glow-magenta {
-  text-shadow: 0 0 20px rgba(255, 0, 60, 0.6),
-    0 0 40px rgba(255, 0, 60, 0.3);
+.border-glow-green {
+  box-shadow: 0 0 15px rgba(0, 255, 85, 0.2), inset 0 0 15px rgba(0, 255, 85, 0.05);
 }
 
 .border-glow-cyan {
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 15px rgba(0, 240, 255, 0.05);
-}
-
-.border-glow-magenta {
-  box-shadow: 0 0 15px rgba(255, 0, 60, 0.2), inset 0 0 15px rgba(255, 0, 60, 0.05);
 }
 
 /* ── Scrollbar ──────────────────────────────────────────────────────────── */
@@ -104,6 +105,21 @@ pre,
 }
 .horizontal-scroll ::-webkit-scrollbar {
   display: none !important;
+}
+
+/* ── Keyframe Animations ────────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px currentColor; }
+  50%       { opacity: 0.4; box-shadow: 0 0 2px currentColor; }
+}
+
+@keyframes loading-bounce {
+  0%   { transform: translateY(0); opacity: 0.3; }
+  100% { transform: translateY(-12px); opacity: 1; }
+}
+
+.loading-dot {
+  animation: loading-bounce 1.2s ease-in-out infinite alternate;
 }
 
 /* ── Terminal ───────────────────────────────────────────────────────────── */
@@ -257,12 +273,12 @@ footer {
 
 /* ── Hero CTAs ──────────────────────────────────────────────────────────── */
 .cta-primary {
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.4);
+  background: rgba(0, 255, 85, 0.08);
+  border: 1px solid rgba(0, 255, 85, 0.4);
   color: #00ff55;
 
   &:hover {
-    background: rgba(0, 240, 255, 0.2);
+    background: rgba(0, 255, 85, 0.18);
   }
 }
 
@@ -271,8 +287,8 @@ footer {
   color: rgba(255, 255, 255, 0.7);
 
   &:hover {
-    border-color: rgba(255, 0, 60, 0.4);
-    color: #ff003c;
+    border-color: rgba(74, 222, 128, 0.4);
+    color: #4ade80;
   }
 }
 
@@ -304,7 +320,7 @@ footer {
   }
 
   a {
-    color: var(--neon-cyan);
+    color: var(--neon-green);
     text-decoration: none;
 
     &:hover {
@@ -314,8 +330,8 @@ footer {
 
   code {
     font-family: "JetBrains Mono", monospace;
-    background: rgba(0, 240, 255, 0.08);
-    border: 1px solid rgba(0, 240, 255, 0.15);
+    background: rgba(0, 255, 85, 0.08);
+    border: 1px solid rgba(0, 255, 85, 0.15);
     padding: 0.1em 0.35em;
     font-size: 0.88em;
     border-radius: 2px;
@@ -338,7 +354,7 @@ footer {
   }
 
   blockquote {
-    border-left: 2px solid var(--neon-cyan);
+    border-left: 2px solid var(--neon-green);
     margin-left: 0;
     padding-left: 1.5rem;
     color: rgba(248, 248, 248, 0.6);
@@ -370,7 +386,7 @@ footer {
     th {
       font-family: "JetBrains Mono", monospace;
       font-size: 0.8rem;
-      color: var(--neon-cyan);
+      color: var(--neon-green);
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }

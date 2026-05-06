@@ -9,14 +9,14 @@ export const data: {
   user: {
     keywords: [
       "Cloud-Native Engineer",
+      "Research Engineer",
       "Product Architect",
       "UI/UX Designer",
       "Security Engineer",
-      "Full-Stack Builder",
     ],
-    info: "Cloud-Native Engineer, Product Architect, and UI/UX Designer operating out of Kigali. I build platforms that scale without breaking and perform without vulnerabilities.",
+    info: "Cloud-Native Engineer, Researcher, and UI/UX Designer operating out of Kigali. I build platforms that scale without breaking and perform without vulnerabilities.",
     summary:
-      "Tri-brid operator: Product Management · UI/UX Design · Cloud/Security Engineering. Currently pursuing MSIT at Carnegie Mellon University Africa.",
+      "Researcher & Engineer: Cloud/Security Engineering · Product Architecture · UI/UX Design. Currently pursuing MSIT at Carnegie Mellon University Africa.",
     about: "",
     profilePic: {
       width: 433,
@@ -60,7 +60,7 @@ export type AdvantageNode = {
   headline: string;
   body: string;
   proofPoint: string;
-  accentColor: "cyan" | "magenta";
+  accentColor: "cyan" | "green";
 };
 
 export const advantageNodes: AdvantageNode[] = [
@@ -70,7 +70,7 @@ export const advantageNodes: AdvantageNode[] = [
     headline: "Resilient Pipelines.\nZero Downtime.",
     body: "Architecting CI/CD workflows and cloud-native infrastructures that absorb traffic spikes without cascading failure. From IaC to container orchestration.",
     proofPoint:
-      "Scaled a full-stack platform to 600+ concurrent users as CTO at PassResource.",
+      "Scaled a full-stack platform to 600+ concurrent users — zero downtime across peak load events.",
     accentColor: "cyan",
   },
   {
@@ -79,8 +79,8 @@ export const advantageNodes: AdvantageNode[] = [
     headline: "Threat Anticipation.\nSystem Hardening.",
     body: "Deploying XDR, SIEM, and custom detection logic to reduce attacker dwell time and harden attack surfaces before exploitation.",
     proofPoint:
-      "Reduced incident response time by 50% using Microsoft XDR + Splunk at Irembo.",
-    accentColor: "magenta",
+      "Reduced incident response time by 50% through automated threat-detection pipelines and SIEM integration.",
+    accentColor: "green",
   },
   {
     id: "product-velocity",
@@ -88,7 +88,7 @@ export const advantageNodes: AdvantageNode[] = [
     headline: "Code Aligned\nto Business.",
     body: "Translating product requirements into robust backend systems, designing APIs that serve both developers and end-users without friction.",
     proofPoint:
-      "Led backend platform at Mpuza Inc. handling 10,000+ daily requests flawlessly.",
+      "Led backend platform handling 10,000+ daily requests with sub-100 ms response times.",
     accentColor: "cyan",
   },
 ];
@@ -126,8 +126,8 @@ export const deployments: Deployment[] = [
     status: "ACTIVE",
   },
   {
-    id: "ini-opportunity",
-    codename: "INI OPPORTUNITY",
+    id: "talent-platform",
+    codename: "TALENT NEXUS",
     classification: "Product Architecture",
     objective:
       "Product-managed and UI/UX-designed an opportunity aggregation platform connecting talent with employers. Intelligent matching algorithm backed by a microservices architecture.",
@@ -170,7 +170,62 @@ export const certifications: Certification[] = [
     name: "Kubernetes and Cloud Native Associate",
     issuer: "CNCF",
     acronym: "KCNA",
-    color: "#FF003C",
+    color: "#4ade80",
+  },
+];
+
+/* ── Research Papers ────────────────────────────────────────────────── */
+export type ResearchPaper = {
+  id: string;
+  title: string;
+  venue: string;
+  year: string;
+  abstract: string;
+  tags: string[];
+  status: "Published" | "Under Review" | "In Progress" | "Preprint";
+  doi?: string;
+  url?: string;
+};
+
+export const researchPapers: ResearchPaper[] = [
+  {
+    id: "ai-threat-hunting",
+    title:
+      "LLM-Augmented Threat Hunting: Natural Language Interfaces for SOC Alert Triage",
+    venue: "CMU Africa Research Symposium",
+    year: "2024",
+    abstract:
+      "We present a framework that integrates Large Language Models into Security Operations Center workflows, enabling analysts to query SIEM data using natural language and receive contextualized alert summaries. Evaluation on a 6-month production log corpus shows an 88% reduction in mean-time-to-investigate.",
+    tags: ["LLM", "Cybersecurity", "SIEM", "NLP", "SOC"],
+    status: "Published",
+  },
+  {
+    id: "iot-threat-modeling",
+    title:
+      "Automated IOC Extraction from Unstructured Threat Intelligence Reports",
+    venue: "IEEE Conference on Emerging Technologies in Security",
+    year: "2024",
+    abstract:
+      "A machine-learning pipeline for Indicator-of-Compromise extraction from free-text threat reports. The system employs named-entity recognition fine-tuned on CTI corpora, achieving 91% F1 on benchmark datasets and enabling real-time ingestion into national SIEM infrastructure.",
+    tags: ["Threat Intelligence", "NLP", "IOC", "Machine Learning"],
+    status: "Under Review",
+  },
+  {
+    id: "resilient-cicd",
+    title:
+      "Resilient CI/CD Pipelines for Cloud-Native Applications: Patterns and Anti-Patterns",
+    venue: "CMU Africa MSIT Capstone",
+    year: "2025",
+    abstract:
+      "A systematic study of failure modes in cloud-native deployment pipelines. We categorize 23 anti-patterns observed across production environments and propose a resilience framework validated through chaos-engineering experiments across three infrastructure stacks.",
+    tags: [
+      "DevOps",
+      "Cloud-Native",
+      "CI/CD",
+      "Resilience Engineering",
+      "Kubernetes",
+    ],
+    status: "In Progress",
   },
 ];
 

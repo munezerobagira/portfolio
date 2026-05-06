@@ -32,9 +32,9 @@ export async function generateMetadata({
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Architecture: "#055a21",
-  "Security Operations": "#FF003C",
-  "Product Strategy": "#a78bfa",
+  Architecture: "#00ff55",
+  "Security Operations": "#4ade80",
+  "Product Strategy": "#00cc44",
 };
 
 export default async function VaultPostPage({

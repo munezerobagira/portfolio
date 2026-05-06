@@ -5,7 +5,7 @@ import { useRef, useCallback } from "react";
 interface SpotlightCardProps {
   children: React.ReactNode;
   className?: string;
-  accentColor?: "cyan" | "magenta";
+  accentColor?: "cyan" | "green";
 }
 
 /**
@@ -19,7 +19,7 @@ export default function SpotlightCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const r = accentColor === "cyan" ? "0, 240, 255" : "255, 0, 60";
+  const r = accentColor === "cyan" ? "0, 240, 255" : "0, 204, 68";
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
